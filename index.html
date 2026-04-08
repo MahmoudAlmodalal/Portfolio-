@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahmoud Almodalal – Portfolio</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f0f0f;
+      --surface:  #1a1a1a;
+      --border:   #2a2a2a;
+      --accent:   #6c63ff;
+      --accent2:  #ff6584;
+      --text:     #e0e0e0;
+      --muted:    #888;
+      --radius:   12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(15,15,15,.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      color: var(--text);
+      font-size: .95rem;
+      transition: color .2s;
+    }
+
+    nav ul a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── Sections ── */
+    section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+
+    h1, h2, h3 { line-height: 1.2; }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 50px; height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: calc(100vh - 65px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #hero .greeting { color: var(--accent); font-size: 1.1rem; margin-bottom: .5rem; }
+
+    #hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: .5rem;
+    }
+
+    #hero .subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    #hero p { max-width: 550px; color: var(--muted); margin-bottom: 2rem; }
+
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.75rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn:hover { opacity: .85; transform: translateY(-2px); text-decoration: none; }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      margin-left: 1rem;
+    }
+
+    /* ── About ── */
+    #about p { color: var(--muted); max-width: 700px; margin-bottom: 1rem; }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+      font-size: .9rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    .skill-card span { display: block; font-size: 1.8rem; margin-bottom: .4rem; }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .project-card h3 { font-size: 1.1rem; }
+
+    .project-card p { color: var(--muted); font-size: .9rem; flex: 1; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+    .tag {
+      font-size: .75rem;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      background: rgba(108,99,255,.15);
+      color: var(--accent);
+    }
+
+    .project-links { display: flex; gap: 1rem; font-size: .85rem; }
+
+    /* ── Contact ── */
+    #contact .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    #contact .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .75rem 1.25rem;
+      color: var(--text);
+      transition: border-color .2s, color .2s;
+    }
+
+    #contact .contact-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; }
+      .btn-outline { margin-left: 0; margin-top: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">MA</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <p class="greeting">👋 Hello, I'm</p>
+    <h1>Mahmoud Almodalal</h1>
+    <p class="subtitle">Software Developer</p>
+    <p>I build clean, efficient, and user-friendly software. Welcome to my portfolio.</p>
+    <div>
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p>
+      I'm a passionate software developer with a strong interest in building
+      meaningful digital experiences. I enjoy solving complex problems and
+      continuously learning new technologies.
+    </p>
+    <p>
+      When I'm not coding, I like exploring open-source projects, reading about
+      software architecture, and collaborating with other developers.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><span>🌐</span>HTML &amp; CSS</div>
+      <div class="skill-card"><span>⚡</span>JavaScript</div>
+      <div class="skill-card"><span>🐍</span>Python</div>
+      <div class="skill-card"><span>⚛️</span>React</div>
+      <div class="skill-card"><span>🗄️</span>SQL</div>
+      <div class="skill-card"><span>🔧</span>Git &amp; GitHub</div>
+      <div class="skill-card"><span>🐳</span>Docker</div>
+      <div class="skill-card"><span>☁️</span>Cloud</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A personal portfolio site showcasing my work, skills, and contact information.</p>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/MahmoudAlmodalal/Portfolio-">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Description of your second project goes here. Explain what it does and the problem it solves.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub</a>
+          <a href="#">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Description of your third project goes here. Explain what it does and the problem it solves.</p>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub</a>
+          <a href="#">Live Demo</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p style="color:var(--muted)">Feel free to reach out — I'm always open to new opportunities and collaborations.</p>
+    <div class="contact-links">
+      <a href="mailto:your@email.com">✉️ Email</a>
+      <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">💼 LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Mahmoud Almodalal. Built with HTML, CSS &amp; ❤️</p>
+  </footer>
+
+</body>
+</html>
