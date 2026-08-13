@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Mahmoud Hisham Almodalal — Backend and AI Engineer building reliable SaaS, APIs, offline-first systems, and RAG products."/>
 <title>Mahmoud Hisham Almodalal — Backend &amp; AI Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav aria-label="Primary navigation">
   <div class="logo">M.<span>Almodalal</span></div>
   <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('nav ul').classList.toggle('open')" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -23,14 +25,15 @@
   </ul>
 </nav>
 
-<section id="hero">
+<main id="main-content">
+<section id="hero" aria-labelledby="hero-title">
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div class="hero-grid">
     <div class="hero-left fade-in">
       <div class="badge">Open to backend &amp; AI roles</div>
-      <h1>Backend<br/><em>&amp; AI</em><br/>Engineer</h1>
+      <h1 id="hero-title">Backend<br/><em>&amp; AI</em><br/>Engineer</h1>
       <p class="hero-desc">
         Computer Engineer focused on Python backends, scalable SaaS architecture, and AI-powered products. I build multi-tenant systems, production APIs, offline-first workflows, and RAG/LLM integrations that solve practical problems.
       </p>
@@ -196,7 +199,7 @@
     <p class="section-label">selected work</p>
     <h2>Systems built for real workflows</h2>
 
-    <div class="filter-bar">
+    <div class="filter-bar" aria-label="Project filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="backend">Backend &amp; SaaS</button>
       <button class="filter-btn" data-filter="frontend">Product &amp; UI</button>
@@ -421,6 +424,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   &copy; 2026 Mahmoud Hisham Almodalal &middot; A small engineering studio, built with care

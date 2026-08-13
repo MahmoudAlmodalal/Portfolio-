@@ -40,6 +40,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 a { color: inherit; }
+.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 200; padding: .65rem .85rem; border: 1px solid var(--accent); border-radius: 5px; color: #20130d; background: var(--accent); font: 500 .65rem 'DM Mono', monospace; text-decoration: none; transform: translateY(-180%); transition: transform .18s var(--ease-out); }.skip-link:focus { transform: translateY(0); }
 
 /* Navigation */
 nav {
