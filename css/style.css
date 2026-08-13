@@ -85,7 +85,7 @@ h1 em { color: var(--accent); font-style: normal; }
 .hero-stats > div + div { padding-left: 1rem; border-left: 1px solid var(--border); }
 .hero-stats strong { color: var(--cream); font: 500 .69rem 'DM Mono', monospace; letter-spacing: -.03em; }
 .hero-stats span { color: var(--muted-dark); font-size: .64rem; line-height: 1.4; }
-.cta-row { display: flex; flex-wrap: wrap; gap: .65rem; }
+.hero-note { display: flex; align-items: center; gap: .65rem; max-width: 560px; margin: -0.35rem 0 1.35rem; color: var(--muted-dark); font-size: .7rem; line-height: 1.6; }.hero-note span { color: var(--accent); font: 500 .62rem 'DM Mono', monospace; }.cta-row { display: flex; flex-wrap: wrap; gap: .65rem; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 45px; padding: .72rem 1rem; border: 1px solid transparent; border-radius: 5px; font: 500 .67rem 'DM Mono', monospace; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; transition: transform .18s var(--ease-out), background .18s, border-color .18s, color .18s; }
 .btn:active { transform: scale(.97); }
 .btn-primary { color: #20130d; background: var(--accent); box-shadow: 0 12px 25px rgba(241,125,75,.16); }
