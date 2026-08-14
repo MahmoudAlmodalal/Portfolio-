@@ -133,3 +133,37 @@ footer { padding: 2rem clamp(1.25rem, 5vw, 5rem); border-top: 1px solid var(--bo
 @media (max-width: 800px) { nav { top: .75rem; right: 1rem; left: 1rem; border-radius: 18px; }.hamburger { display: flex; } nav ul { position: fixed; top: .75rem; right: -280px; display: flex; width: 250px; height: calc(100vh - 1.5rem); flex-direction: column; align-items: flex-start; gap: 1.35rem; padding: 4.7rem 1.4rem 1.5rem; border: 1px solid var(--border); border-radius: 16px; background: rgba(22,24,20,.98); box-shadow: var(--shadow-lg); transition: right .25s var(--ease-out); } nav ul.open { right: 0; } #hero { min-height: auto; padding-top: 9rem; padding-bottom: 4rem; }.hero-grid { grid-template-columns: 1fr; }.hero-right { display: none; }.hero-stats { max-width: 560px; }.tl-item { grid-template-columns: 88px 20px minmax(0, 1fr); gap: 0 .9rem; }.tl-date { font-size: .6rem; }.cert-list { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { section { padding: 5.5rem 1.15rem; }.divider { margin: 0 1.15rem; }.hero-stats { grid-template-columns: 1fr; }.hero-stats > div, .hero-stats > div + div { min-height: auto; padding: .75rem 0; border-left: 0; border-bottom: 1px solid var(--border); }.hero-stats > div:last-child { border-bottom: 0; }.btn { width: 100%; }.cta-row { width: 100%; }.skills-grid, .projects-grid { grid-template-columns: 1fr; }.project-card-img, .additional-projects-grid .project-card-img { height: 210px; }.tl-item { grid-template-columns: 68px 18px minmax(0, 1fr); gap: 0 .75rem; }.tl-role { font-size: .98rem; }.tl-desc { font-size: .74rem; }.tl-company { font-size: .72rem; }.contact-links { flex-direction: column; }.contact-link { justify-content: center; }.edu-card { padding: 1.55rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+
+
+/* Mobile touch and performance refinements */
+@media (max-width: 600px) {
+  .filter-bar {
+    flex-wrap: nowrap;
+    gap: .45rem;
+    margin-right: -1.15rem;
+    padding: .2rem 1.15rem .55rem 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .filter-btn {
+    min-height: 38px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .project-actions {
+    align-items: center;
+    gap: .55rem;
+  }
+
+  .project-link {
+    min-height: 36px;
+  }
+
+  .hero-note {
+    align-items: flex-start;
+  }
+}
