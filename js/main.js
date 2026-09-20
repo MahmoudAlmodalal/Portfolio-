@@ -1,6 +1,4 @@
-// Portfolio interaction system — CMS-inspired motion without framework overhead.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 function closeMenu() {
   const button = document.querySelector('.hamburger');
@@ -12,15 +10,15 @@ function closeMenu() {
 }
 window.closeMenu = closeMenu;
 
-// Accessible mobile navigation.
 const menuButton = document.querySelector('.hamburger');
 const navMenu = document.querySelector('nav ul');
+
 if (menuButton && navMenu) {
   menuButton.addEventListener('click', () => {
-    const nextOpen = !navMenu.classList.contains('open');
-    menuButton.classList.toggle('active', nextOpen);
-    navMenu.classList.toggle('open', nextOpen);
-    menuButton.setAttribute('aria-expanded', String(nextOpen));
+    const open = !navMenu.classList.contains('open');
+    menuButton.classList.toggle('active', open);
+    navMenu.classList.toggle('open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
   });
 
   document.addEventListener('keydown', (event) => {
@@ -28,173 +26,93 @@ if (menuButton && navMenu) {
   });
 }
 
-// Progressive reveal system. Content stays visible if JS is unavailable.
-if (!reducedMotion.matches) {
+// Subtle entrance motion only. Content stays visible when JavaScript is unavailable.
+if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('motion-ready');
 
-  const revealTargets = [
+  const targets = [
     ...document.querySelectorAll('.fade-in'),
-    ...document.querySelectorAll('section .section-label, section h2, .additional-projects-head h3, .additional-projects-desc'),
+    ...document.querySelectorAll('.section-heading, .additional-projects-head'),
   ];
 
-  revealTargets.forEach((element) => {
-    if (!element.classList.contains('fade-in')) element.classList.add('reveal-copy');
-
-    const section = element.closest('section');
-    if (section) {
-      const peers = [...section.querySelectorAll('.fade-in, .reveal-copy')];
-      const index = Math.max(0, peers.indexOf(element));
-      element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
-    }
-  });
-
-  const revealObserver = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+      observer.unobserve(entry.target);
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -7% 0px',
+    threshold: 0.1,
+    rootMargin: '0px 0px -6% 0px',
   });
 
-  revealTargets.forEach((element) => revealObserver.observe(element));
+  targets.forEach((element) => observer.observe(element));
 }
 
-// Project filters with small exit/enter choreography instead of abrupt popping.
+// Project filters.
 document.querySelectorAll('.filter-btn').forEach((button) => {
   button.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach((item) => item.classList.remove('active'));
     button.classList.add('active');
+
     const filter = button.dataset.filter;
-
-    document.querySelectorAll('.project-card').forEach((card, index) => {
-      const shouldShow = filter === 'all' || card.dataset.category === filter;
-
-      if (shouldShow) {
-        card.removeAttribute('data-hidden');
-        card.style.display = '';
-        card.classList.remove('filter-enter');
-        requestAnimationFrame(() => {
-          card.classList.add('filter-enter');
-          card.style.setProperty('--filter-delay', `${Math.min(index, 7) * 35}ms`);
-        });
-      } else {
-        card.setAttribute('data-hidden', 'true');
-        card.style.display = 'none';
-        card.classList.remove('filter-enter');
-      }
+    document.querySelectorAll('.project-card').forEach((card) => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.toggleAttribute('hidden', !show);
     });
   });
 });
 
-// Make project cards clickable while preserving normal link behavior.
+// The card opens its primary destination without breaking nested links.
 document.querySelectorAll('.project-card').forEach((card) => {
-  const link = card.querySelector('.project-link');
-  if (link) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', (event) => {
-      if (!event.target.closest('a, button')) {
-        window.open(link.href, '_blank', 'noopener');
-      }
-    });
-  }
+  const primaryLink = card.querySelector('.project-link');
+  if (!primaryLink) return;
+
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('a, button')) return;
+    window.open(primaryLink.href, '_blank', 'noopener');
+  });
 });
 
-// Scroll state: progress, nav compression, scroll cue, and active section.
+// Slightly firmer navigation after leaving the top of the page.
 const nav = document.querySelector('nav');
-const scrollIndicator = document.querySelector('.scroll-indicator');
-const progress = document.createElement('div');
-progress.className = 'scroll-progress';
-progress.setAttribute('aria-hidden', 'true');
-document.body.appendChild(progress);
+let frame = 0;
 
-let scrollFrame = 0;
-function updateScrollUI() {
-  scrollFrame = 0;
-  const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-  const ratio = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-  progress.style.transform = `scaleX(${ratio})`;
-
-  if (nav) nav.classList.toggle('scrolled', window.scrollY > 48);
-  if (scrollIndicator) scrollIndicator.classList.toggle('hidden', window.scrollY > 110);
+function syncNav() {
+  frame = 0;
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 32);
 }
 
 window.addEventListener('scroll', () => {
-  if (scrollFrame) return;
-  scrollFrame = requestAnimationFrame(updateScrollUI);
+  if (frame) return;
+  frame = requestAnimationFrame(syncNav);
 }, { passive: true });
-updateScrollUI();
+syncNav();
 
+// Keep the current section clear in the navigation.
 const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
-const observedSections = navLinks
+const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute('href')))
   .filter(Boolean);
 
-if (observedSections.length) {
+if (sections.length && 'IntersectionObserver' in window) {
   const sectionObserver = new IntersectionObserver((entries) => {
-    const visible = entries
+    const current = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-    if (!visible) return;
+    if (!current) return;
+
     navLinks.forEach((link) => {
-      const active = link.getAttribute('href') === `#${visible.target.id}`;
+      const active = link.getAttribute('href') === `#${current.target.id}`;
       link.classList.toggle('active', active);
       if (active) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
   }, {
-    rootMargin: '-28% 0px -58% 0px',
-    threshold: [0.05, 0.2, 0.45],
+    rootMargin: '-22% 0px -65% 0px',
+    threshold: [0.05, 0.2],
   });
 
-  observedSections.forEach((section) => sectionObserver.observe(section));
-}
-
-// Gentle pointer depth on the hero terminal and project cards.
-// Motion is intentionally tiny; this is tactile feedback, not a 3D showcase.
-if (!reducedMotion.matches && finePointer.matches) {
-  const hero = document.querySelector('#hero');
-  const terminal = document.querySelector('.terminal');
-
-  if (hero && terminal) {
-    hero.addEventListener('pointermove', (event) => {
-      const rect = hero.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      terminal.style.setProperty('--hero-tilt-x', `${(-y * 2.2).toFixed(2)}deg`);
-      terminal.style.setProperty('--hero-tilt-y', `${(x * 2.6).toFixed(2)}deg`);
-      hero.style.setProperty('--orb-x', `${(x * 16).toFixed(1)}px`);
-      hero.style.setProperty('--orb-y', `${(y * 12).toFixed(1)}px`);
-    });
-
-    hero.addEventListener('pointerleave', () => {
-      terminal.style.setProperty('--hero-tilt-x', '0deg');
-      terminal.style.setProperty('--hero-tilt-y', '0deg');
-      hero.style.setProperty('--orb-x', '0px');
-      hero.style.setProperty('--orb-y', '0px');
-    });
-  }
-
-  document.querySelectorAll('.project-card').forEach((card) => {
-    card.addEventListener('pointermove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
-      const tiltY = (x - 0.5) * 2.2;
-      const tiltX = (0.5 - y) * 1.8;
-
-      card.style.setProperty('--card-tilt-x', `${tiltX.toFixed(2)}deg`);
-      card.style.setProperty('--card-tilt-y', `${tiltY.toFixed(2)}deg`);
-      card.style.setProperty('--spot-x', `${(x * 100).toFixed(1)}%`);
-      card.style.setProperty('--spot-y', `${(y * 100).toFixed(1)}%`);
-    });
-
-    card.addEventListener('pointerleave', () => {
-      card.style.setProperty('--card-tilt-x', '0deg');
-      card.style.setProperty('--card-tilt-y', '0deg');
-    });
-  });
+  sections.forEach((section) => sectionObserver.observe(section));
 }
