@@ -13,14 +13,14 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <nav aria-label="Primary navigation">
-  <div class="logo">M.<span>Almodalal</span></div>
+  <a class="logo" href="#hero" aria-label="Mahmoud Almodalal home">Mahmoud <span>Almodalal</span></a>
   <button class="hamburger" type="button" aria-label="Toggle menu" aria-controls="primary-nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul id="primary-nav-links">
-    <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+    <li><a href="#projects" onclick="closeMenu()">Work</a></li>
     <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
-    <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+    <li><a href="#skills" onclick="closeMenu()">Expertise</a></li>
     <li><a href="#education" onclick="closeMenu()">Education</a></li>
     <li><a href="#references" onclick="closeMenu()">References</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
@@ -29,58 +29,46 @@
 
 <main id="main-content">
 <section id="hero" aria-labelledby="hero-title">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="hero-grid">
-    <div class="hero-left fade-in">
-      <div class="badge">Open to backend &amp; AI roles</div>
-      <h1 id="hero-title">Backend<br/><em>&amp; AI</em><br/>Engineer</h1>
+  <div class="hero-shell">
+    <div class="hero-copy fade-in">
+      <p class="hero-kicker">Mahmoud H. Almodalal · Backend Engineer</p>
+      <h1 id="hero-title">I build reliable systems for products that need to work.</h1>
       <p class="hero-desc">
-        Computer Engineer focused on Python backends, scalable SaaS architecture, and AI-powered products. I build multi-tenant systems, production APIs, offline-first workflows, and RAG/LLM integrations that solve practical problems.
+        Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I care about clear boundaries, resilient data flows, and software that remains useful under real operating constraints.
       </p>
-      <div class="hero-stats" aria-label="Professional highlights">
-        <div><strong>Python / Django</strong><span>Backend systems</span></div>
-        <div><strong>SaaS &amp; AI</strong><span>Product engineering</span></div>
-        <div><strong>91% GPA</strong><span>Computer Engineering</span></div>
-      </div>
-      <p class="hero-note"><span>01</span> Built for weak networks, real teams, and the work between the lines.</p>
-      <div class="cta-row">
-        <a href="mailto:ghg17273@gmail.com" class="btn btn-primary">Get in touch</a>
-        <a href="#projects" class="btn btn-ghost">View projects</a>
-        <a href="Mahmoud_Almodalal_CV.pdf" download class="btn btn-ghost">Download CV</a>
-        <a href="Mahmoud_Almodalal_Portfolio.pdf" download class="btn btn-ghost">Portfolio PDF</a>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Selected work</a>
+        <a href="mailto:ghg17273@gmail.com" class="btn btn-ghost">Email me</a>
+        <a href="Mahmoud_Almodalal_CV.pdf" download class="text-link">Download CV <span aria-hidden="true">↘</span></a>
       </div>
     </div>
-    <div class="hero-right fade-in">
-      <div class="terminal">
-        <div class="terminal-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="t-title">mahmoud.json</span>
+
+    <aside class="hero-profile fade-in" aria-label="Professional profile">
+      <div class="profile-status"><span></span> Open to backend &amp; AI engineering roles</div>
+      <dl class="profile-facts">
+        <div>
+          <dt>Core stack</dt>
+          <dd>Python · Django · FastAPI · PostgreSQL</dd>
         </div>
-        <div class="terminal-body">
-          <div><span class="t-prompt">$ </span><span class="t-cmd">cat profile.json</span></div>
-          <div>&nbsp;</div>
-          <div>{</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Mahmoud Almodalal"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Backend &amp; AI Engineer"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-val">"SaaS + RAG + APIs"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"stack"</span>: [</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Django"</span>, <span class="t-val">"Python"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"PostgreSQL"</span>, <span class="t-val">"Docker"</span></div>
-          <div>&nbsp;&nbsp;],</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-val">"B.Sc. Computer Engineering"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span style="color:#83a889">true</span></div>
-          <div>} <span class="cursor"></span></div>
+        <div>
+          <dt>Engineering</dt>
+          <dd>Clean Architecture · Multi-tenant SaaS · CI/CD</dd>
         </div>
+        <div>
+          <dt>Applied AI</dt>
+          <dd>RAG · LLM integrations · Computer Vision</dd>
+        </div>
+        <div>
+          <dt>Education</dt>
+          <dd>B.Sc. Computer Engineering · 91% GPA</dd>
+        </div>
+      </dl>
+      <div class="profile-links">
+        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
-    </div>
-  </div>
-  <div class="scroll-indicator">
-    <span>scroll</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </aside>
   </div>
 </section>
 
@@ -88,39 +76,48 @@
 
 <section id="skills">
   <div class="container">
-    <p class="section-label">expertise</p>
-    <h2>Tools for reliable products</h2>
-    <div class="skills-grid">
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">BE</div>
-        <div class="skill-title">Backend</div>
-        <div class="skill-items">Python &middot; Django &middot; DRF<br/>FastAPI &middot; Laravel<br/>REST APIs &middot; WebSockets</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">DB</div>
-        <div class="skill-title">Databases</div>
-        <div class="skill-items">PostgreSQL &middot; MySQL<br/>SQLite &middot; Oracle DB<br/>Redis &middot; ChromaDB</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">FE</div>
-        <div class="skill-title">Frontend</div>
-        <div class="skill-items">React 19 &middot; Next.js<br/>TypeScript &middot; Tailwind CSS<br/>Vite &middot; Dexie.js</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">DX</div>
-        <div class="skill-title">DevOps</div>
-        <div class="skill-items">Docker &middot; Docker Compose<br/>GitHub Actions CI/CD<br/>Nginx &middot; Linux &middot; Cloudflare</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">AI</div>
-        <div class="skill-title">AI / ML</div>
-        <div class="skill-items">LLMs &middot; RAG &middot; OpenAI<br/>Gemini &middot; DeepSeek<br/>YOLOv8 &middot; DeepSort &middot; InsightFace</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">AR</div>
-        <div class="skill-title">Programming</div>
-        <div class="skill-items">Clean Architecture<br/>Service / Selector / Policy<br/>RBAC &middot; Offline-first systems</div>
-      </div>
+    <div class="section-heading">
+      <p class="section-label">expertise</p>
+      <h2>Engineering capabilities</h2>
+      <p class="section-intro">The tools change by project. The approach stays consistent: explicit architecture, observable behavior, and simple operational paths.</p>
+    </div>
+
+    <div class="expertise-list">
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">01</div>
+        <div>
+          <h3>Backend systems</h3>
+          <p>APIs, domain logic, background jobs, real-time flows, authentication, authorization, and production service boundaries.</p>
+        </div>
+        <div class="expertise-stack">Python · Django · DRF · FastAPI · Laravel · WebSockets</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">02</div>
+        <div>
+          <h3>Data &amp; infrastructure</h3>
+          <p>Relational modeling, caching, asynchronous processing, containerized delivery, and deployment workflows built for maintainability.</p>
+        </div>
+        <div class="expertise-stack">PostgreSQL · MySQL · Redis · Celery · Docker · Nginx · GitHub Actions</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">03</div>
+        <div>
+          <h3>AI integrations</h3>
+          <p>AI features connected to real product workflows rather than isolated demos: retrieval, document ingestion, messaging, and computer vision.</p>
+        </div>
+        <div class="expertise-stack">RAG · LLMs · pgvector · OpenAI · Gemini · YOLOv8 · InsightFace</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">04</div>
+        <div>
+          <h3>Product engineering</h3>
+          <p>Enough frontend depth to ship complete workflows, work effectively across boundaries, and design offline-capable experiences.</p>
+        </div>
+        <div class="expertise-stack">Next.js · React · TypeScript · Tailwind CSS · Dexie.js · PWA</div>
+      </article>
     </div>
   </div>
 </section>
