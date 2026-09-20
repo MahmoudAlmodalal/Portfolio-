@@ -13,14 +13,14 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <nav aria-label="Primary navigation">
-  <div class="logo">M.<span>Almodalal</span></div>
+  <a class="logo" href="#hero" aria-label="Mahmoud Almodalal home">Mahmoud <span>Almodalal</span></a>
   <button class="hamburger" type="button" aria-label="Toggle menu" aria-controls="primary-nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul id="primary-nav-links">
-    <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+    <li><a href="#projects" onclick="closeMenu()">Work</a></li>
     <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
-    <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+    <li><a href="#skills" onclick="closeMenu()">Expertise</a></li>
     <li><a href="#education" onclick="closeMenu()">Education</a></li>
     <li><a href="#references" onclick="closeMenu()">References</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
@@ -29,168 +29,46 @@
 
 <main id="main-content">
 <section id="hero" aria-labelledby="hero-title">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <div class="hero-grid">
-    <div class="hero-left fade-in">
-      <div class="badge">Open to backend &amp; AI roles</div>
-      <h1 id="hero-title">Backend<br/><em>&amp; AI</em><br/>Engineer</h1>
+  <div class="hero-shell">
+    <div class="hero-copy fade-in">
+      <p class="hero-kicker">Mahmoud H. Almodalal · Backend Engineer</p>
+      <h1 id="hero-title">I build reliable systems for products that need to work.</h1>
       <p class="hero-desc">
-        Computer Engineer focused on Python backends, scalable SaaS architecture, and AI-powered products. I build multi-tenant systems, production APIs, offline-first workflows, and RAG/LLM integrations that solve practical problems.
+        Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I care about clear boundaries, resilient data flows, and software that remains useful under real operating constraints.
       </p>
-      <div class="hero-stats" aria-label="Professional highlights">
-        <div><strong>Python / Django</strong><span>Backend systems</span></div>
-        <div><strong>SaaS &amp; AI</strong><span>Product engineering</span></div>
-        <div><strong>91% GPA</strong><span>Computer Engineering</span></div>
-      </div>
-      <p class="hero-note"><span>01</span> Built for weak networks, real teams, and the work between the lines.</p>
-      <div class="cta-row">
-        <a href="mailto:ghg17273@gmail.com" class="btn btn-primary">Get in touch</a>
-        <a href="#projects" class="btn btn-ghost">View projects</a>
-        <a href="Mahmoud_Almodalal_CV.pdf" download class="btn btn-ghost">Download CV</a>
-        <a href="Mahmoud_Almodalal_Portfolio.pdf" download class="btn btn-ghost">Portfolio PDF</a>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Selected work</a>
+        <a href="mailto:ghg17273@gmail.com" class="btn btn-ghost">Email me</a>
+        <a href="Mahmoud_Almodalal_CV.pdf" download class="text-link">Download CV <span aria-hidden="true">↘</span></a>
       </div>
     </div>
-    <div class="hero-right fade-in">
-      <div class="terminal">
-        <div class="terminal-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <span class="t-title">mahmoud.json</span>
+
+    <aside class="hero-profile fade-in" aria-label="Professional profile">
+      <div class="profile-status"><span></span> Open to backend &amp; AI engineering roles</div>
+      <dl class="profile-facts">
+        <div>
+          <dt>Core stack</dt>
+          <dd>Python · Django · FastAPI · PostgreSQL</dd>
         </div>
-        <div class="terminal-body">
-          <div><span class="t-prompt">$ </span><span class="t-cmd">cat profile.json</span></div>
-          <div>&nbsp;</div>
-          <div>{</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Mahmoud Almodalal"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Backend &amp; AI Engineer"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-val">"SaaS + RAG + APIs"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"stack"</span>: [</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"Django"</span>, <span class="t-val">"Python"</span>,</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"PostgreSQL"</span>, <span class="t-val">"Docker"</span></div>
-          <div>&nbsp;&nbsp;],</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-val">"B.Sc. Computer Engineering"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span style="color:#83a889">true</span></div>
-          <div>} <span class="cursor"></span></div>
+        <div>
+          <dt>Engineering</dt>
+          <dd>Clean Architecture · Multi-tenant SaaS · CI/CD</dd>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-indicator">
-    <span>scroll</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="skills">
-  <div class="container">
-    <p class="section-label">expertise</p>
-    <h2>Tools for reliable products</h2>
-    <div class="skills-grid">
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">BE</div>
-        <div class="skill-title">Backend</div>
-        <div class="skill-items">Python &middot; Django &middot; DRF<br/>FastAPI &middot; Laravel<br/>REST APIs &middot; WebSockets</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">DB</div>
-        <div class="skill-title">Databases</div>
-        <div class="skill-items">PostgreSQL &middot; MySQL<br/>SQLite &middot; Oracle DB<br/>Redis &middot; ChromaDB</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">FE</div>
-        <div class="skill-title">Frontend</div>
-        <div class="skill-items">React 19 &middot; Next.js<br/>TypeScript &middot; Tailwind CSS<br/>Vite &middot; Dexie.js</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">DX</div>
-        <div class="skill-title">DevOps</div>
-        <div class="skill-items">Docker &middot; Docker Compose<br/>GitHub Actions CI/CD<br/>Nginx &middot; Linux &middot; Cloudflare</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">AI</div>
-        <div class="skill-title">AI / ML</div>
-        <div class="skill-items">LLMs &middot; RAG &middot; OpenAI<br/>Gemini &middot; DeepSeek<br/>YOLOv8 &middot; DeepSort &middot; InsightFace</div>
-      </div>
-      <div class="skill-card fade-in">
-        <div class="skill-icon" aria-hidden="true">AR</div>
-        <div class="skill-title">Programming</div>
-        <div class="skill-items">Clean Architecture<br/>Service / Selector / Policy<br/>RBAC &middot; Offline-first systems</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="experience">
-  <div class="container">
-    <p class="section-label">background</p>
-    <h2>Experience</h2>
-    <div class="timeline">
-
-      <div class="tl-item fade-in">
-        <div class="tl-date">May 2025 &ndash; Present<br/>Part-time &middot; Remote</div>
-        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-role">Programming Instructor</div>
-          <div class="tl-company">MET Academy &middot; Saudi Arabia</div>
-          <p class="tl-desc">Teaching Calculus, Logic Design, and Computer Architecture to computer science students.</p>
-          <div class="tl-tags"><span class="tag">Teaching</span><span class="tag">Computer Architecture</span><span class="tag">Logic Design</span></div>
+        <div>
+          <dt>Applied AI</dt>
+          <dd>RAG · LLM integrations · Computer Vision</dd>
         </div>
-      </div>
-
-      <div class="tl-item fade-in">
-        <div class="tl-date">Graduation Project<br/>Remote &middot; Gaza</div>
-        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-role">Co-Founder &amp; Backend Developer</div>
-          <div class="tl-company"><a href="https://edutracker.site/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(6,182,212,.4)">EduTracker</a> &middot; Self-employed &middot; <a href="https://www.linkedin.com/in/edutracker-company-6074993b3" target="_blank" style="color:var(--accent-3);text-decoration:none;font-size:.72rem">LinkedIn Page ↗</a></div>
-          <p class="tl-desc">Built and deployed a bilingual multi-tenant school-management SaaS with Clean Architecture, a 32-entity PostgreSQL schema, Arabic full-text search, role-specific dashboards, offline support, automatic sync, and production CI/CD.</p>
-          <div class="tl-tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">Nginx</span></div>
+        <div>
+          <dt>Education</dt>
+          <dd>B.Sc. Computer Engineering · 91% GPA</dd>
         </div>
+      </dl>
+      <div class="profile-links">
+        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
-
-      <div class="tl-item fade-in">
-        <div class="tl-date">Aug 2025 &ndash; Mar 2026</div>
-        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-role">Web Development Intern</div>
-          <div class="tl-company">Ministry of Health, IT Department</div>
-          <p class="tl-desc">Built responsive interfaces and server-side functionality with HTML, CSS, JavaScript, Bootstrap, PHP, and Laravel. Worked with MySQL and Oracle DB for management and optimization.</p>
-          <div class="tl-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Oracle DB</span></div>
-          <a href="https://drive.google.com/file/d/1H_FdSsaltjV1vTKjU2tUGsFjHvarKGod/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.75rem;font-size:.72rem;color:var(--accent-3);text-decoration:none;opacity:.85;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#128196; View Internship Proof ↗</a>
-        </div>
-      </div>
-
-      <div class="tl-item fade-in">
-        <div class="tl-date">Aug &ndash; Oct 2023</div>
-        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-role">AI Scripting Specialist</div>
-          <div class="tl-company">PDX Ai Scripting</div>
-          <p class="tl-desc">Developed face-detection and face-recognition workflows for video footage, focusing on practical AI integration, processing speed, and model performance.</p>
-          <div class="tl-tags"><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">AI/ML</span></div>
-        </div>
-      </div>
-
-      <div class="tl-item fade-in">
-        <div class="tl-date">Jul &ndash; Oct 2022</div>
-        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-role">Python Intern (ML &amp; AI)</div>
-          <div class="tl-company">Al-Raja International Training Company</div>
-          <p class="tl-desc">Completed intensive Python training focused on Machine Learning, AI, algorithms, and supervised software-project development.</p>
-          <div class="tl-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Algorithms</span></div>
-          <a href="https://drive.google.com/file/d/1RlaWqB8QyC5B2vpcOuQ_T5vArafchTEE/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;margin-top:.75rem;font-size:.72rem;color:var(--accent-3);text-decoration:none;opacity:.85;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#128196; View Experience Certificate ↗</a>
-        </div>
-      </div>
-
-    </div>
+    </aside>
   </div>
 </section>
 
@@ -208,33 +86,36 @@
       <button class="filter-btn" data-filter="ai">AI / RAG</button>
     </div>
 
-    <div class="projects-grid">
-      <div class="project-card fade-in" data-category="backend">
+    <div class="projects-grid featured-projects">
+      <article class="project-card featured-project fade-in" data-category="backend">
+        <div class="project-kicker">School operations SaaS</div>
         <div class="project-card-img"><img loading="lazy" decoding="async" src="images/v2-mockup-edutracker.webp" alt="EduTracker school management SaaS on laptop and phone" /></div>
         <span class="project-num">01</span>
         <div class="project-title">EduTracker</div>
         <p class="project-desc">Bilingual school-operations SaaS that unifies attendance, tuition, messaging, and role-based dashboards—built multi-tenant with offline sync for unreliable networks.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">React 19</span><span class="stack-pill">Celery</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span></div>
         <div class="project-actions"><a href="https://edutracker.site/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener" class="project-link project-link-muted">LinkedIn <span class="project-link-arrow">&#8599;</span></a></div>
-      </div>
+      </article>
 
-      <div class="project-card fade-in" data-category="frontend">
+      <article class="project-card featured-project fade-in" data-category="frontend">
+        <div class="project-kicker">Offline-first education platform</div>
         <div class="project-card-img"><img loading="lazy" decoding="async" src="images/v2-mockup-noor-alhuda.webp" alt="Noor Al-Huda Quran center platform on laptop and phone" /></div>
         <span class="project-num">02</span>
         <div class="project-title">Noor Al-Huda</div>
         <p class="project-desc">Offline-first Quran center platform replacing paper logs with memorization tracking, automated PDF report cards, and targeted family updates for 300+ students.</p>
         <div class="project-stack"><span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Dexie.js</span><span class="stack-pill">DRF</span><span class="stack-pill">PostgreSQL</span></div>
         <div class="project-actions"><a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
-      </div>
+      </article>
 
-      <div class="project-card fade-in" data-category="ai">
+      <article class="project-card featured-project fade-in" data-category="ai">
+        <div class="project-kicker">AI support infrastructure</div>
         <div class="project-card-img"><img loading="lazy" decoding="async" src="images/v2-mockup-clientmore.webp" alt="clientMORE AI support SaaS on laptop and phone" /></div>
         <span class="project-num">03</span>
         <div class="project-title">clientMORE</div>
         <p class="project-desc">Bilingual AI support workspace that grounds answers in business documents, routes WhatsApp, SMS, and email conversations, and escalates complex cases to human agents.</p>
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">RAG</span><span class="stack-pill">LLMs</span><span class="stack-pill">WebSockets</span><span class="stack-pill">ChromaDB</span><span class="stack-pill">Twilio</span></div>
         <div class="project-actions"><a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
-      </div>
+      </article>
     </div>
 
     <div class="additional-projects-head">
@@ -424,6 +305,125 @@
 
 <div class="divider"></div>
 
+<section id="experience">
+  <div class="container">
+    <p class="section-label">background</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item fade-in">
+        <div class="tl-date">May 2025 &ndash; Present<br/>Part-time &middot; Remote</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Programming Instructor</div>
+          <div class="tl-company">MET Academy &middot; Saudi Arabia</div>
+          <p class="tl-desc">Teaching Calculus, Logic Design, and Computer Architecture to computer science students.</p>
+          <div class="tl-tags"><span class="tag">Teaching</span><span class="tag">Computer Architecture</span><span class="tag">Logic Design</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-date">Graduation Project<br/>Remote &middot; Gaza</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Co-Founder &amp; Backend Developer</div>
+          <div class="tl-company"><a class="inline-link" href="https://edutracker.site/" target="_blank" rel="noopener">EduTracker</a> &middot; Self-employed &middot; <a class="inline-link inline-link-small" href="https://www.linkedin.com/in/edutracker-company-6074993b3" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+          <p class="tl-desc">Built and deployed a bilingual multi-tenant school-management SaaS with Clean Architecture, a 32-entity PostgreSQL schema, Arabic full-text search, role-specific dashboards, offline support, automatic sync, and production CI/CD.</p>
+          <div class="tl-tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">Nginx</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-date">Aug 2025 &ndash; Mar 2026</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Web Development Intern</div>
+          <div class="tl-company">Ministry of Health, IT Department</div>
+          <p class="tl-desc">Built responsive interfaces and server-side functionality with HTML, CSS, JavaScript, Bootstrap, PHP, and Laravel. Worked with MySQL and Oracle DB for management and optimization.</p>
+          <div class="tl-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Oracle DB</span></div>
+          <a href="https://drive.google.com/file/d/1H_FdSsaltjV1vTKjU2tUGsFjHvarKGod/view?usp=drivesdk" target="_blank" rel="noopener" class="evidence-link">View internship proof ↗</a>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-date">Aug &ndash; Oct 2023</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">AI Scripting Specialist</div>
+          <div class="tl-company">PDX Ai Scripting</div>
+          <p class="tl-desc">Developed face-detection and face-recognition workflows for video footage, focusing on practical AI integration, processing speed, and model performance.</p>
+          <div class="tl-tags"><span class="tag">Python</span><span class="tag">Computer Vision</span><span class="tag">AI/ML</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item fade-in">
+        <div class="tl-date">Jul &ndash; Oct 2022</div>
+        <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-role">Python Intern (ML &amp; AI)</div>
+          <div class="tl-company">Al-Raja International Training Company</div>
+          <p class="tl-desc">Completed intensive Python training focused on Machine Learning, AI, algorithms, and supervised software-project development.</p>
+          <div class="tl-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Algorithms</span></div>
+          <a href="https://drive.google.com/file/d/1RlaWqB8QyC5B2vpcOuQ_T5vArafchTEE/view?usp=drivesdk" target="_blank" rel="noopener" class="evidence-link">View experience certificate ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-label">expertise</p>
+      <h2>Engineering capabilities</h2>
+      <p class="section-intro">The tools change by project. The approach stays consistent: explicit architecture, observable behavior, and simple operational paths.</p>
+    </div>
+
+    <div class="expertise-list">
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">01</div>
+        <div>
+          <h3>Backend systems</h3>
+          <p>APIs, domain logic, background jobs, real-time flows, authentication, authorization, and production service boundaries.</p>
+        </div>
+        <div class="expertise-stack">Python · Django · DRF · FastAPI · Laravel · WebSockets</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">02</div>
+        <div>
+          <h3>Data &amp; infrastructure</h3>
+          <p>Relational modeling, caching, asynchronous processing, containerized delivery, and deployment workflows built for maintainability.</p>
+        </div>
+        <div class="expertise-stack">PostgreSQL · MySQL · Redis · Celery · Docker · Nginx · GitHub Actions</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">03</div>
+        <div>
+          <h3>AI integrations</h3>
+          <p>AI features connected to real product workflows rather than isolated demos: retrieval, document ingestion, messaging, and computer vision.</p>
+        </div>
+        <div class="expertise-stack">RAG · LLMs · pgvector · OpenAI · Gemini · YOLOv8 · InsightFace</div>
+      </article>
+
+      <article class="expertise-row fade-in">
+        <div class="expertise-index">04</div>
+        <div>
+          <h3>Product engineering</h3>
+          <p>Enough frontend depth to ship complete workflows, work effectively across boundaries, and design offline-capable experiences.</p>
+        </div>
+        <div class="expertise-stack">Next.js · React · TypeScript · Tailwind CSS · Dexie.js · PWA</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="education">
   <div class="container">
     <p class="section-label">credentials</p>
@@ -435,7 +435,7 @@
           <div class="edu-inst">Islamic University of Gaza</div>
           <div class="edu-meta">
             Graduated: March 2026<br/>
-            GPA: <span style="color:var(--accent-3);font-weight:500">91%</span><br/><br/>
+            GPA: <span class="gpa-value">91%</span><br/><br/>
             Led peer study sessions and provided technical tutoring in Data Structures, Algorithms, and Networking. Reach Education Fund Scholar.
           </div>
         </div>
@@ -509,22 +509,28 @@
 
 <section id="references">
   <div class="container">
-    <p class="section-label">testimonials</p>
-    <h2>References</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem">
+    <div class="section-heading">
+      <p class="section-label">references</p>
+      <h2>Professional recommendations</h2>
+      <p class="section-intro">Two recommendation letters available for review from academic and education-sector leaders.</p>
+    </div>
 
-      <div class="skill-card fade-in" style="padding:1.75rem">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.3rem">Walid Mizyed</div>
-        <div style="color:var(--accent-3);font-size:.78rem;margin-bottom:.75rem">Founder &amp; Executive Director, Reach Education Fund</div>
-        <a href="https://drive.google.com/file/d/1RqoE0oy-VETh7bBWEVgYZQ8gQNSDRoGc/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;color:var(--accent-3);text-decoration:none;opacity:.85;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#128196; View Recommendation Letter ↗</a>
-      </div>
+    <div class="references-list">
+      <article class="reference-row fade-in">
+        <div>
+          <h3>Walid Mizyed</h3>
+          <p>Founder &amp; Executive Director, Reach Education Fund</p>
+        </div>
+        <a href="https://drive.google.com/file/d/1RqoE0oy-VETh7bBWEVgYZQ8gQNSDRoGc/view?usp=drivesdk" target="_blank" rel="noopener">Recommendation letter ↗</a>
+      </article>
 
-      <div class="skill-card fade-in" style="padding:1.75rem">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.3rem">Dr. Ahmed Mahdi</div>
-        <div style="color:var(--accent-3);font-size:.78rem;margin-bottom:.75rem">Assistant Professor, Computer Engineering Dept. (IUG)</div>
-        <a href="https://drive.google.com/file/d/1QDfudN18snAbrgE5Dfl66BUVxR7DY1Tn/view?usp=drivesdk" target="_blank" style="display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;color:var(--accent-3);text-decoration:none;opacity:.85;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#128196; View Recommendation Letter ↗</a>
-      </div>
-
+      <article class="reference-row fade-in">
+        <div>
+          <h3>Dr. Ahmed Mahdi</h3>
+          <p>Assistant Professor, Computer Engineering Department · IUG</p>
+        </div>
+        <a href="https://drive.google.com/file/d/1QDfudN18snAbrgE5Dfl66BUVxR7DY1Tn/view?usp=drivesdk" target="_blank" rel="noopener">Recommendation letter ↗</a>
+      </article>
     </div>
   </div>
 </section>
@@ -534,15 +540,15 @@
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <p class="section-label" style="text-align:center">reach out</p>
-      <h2>Let's Work Together</h2>
-      <p class="contact-desc">I'm open to backend and AI engineering roles, SaaS collaborations, and products where reliable systems and thoughtful automation matter.</p>
+      <p class="section-label">contact</p>
+      <h2>Have a backend problem worth solving?</h2>
+      <p class="contact-desc">I’m open to backend and AI engineering roles, SaaS collaborations, and product work where reliability, architecture, and practical delivery matter.</p>
       <div class="contact-links">
-        <a href="mailto:ghg17273@gmail.com" class="contact-link">&#9993; ghg17273@gmail.com</a>
-        <a href="tel:+972597747084" class="contact-link">&#128222; +972 597 747 084</a>
-        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" class="contact-link">in LinkedIn</a>
-        <a href="https://github.com/MahmoudAlmodalal" target="_blank" class="contact-link">&#9000; GitHub</a>
-        <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link">&#128196; Download CV</a>
+        <a href="mailto:ghg17273@gmail.com" class="contact-link">Email</a>
+        <a href="tel:+972597747084" class="contact-link">Phone</a>
+        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener" class="contact-link">LinkedIn ↗</a>
+        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener" class="contact-link">GitHub ↗</a>
+        <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link">Download CV ↘</a>
       </div>
     </div>
   </div>

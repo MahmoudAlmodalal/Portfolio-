@@ -198,387 +198,6 @@ footer { padding: 2rem clamp(1.25rem, 5vw, 5rem); border-top: 1px solid var(--bo
 
 
 /* ==========================================================================
-   CMS-inspired interaction layer
-   Keeps the portfolio editorial and calm while adding depth and responsiveness.
-   ========================================================================== */
-
-:root {
-  --motion-fast: 180ms;
-  --motion-normal: 460ms;
-  --motion-slow: 720ms;
-}
-
-html {
-  scroll-padding-top: 7rem;
-}
-
-section h2,
-.additional-projects-head h3 {
-  text-wrap: balance;
-}
-
-/* Thin global progress cue: useful on a long portfolio without taking space. */
-.scroll-progress {
-  position: fixed;
-  z-index: 140;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 2px;
-  pointer-events: none;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
-  transform: scaleX(0);
-  transform-origin: left center;
-  will-change: transform;
-}
-
-/* Floating nav gains a firmer state once it leaves the hero top edge. */
-nav {
-  transition:
-    top var(--motion-fast) var(--ease-out),
-    padding var(--motion-fast) var(--ease-out),
-    background var(--motion-fast) var(--ease-out),
-    border-color var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out);
-}
-
-nav.scrolled {
-  top: .65rem;
-  padding-top: .68rem;
-  padding-bottom: .68rem;
-  border-color: rgba(244, 241, 233, .15);
-  background: rgba(12, 13, 11, .9);
-  box-shadow: 0 16px 42px rgba(0, 0, 0, .28);
-}
-
-nav a {
-  position: relative;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: -.38rem;
-  left: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform var(--motion-fast) var(--ease-out);
-}
-
-nav a:hover::after,
-nav a.active::after {
-  transform: scaleX(1);
-}
-
-nav a.active {
-  color: var(--text);
-}
-
-/* Progressive reveal: enabled only after main.js successfully starts. */
-.motion-ready .fade-in,
-.motion-ready .reveal-copy {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  filter: blur(5px);
-  transition:
-    opacity var(--motion-normal) var(--ease-out) var(--reveal-delay, 0ms),
-    transform var(--motion-slow) var(--ease-out) var(--reveal-delay, 0ms),
-    filter var(--motion-normal) var(--ease-out) var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-
-.motion-ready .reveal-copy {
-  transform: translate3d(0, 12px, 0);
-}
-
-.motion-ready .fade-in.visible,
-.motion-ready .reveal-copy.visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-  filter: blur(0);
-}
-
-/* Hero depth. Pointer values are injected only for fine pointers. */
-#hero {
-  --orb-x: 0px;
-  --orb-y: 0px;
-}
-
-.orb {
-  animation: orb-drift 10s ease-in-out infinite;
-  will-change: transform;
-}
-
-.orb-2 {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-
-@keyframes orb-drift {
-  0%, 100% {
-    transform: translate3d(var(--orb-x), var(--orb-y), 0) scale(1);
-  }
-  50% {
-    transform: translate3d(calc(var(--orb-x) + 12px), calc(var(--orb-y) - 10px), 0) scale(1.045);
-  }
-}
-
-.terminal {
-  --hero-tilt-x: 0deg;
-  --hero-tilt-y: 0deg;
-  transform:
-    perspective(1000px)
-    rotateX(var(--hero-tilt-x))
-    rotateY(var(--hero-tilt-y))
-    rotate(2.1deg);
-  transform-style: preserve-3d;
-  transition:
-    transform 320ms var(--ease-out),
-    border-color 240ms var(--ease-out),
-    box-shadow 320ms var(--ease-out);
-}
-
-.terminal:hover {
-  border-color: rgba(247, 196, 168, .32);
-  box-shadow:
-    0 36px 110px rgba(0, 0, 0, .44),
-    18px 18px 0 rgba(241, 125, 75, .085);
-}
-
-.terminal::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  inset: -45% -30%;
-  pointer-events: none;
-  background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.07) 49%, transparent 56%);
-  transform: translateX(-38%) rotate(4deg);
-  transition: transform 900ms var(--ease-out);
-}
-
-.terminal:hover::after {
-  transform: translateX(28%) rotate(4deg);
-}
-
-.scroll-indicator {
-  transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
-}
-
-.scroll-indicator.hidden {
-  opacity: 0;
-  transform: translate(-50%, 8px);
-}
-
-/* Cards: CMS-like tactile depth with deliberately tiny 3D values. */
-.skill-card,
-.cert-item,
-.contact-link,
-.btn,
-.filter-btn {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.skill-card:focus-within,
-.cert-item:focus-visible {
-  border-color: rgba(241, 125, 75, .56);
-}
-
-.project-card {
-  --card-tilt-x: 0deg;
-  --card-tilt-y: 0deg;
-  --spot-x: 50%;
-  --spot-y: 50%;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  opacity: 0;
-  background: radial-gradient(
-    340px circle at var(--spot-x) var(--spot-y),
-    rgba(247, 196, 168, .085),
-    transparent 58%
-  );
-  transition: opacity 220ms var(--ease-out);
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
-.project-card:hover {
-  transform:
-    perspective(950px)
-    translateY(-7px)
-    rotateX(var(--card-tilt-x))
-    rotateY(var(--card-tilt-y));
-}
-
-.project-card:focus-within {
-  border-color: rgba(241, 125, 75, .56);
-  box-shadow: 0 25px 60px rgba(0,0,0,.3);
-}
-
-.project-card-img img {
-  will-change: transform;
-}
-
-.project-link-arrow {
-  display: inline-block;
-  transition: transform var(--motion-fast) var(--ease-out);
-}
-
-.project-link:hover .project-link-arrow {
-  transform: translate(2px, -2px);
-}
-
-/* Filtered cards return with a short, controlled entrance. */
-.project-card.filter-enter {
-  animation: filter-card-in 420ms var(--ease-out) var(--filter-delay, 0ms) both;
-}
-
-@keyframes filter-card-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0) scale(.99);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-/* Timeline draws itself as each experience enters the viewport. */
-.motion-ready .tl-item.fade-in .tl-line {
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 780ms var(--ease-out) 120ms;
-}
-
-.motion-ready .tl-item.fade-in.visible .tl-line {
-  transform: scaleY(1);
-}
-
-.motion-ready .tl-item.fade-in .tl-dot {
-  transform: scale(.6);
-  transition: transform 420ms var(--ease-out) 80ms, box-shadow 420ms ease;
-}
-
-.motion-ready .tl-item.fade-in.visible .tl-dot {
-  transform: scale(1);
-  box-shadow: 0 0 0 6px rgba(241, 125, 75, .08), 0 0 0 1px rgba(241,125,75,.6);
-}
-
-/* Small UX polish for long project descriptions and contact targets. */
-.project-desc {
-  text-wrap: pretty;
-}
-
-.contact-link,
-.btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-link::before,
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.07), transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 520ms var(--ease-out);
-}
-
-.contact-link:hover::before,
-.btn:hover::before {
-  transform: translateX(120%);
-}
-
-@media (max-width: 800px) {
-  /* The original version removed the terminal entirely on mobile.
-     Keep the proof-of-work snapshot, but make it calm and compact. */
-  .hero-right {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: -.25rem;
-  }
-
-  .terminal {
-    max-width: 620px;
-    transform: none;
-    border-radius: 14px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.28);
-  }
-
-  .terminal:hover {
-    transform: none;
-  }
-
-  nav.scrolled {
-    top: .5rem;
-  }
-
-  nav ul.open {
-    right: .5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  #hero {
-    padding-top: 8rem;
-  }
-
-  .hero-grid {
-    gap: 2.6rem;
-  }
-
-  .terminal-body {
-    padding: 1rem;
-    overflow-x: auto;
-    font-size: .62rem;
-    line-height: 1.85;
-    scrollbar-width: thin;
-  }
-
-  .terminal-bar {
-    padding: .65rem .8rem;
-  }
-
-  .scroll-indicator {
-    display: none;
-  }
-
-  .project-card:hover {
-    transform: translateY(-3px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .orb,
-  .project-card.filter-enter {
-    animation: none !important;
-  }
-
-  .terminal,
-  .project-card,
-  .scroll-indicator {
-    transform: none !important;
-  }
-}
-
-
-/* ==========================================================================
    Warm editorial theme — inspired by the CMS brand system, adapted for English
    technical content and the portfolio's existing information architecture.
    ========================================================================== */
@@ -855,5 +474,821 @@ footer {
 
   .terminal {
     box-shadow: 0 20px 60px rgba(43,29,20,.17);
+  }
+}
+
+
+/* ==========================================================================
+   Professional editorial redesign
+   Removes decorative "AI portfolio" motifs and prioritizes hierarchy, proof,
+   readability, and case-study presentation.
+   ========================================================================== */
+
+body {
+  background: var(--bg);
+}
+
+body::before {
+  opacity: .018;
+}
+
+nav {
+  top: 1.15rem;
+  max-width: 1240px;
+  padding: .72rem .9rem .72rem 1rem;
+  border-radius: 12px;
+  background: rgba(249, 247, 240, .94);
+  box-shadow: 0 8px 30px rgba(43, 29, 20, .06);
+  backdrop-filter: blur(14px);
+}
+
+nav.scrolled {
+  top: .65rem;
+  border-color: rgba(43,29,20,.16);
+  box-shadow: 0 12px 34px rgba(43,29,20,.10);
+}
+
+.logo {
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: -.025em;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+nav ul {
+  gap: 1.1rem;
+}
+
+nav a {
+  font-size: .61rem;
+  letter-spacing: .07em;
+}
+
+nav a::after {
+  bottom: -.28rem;
+}
+
+/* Hero: editorial introduction, not a visual-effects showcase. */
+#hero {
+  min-height: auto;
+  padding: 11rem clamp(1.25rem, 5vw, 5rem) 7.5rem;
+  overflow: visible;
+}
+
+.hero-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+  gap: clamp(3.5rem, 8vw, 8rem);
+  align-items: end;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.hero-copy {
+  max-width: 820px;
+}
+
+.hero-kicker {
+  margin-bottom: 1.35rem;
+  color: var(--accent);
+  font: 500 .68rem 'IBM Plex Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+#hero h1 {
+  max-width: 850px;
+  margin-bottom: 1.6rem;
+  color: var(--text);
+  font-size: clamp(3rem, 6.5vw, 6.3rem);
+  font-weight: 600;
+  letter-spacing: -.075em;
+  line-height: .96;
+}
+
+.hero-desc {
+  max-width: 720px;
+  margin-bottom: 2rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem 1rem;
+}
+
+.text-link {
+  display: inline-flex;
+  gap: .4rem;
+  align-items: center;
+  color: var(--text);
+  font: 500 .68rem 'IBM Plex Mono', monospace;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43,29,20,.28);
+  padding: .45rem 0;
+  transition: color .18s var(--ease-out), border-color .18s var(--ease-out);
+}
+
+.text-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.hero-profile {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: clamp(1.5rem, 3vw, 2.75rem);
+  border-left: 1px solid var(--border);
+}
+
+.profile-status {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  color: var(--muted);
+  font: 500 .66rem 'IBM Plex Mono', monospace;
+}
+
+.profile-status span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--sage);
+}
+
+.profile-facts {
+  display: grid;
+  gap: 0;
+}
+
+.profile-facts > div {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.profile-facts dt {
+  margin-bottom: .34rem;
+  color: var(--muted-dark);
+  font: 500 .58rem 'IBM Plex Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.profile-facts dd {
+  color: var(--text);
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.profile-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.profile-links a {
+  color: var(--accent-light);
+  font: 500 .64rem 'IBM Plex Mono', monospace;
+  text-decoration: none;
+}
+
+.profile-links a:hover {
+  color: var(--accent);
+}
+
+/* Section hierarchy: simpler, more publication-like. */
+section {
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+}
+
+.container {
+  max-width: 1240px;
+}
+
+.divider {
+  max-width: 1240px;
+  margin-right: auto;
+  margin-left: auto;
+  background: var(--border);
+  opacity: .65;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(160px, .35fr) minmax(0, 1fr);
+  column-gap: 2rem;
+  margin-bottom: 2.6rem;
+}
+
+.section-heading .section-label {
+  grid-column: 1;
+  align-self: start;
+  padding-top: .4rem;
+}
+
+.section-heading h2,
+.section-heading .section-intro {
+  grid-column: 2;
+}
+
+.section-heading h2 {
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  max-width: 690px;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+.section-label {
+  font-size: .6rem;
+  letter-spacing: .1em;
+}
+
+h2 {
+  max-width: 860px;
+  margin-bottom: 2.7rem;
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: 1;
+}
+
+/* Expertise is a technical index, not a card dashboard. */
+#skills {
+  background: var(--surface-quiet);
+}
+
+.skills-grid,
+.skill-card,
+.skill-icon,
+.skill-title,
+.skill-items {
+  /* legacy selectors intentionally superseded by .expertise-* below */
+}
+
+.expertise-list {
+  border-top: 1px solid var(--border);
+}
+
+.expertise-row {
+  display: grid;
+  grid-template-columns: 70px minmax(280px, .8fr) minmax(280px, 1fr);
+  gap: 2rem;
+  align-items: start;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.expertise-index {
+  color: var(--muted-dark);
+  font: 500 .61rem 'IBM Plex Mono', monospace;
+}
+
+.expertise-row h3 {
+  margin-bottom: .55rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.expertise-row p {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.75;
+}
+
+.expertise-stack {
+  color: var(--text);
+  font: 400 .68rem/1.8 'IBM Plex Mono', monospace;
+}
+
+/* Experience keeps the timeline information, but removes decorative theatrics. */
+.tl-dot {
+  width: 8px;
+  height: 8px;
+  border-width: 0;
+  box-shadow: none !important;
+}
+
+.tl-line {
+  background: var(--border);
+}
+
+.motion-ready .tl-item.fade-in .tl-line,
+.motion-ready .tl-item.fade-in.visible .tl-line,
+.motion-ready .tl-item.fade-in .tl-dot,
+.motion-ready .tl-item.fade-in.visible .tl-dot {
+  transform: none;
+  transition: none;
+}
+
+.tl-role {
+  font-weight: 600;
+}
+
+/* Featured work becomes three editorial case-study rows. */
+#projects {
+  background: var(--bg);
+}
+
+#projects > .container > h2 {
+  margin-bottom: 1.6rem;
+}
+
+.filter-bar {
+  margin: 0 0 3rem;
+}
+
+.featured-projects {
+  display: block;
+  border-top: 1px solid var(--border);
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+  grid-template-areas:
+    "image kicker"
+    "image number"
+    "image title"
+    "image desc"
+    "image stack"
+    "image actions";
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  padding: 2.6rem 0;
+  overflow: visible;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: default !important;
+  transform: none !important;
+}
+
+.featured-project::before {
+  display: none;
+}
+
+.featured-project .project-card-img {
+  grid-area: image;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  background: #E8DED1;
+}
+
+.featured-project .project-card-img::after {
+  display: none;
+}
+
+.featured-project .project-kicker {
+  grid-area: kicker;
+  margin: .1rem 0 .9rem;
+  color: var(--accent);
+  font: 500 .6rem 'IBM Plex Mono', monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.featured-project .project-num {
+  grid-area: number;
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 1.1rem;
+  color: var(--muted-dark);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  font: 500 .58rem 'IBM Plex Mono', monospace;
+}
+
+.featured-project .project-title {
+  grid-area: title;
+  margin: 0 0 .8rem;
+  padding: 0;
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+.featured-project .project-desc {
+  grid-area: desc;
+  margin: 0 0 1.2rem;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.8;
+}
+
+.featured-project .project-stack {
+  grid-area: stack;
+  margin: 0 0 1.35rem;
+}
+
+.featured-project .project-actions {
+  grid-area: actions;
+  margin: 0 !important;
+}
+
+.featured-project:hover {
+  border-color: var(--border);
+  box-shadow: none;
+  transform: none !important;
+}
+
+.featured-project:hover .project-card-img img {
+  transform: scale(1.018);
+}
+
+/* Additional work is intentionally quieter than the featured case studies. */
+.additional-projects-head {
+  margin-top: 6rem;
+}
+
+.additional-projects-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+}
+
+.additional-projects-grid .project-card {
+  border-radius: 8px;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.additional-projects-grid .project-card::before {
+  display: none;
+}
+
+.additional-projects-grid .project-card:hover {
+  border-color: rgba(197,71,22,.34);
+  box-shadow: 0 12px 32px rgba(43,29,20,.07);
+  transform: translateY(-2px) !important;
+}
+
+.additional-projects-grid .project-card-img {
+  height: 175px;
+}
+
+.project-card-img img {
+  filter: none;
+}
+
+.project-card:hover .project-card-img img {
+  filter: none;
+  transform: scale(1.02);
+}
+
+.project-title {
+  font-weight: 600;
+}
+
+.project-num {
+  box-shadow: none;
+}
+
+.project-card::before {
+  display: none;
+}
+
+/* Remove decorative shine / 3D-era remnants. */
+.scroll-progress,
+.orb,
+.terminal,
+.scroll-indicator {
+  display: none !important;
+}
+
+.contact-link::before,
+.btn::before {
+  display: none;
+}
+
+.btn {
+  border-radius: 6px;
+  transition: background .18s var(--ease-out), border-color .18s var(--ease-out), color .18s var(--ease-out);
+}
+
+.btn:hover {
+  transform: none;
+}
+
+.btn-primary:hover {
+  transform: none;
+}
+
+.cert-item,
+.skill-card,
+.project-card,
+.contact-link {
+  transition-duration: 180ms;
+}
+
+/* Motion is restrained: opacity + a short vertical offset, no blur. */
+.motion-ready .fade-in,
+.motion-ready .section-heading,
+.motion-ready .additional-projects-head {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  filter: none;
+  transition:
+    opacity 420ms var(--ease-out),
+    transform 520ms var(--ease-out);
+}
+
+.motion-ready .fade-in.visible,
+.motion-ready .section-heading.visible,
+.motion-ready .additional-projects-head.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 1050px) {
+  .hero-shell {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr);
+    gap: 3rem;
+  }
+
+  .featured-project {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr);
+    column-gap: 2.5rem;
+  }
+
+  .expertise-row {
+    grid-template-columns: 50px minmax(240px, .8fr) minmax(240px, 1fr);
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  nav {
+    border-radius: 10px;
+  }
+
+  #hero {
+    padding-top: 9rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .hero-shell {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hero-profile {
+    padding: 1.6rem 0 0;
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    gap: .4rem;
+  }
+
+  .section-heading .section-label,
+  .section-heading h2,
+  .section-heading .section-intro {
+    grid-column: 1;
+  }
+
+  .expertise-row {
+    grid-template-columns: 42px 1fr;
+    gap: 1rem;
+  }
+
+  .expertise-stack {
+    grid-column: 2;
+  }
+
+  .featured-project {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "kicker"
+      "number"
+      "title"
+      "desc"
+      "image"
+      "stack"
+      "actions";
+    gap: 0;
+  }
+
+  .featured-project .project-card-img {
+    margin: .8rem 0 1.25rem;
+  }
+
+  .additional-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  #hero h1 {
+    font-size: clamp(2.8rem, 14vw, 4.2rem);
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: auto;
+    flex: 1 1 150px;
+  }
+
+  .hero-actions .text-link {
+    width: 100%;
+  }
+
+  .expertise-row {
+    grid-template-columns: 34px 1fr;
+    padding: 1.45rem 0;
+  }
+
+  .additional-projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-project {
+    padding: 2rem 0;
+  }
+
+  .filter-bar {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .fade-in,
+  .motion-ready .section-heading,
+  .motion-ready .additional-projects-head {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
+/* Professional content details */
+.inline-link,
+.evidence-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43,29,20,.25);
+}
+
+.inline-link:hover,
+.evidence-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.inline-link-small {
+  margin-left: .2rem;
+  color: var(--accent-light);
+  font: 500 .64rem 'IBM Plex Mono', monospace;
+  border-bottom: 0;
+}
+
+.evidence-link {
+  display: inline-flex;
+  margin-top: .85rem;
+  color: var(--accent-light);
+  font: 500 .64rem 'IBM Plex Mono', monospace;
+}
+
+.gpa-value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* References are evidence rows, not testimonial cards. */
+#references {
+  background: var(--surface-quiet);
+}
+
+.references-list {
+  border-top: 1px solid var(--border);
+}
+
+.reference-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.reference-row h3 {
+  margin-bottom: .25rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.reference-row p {
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.6;
+}
+
+.reference-row > a {
+  flex: 0 0 auto;
+  color: var(--accent-light);
+  font: 500 .63rem 'IBM Plex Mono', monospace;
+  text-decoration: none;
+}
+
+.reference-row > a:hover {
+  color: var(--accent);
+}
+
+/* Contact reads like a direct closing note, not a CTA cloud. */
+#contact {
+  text-align: left;
+}
+
+.contact-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.contact-inner .section-label {
+  text-align: left;
+}
+
+.contact-inner h2 {
+  max-width: 780px;
+  margin: 0 0 1rem;
+}
+
+.contact-desc {
+  max-width: 680px;
+  margin: 0 0 2rem;
+}
+
+.contact-links {
+  justify-content: flex-start;
+  gap: .65rem;
+}
+
+.contact-link {
+  min-height: 38px;
+  padding: .58rem .72rem;
+  border-radius: 6px;
+  text-transform: none;
+  letter-spacing: .01em;
+}
+
+footer {
+  text-align: left;
+  padding-right: max(clamp(1.25rem, 5vw, 5rem), calc((100vw - 1240px) / 2));
+  padding-left: max(clamp(1.25rem, 5vw, 5rem), calc((100vw - 1240px) / 2));
+}
+
+@media (max-width: 700px) {
+  .reference-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .contact-inner {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
