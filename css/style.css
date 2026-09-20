@@ -1539,3 +1539,137 @@ h2 {
     transform: none !important;
   }
 }
+
+
+/* Professional content details */
+.inline-link,
+.evidence-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43,29,20,.25);
+}
+
+.inline-link:hover,
+.evidence-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.inline-link-small {
+  margin-left: .2rem;
+  color: var(--accent-light);
+  font: 500 .64rem 'IBM Plex Mono', monospace;
+  border-bottom: 0;
+}
+
+.evidence-link {
+  display: inline-flex;
+  margin-top: .85rem;
+  color: var(--accent-light);
+  font: 500 .64rem 'IBM Plex Mono', monospace;
+}
+
+.gpa-value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* References are evidence rows, not testimonial cards. */
+#references {
+  background: var(--surface-quiet);
+}
+
+.references-list {
+  border-top: 1px solid var(--border);
+}
+
+.reference-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.reference-row h3 {
+  margin-bottom: .25rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.reference-row p {
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.6;
+}
+
+.reference-row > a {
+  flex: 0 0 auto;
+  color: var(--accent-light);
+  font: 500 .63rem 'IBM Plex Mono', monospace;
+  text-decoration: none;
+}
+
+.reference-row > a:hover {
+  color: var(--accent);
+}
+
+/* Contact reads like a direct closing note, not a CTA cloud. */
+#contact {
+  text-align: left;
+}
+
+.contact-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.contact-inner .section-label {
+  text-align: left;
+}
+
+.contact-inner h2 {
+  max-width: 780px;
+  margin: 0 0 1rem;
+}
+
+.contact-desc {
+  max-width: 680px;
+  margin: 0 0 2rem;
+}
+
+.contact-links {
+  justify-content: flex-start;
+  gap: .65rem;
+}
+
+.contact-link {
+  min-height: 38px;
+  padding: .58rem .72rem;
+  border-radius: 6px;
+  text-transform: none;
+  letter-spacing: .01em;
+}
+
+footer {
+  text-align: left;
+  padding-right: max(clamp(1.25rem, 5vw, 5rem), calc((100vw - 1240px) / 2));
+  padding-left: max(clamp(1.25rem, 5vw, 5rem), calc((100vw - 1240px) / 2));
+}
+
+@media (max-width: 700px) {
+  .reference-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .contact-inner {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
