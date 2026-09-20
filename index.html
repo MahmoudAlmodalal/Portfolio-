@@ -7,7 +7,7 @@
 <title>Mahmoud Hisham Almodalal — Backend &amp; AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,10 +32,15 @@
   <div class="hero-shell">
     <div class="hero-copy fade-in">
       <p class="hero-kicker">Mahmoud H. Almodalal · Backend Engineer</p>
-      <h1 id="hero-title">I build reliable systems for products that need to work.</h1>
+      <h1 id="hero-title">I build backend systems that stay clear when the product <em>gets real.</em></h1>
       <p class="hero-desc">
-        Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I care about clear boundaries, resilient data flows, and software that remains useful under real operating constraints.
+        Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I turn complex product requirements into systems teams can understand, operate, and extend.
       </p>
+      <div class="hero-ledger" aria-label="Engineering focus">
+        <span>Backend architecture</span>
+        <span>Data &amp; async workflows</span>
+        <span>Applied AI integration</span>
+      </div>
 
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Selected work</a>
@@ -76,8 +81,13 @@
 
 <section id="projects">
   <div class="container">
-    <p class="section-label">selected work</p>
-    <h2>Systems built for real workflows</h2>
+    <div class="projects-heading">
+      <div>
+        <p class="section-label">selected work</p>
+        <h2>Systems built for <em>real workflows.</em></h2>
+      </div>
+      <p class="projects-heading-note">Three projects that best represent how I think about architecture, constraints, and product delivery.</p>
+    </div>
 
     <div class="filter-bar" aria-label="Project filters">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -93,6 +103,11 @@
         <span class="project-num">01</span>
         <div class="project-title">EduTracker</div>
         <p class="project-desc">Bilingual school-operations SaaS that unifies attendance, tuition, messaging, and role-based dashboards—built multi-tenant with offline sync for unreliable networks.</p>
+        <dl class="project-facts">
+          <div><dt>Role</dt><dd>Co-Founder · Backend Developer</dd></div>
+          <div><dt>Architecture</dt><dd>Multi-tenant SaaS</dd></div>
+          <div><dt>Constraint</dt><dd>Offline sync · weak networks</dd></div>
+        </dl>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">React 19</span><span class="stack-pill">Celery</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span></div>
         <div class="project-actions"><a href="https://edutracker.site/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener" class="project-link project-link-muted">LinkedIn <span class="project-link-arrow">&#8599;</span></a></div>
       </article>
@@ -103,6 +118,11 @@
         <span class="project-num">02</span>
         <div class="project-title">Noor Al-Huda</div>
         <p class="project-desc">Offline-first Quran center platform replacing paper logs with memorization tracking, automated PDF report cards, and targeted family updates for 300+ students.</p>
+        <dl class="project-facts">
+          <div><dt>Scale</dt><dd>300+ students</dd></div>
+          <div><dt>Architecture</dt><dd>Offline-first workflow</dd></div>
+          <div><dt>Output</dt><dd>Automated reports · family updates</dd></div>
+        </dl>
         <div class="project-stack"><span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Dexie.js</span><span class="stack-pill">DRF</span><span class="stack-pill">PostgreSQL</span></div>
         <div class="project-actions"><a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </article>
@@ -113,6 +133,11 @@
         <span class="project-num">03</span>
         <div class="project-title">clientMORE</div>
         <p class="project-desc">Bilingual AI support workspace that grounds answers in business documents, routes WhatsApp, SMS, and email conversations, and escalates complex cases to human agents.</p>
+        <dl class="project-facts">
+          <div><dt>Focus</dt><dd>Bilingual RAG support</dd></div>
+          <div><dt>Channels</dt><dd>WhatsApp · SMS · email</dd></div>
+          <div><dt>Flow</dt><dd>AI answer → human escalation</dd></div>
+        </dl>
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">RAG</span><span class="stack-pill">LLMs</span><span class="stack-pill">WebSockets</span><span class="stack-pill">ChromaDB</span><span class="stack-pill">Twilio</span></div>
         <div class="project-actions"><a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </article>
@@ -120,7 +145,7 @@
 
     <div class="additional-projects-head">
       <p class="section-label">selected engineering work</p>
-      <h3>Additional Projects</h3>
+      <h3>Additional <em>engineering work</em></h3>
       <p class="additional-projects-desc">Seventeen focused projects that demonstrate applied AI, backend systems, product design, automation, and technical product development.</p>
     </div>
 

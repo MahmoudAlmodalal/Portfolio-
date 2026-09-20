@@ -1292,3 +1292,536 @@ footer {
     padding-left: 0;
   }
 }
+
+
+/* ==========================================================================
+   Editorial signature v2
+   Adds distinctive typography, contrast, and case-study rhythm without
+   returning to generic SaaS-card or decorative AI aesthetics.
+   ========================================================================== */
+
+:root {
+  --display-serif: 'Instrument Serif', Georgia, serif;
+  --paper: #fffdf8;
+  --ink-soft: #49372d;
+  --rule-strong: rgba(43, 29, 20, .28);
+}
+
+/* Display type is used selectively, so the portfolio still reads technical. */
+#hero h1 em,
+.projects-heading h2 em,
+.additional-projects-head h3 em {
+  font-family: var(--display-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -.035em;
+  color: var(--accent);
+}
+
+#hero h1 em {
+  white-space: nowrap;
+}
+
+#hero {
+  background:
+    linear-gradient(to right, transparent 0, transparent calc(50% - .5px), rgba(43,29,20,.045) calc(50% - .5px), rgba(43,29,20,.045) calc(50% + .5px), transparent calc(50% + .5px)),
+    var(--bg);
+}
+
+.hero-shell {
+  position: relative;
+}
+
+.hero-copy {
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.hero-kicker::before {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 760px;
+  margin: 0 0 2rem;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.hero-ledger span {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: .9rem .85rem .9rem 0;
+  color: var(--ink-soft);
+  font: 500 .61rem/1.45 'IBM Plex Mono', monospace;
+  letter-spacing: .015em;
+}
+
+.hero-ledger span + span {
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+/* The right column becomes a deliberate printed profile panel. */
+.hero-profile {
+  position: relative;
+  align-self: center;
+  padding: 2rem;
+  border: 1px solid rgba(43,29,20,.16);
+  background: var(--bg-deep);
+  color: var(--cream);
+  box-shadow: 14px 14px 0 #e5d7c5;
+}
+
+.hero-profile::before {
+  content: 'PROFILE / 01';
+  position: absolute;
+  top: -1.8rem;
+  left: 0;
+  color: var(--muted-dark);
+  font: 500 .54rem 'IBM Plex Mono', monospace;
+  letter-spacing: .12em;
+}
+
+.hero-profile .profile-status {
+  color: rgba(255,248,237,.72);
+}
+
+.hero-profile .profile-facts > div {
+  border-top-color: rgba(255,248,237,.15);
+}
+
+.hero-profile .profile-facts dt {
+  color: rgba(255,248,237,.48);
+}
+
+.hero-profile .profile-facts dd {
+  color: #fff8ed;
+}
+
+.hero-profile .profile-links a {
+  color: #f0b092;
+}
+
+.hero-profile .profile-links a:hover {
+  color: #fff8ed;
+}
+
+/* Selected work gets a two-column editorial heading instead of a label stack. */
+.projects-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.projects-heading h2 {
+  margin-bottom: 0;
+}
+
+.projects-heading-note {
+  max-width: 390px;
+  justify-self: end;
+  padding-bottom: .4rem;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.75;
+}
+
+/* Filters become a compact index rather than rounded SaaS chips. */
+.filter-bar {
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-btn {
+  min-height: 42px;
+  padding: .65rem .9rem;
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: .01em;
+}
+
+.filter-btn:first-child {
+  border-left: 1px solid var(--border);
+}
+
+.filter-btn:hover {
+  color: var(--accent);
+  background: rgba(197,71,22,.035);
+}
+
+.filter-btn.active {
+  color: #fff8ed;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+/* Primary case studies: alternating editorial compositions. */
+.featured-projects {
+  border-top: 0;
+}
+
+.featured-project {
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+  grid-template-areas:
+    "image kicker"
+    "image number"
+    "image title"
+    "image desc"
+    "image facts"
+    "image stack"
+    "image actions";
+  min-height: 560px;
+  padding: 4.2rem 0;
+  column-gap: clamp(3rem, 6vw, 6rem);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.featured-project:nth-child(even) {
+  grid-template-columns: minmax(340px, .92fr) minmax(0, 1.08fr);
+  grid-template-areas:
+    "kicker image"
+    "number image"
+    "title image"
+    "desc image"
+    "facts image"
+    "stack image"
+    "actions image";
+}
+
+.featured-project .project-card-img {
+  min-height: 460px;
+  padding: 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: 12px 12px 0 var(--surface);
+}
+
+.featured-project:nth-child(even) .project-card-img {
+  box-shadow: -12px 12px 0 var(--surface);
+}
+
+.featured-project .project-card-img img {
+  border-radius: 0;
+}
+
+.featured-project .project-kicker {
+  align-self: end;
+  margin-bottom: .75rem;
+}
+
+.featured-project .project-num {
+  margin-bottom: 1.25rem;
+}
+
+.featured-project .project-title {
+  font-size: clamp(2.1rem, 4vw, 3.9rem);
+  line-height: .95;
+}
+
+.featured-project .project-desc {
+  max-width: 560px;
+  font-size: .9rem;
+}
+
+.project-facts {
+  grid-area: facts;
+  display: grid;
+  margin: .2rem 0 1.35rem;
+  border-top: 1px solid var(--border);
+}
+
+.project-facts > div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: .8rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-facts dt {
+  color: var(--muted-dark);
+  font: 500 .55rem 'IBM Plex Mono', monospace;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.project-facts dd {
+  color: var(--ink-soft);
+  font-size: .72rem;
+  font-weight: 500;
+}
+
+.featured-project .project-stack {
+  gap: .35rem;
+}
+
+.featured-project .stack-pill {
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-soft);
+}
+
+.featured-project .project-actions {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.featured-project .project-link {
+  position: relative;
+  padding-bottom: .22rem;
+  text-transform: none;
+  letter-spacing: .01em;
+}
+
+.featured-project .project-link::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(.35);
+  transform-origin: left;
+  transition: transform 180ms var(--ease-out);
+}
+
+.featured-project .project-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Secondary projects use a denser archive rhythm. */
+.additional-projects-head {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.additional-projects-head .section-label {
+  grid-row: 1 / span 2;
+  padding-top: .45rem;
+}
+
+.additional-projects-head h3,
+.additional-projects-head .additional-projects-desc {
+  grid-column: 2;
+}
+
+.additional-projects-head h3 {
+  margin: 0 0 .55rem;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+.additional-projects-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.additional-projects-grid .project-card {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-areas:
+    "image number"
+    "image title"
+    "image desc"
+    "image stack"
+    "image actions";
+  min-height: 240px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.additional-projects-grid .project-card-img,
+.additional-projects-grid .project-card-visual {
+  grid-area: image;
+  height: 100%;
+  min-height: 240px;
+}
+
+.additional-projects-grid .project-num {
+  grid-area: number;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 1.1rem 1.1rem .2rem;
+  color: var(--muted-dark);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: .52rem;
+}
+
+.additional-projects-grid .project-title {
+  grid-area: title;
+  margin-top: .15rem;
+}
+
+.additional-projects-grid .project-desc {
+  grid-area: desc;
+}
+
+.additional-projects-grid .project-stack {
+  grid-area: stack;
+}
+
+.additional-projects-grid .project-actions,
+.additional-projects-grid .project-card > div:last-child:not(.project-card-img):not(.project-card-visual) {
+  grid-area: actions;
+}
+
+.additional-projects-grid .project-card:hover {
+  background: rgba(255,253,249,.55);
+  transform: none !important;
+}
+
+/* The rest of the document picks up the serif sparingly. */
+#experience h2,
+#skills h2,
+#education h2,
+#references h2,
+#contact h2 {
+  letter-spacing: -.055em;
+}
+
+#contact h2::first-line {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.edu-card::after {
+  font-family: var(--display-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (max-width: 980px) {
+  #hero {
+    background: var(--bg);
+  }
+
+  .hero-profile {
+    box-shadow: 9px 9px 0 #e5d7c5;
+  }
+
+  .projects-heading {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .projects-heading-note {
+    justify-self: start;
+  }
+
+  .featured-project,
+  .featured-project:nth-child(even) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "kicker"
+      "number"
+      "title"
+      "desc"
+      "facts"
+      "image"
+      "stack"
+      "actions";
+    min-height: 0;
+  }
+
+  .featured-project .project-card-img,
+  .featured-project:nth-child(even) .project-card-img {
+    min-height: 0;
+    margin: 1.2rem 0 1.5rem;
+    box-shadow: 8px 8px 0 var(--surface);
+  }
+
+  .additional-projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  #hero h1 em {
+    white-space: normal;
+  }
+
+  .hero-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-ledger span,
+  .hero-ledger span + span {
+    min-height: 0;
+    padding: .72rem 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-ledger span:last-child {
+    border-bottom: 0;
+  }
+
+  .hero-profile {
+    padding: 1.55rem;
+  }
+
+  .filter-bar {
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .filter-btn,
+  .filter-btn:first-child {
+    border-left: 0;
+    border-right: 1px solid var(--border);
+  }
+
+  .additional-projects-head {
+    grid-template-columns: 1fr;
+    gap: .4rem;
+  }
+
+  .additional-projects-head .section-label,
+  .additional-projects-head h3,
+  .additional-projects-head .additional-projects-desc {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .additional-projects-grid .project-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "number"
+      "title"
+      "desc"
+      "stack"
+      "actions";
+  }
+
+  .additional-projects-grid .project-card-img,
+  .additional-projects-grid .project-card-visual {
+    min-height: 190px;
+  }
+}
