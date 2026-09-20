@@ -14,10 +14,10 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <nav aria-label="Primary navigation">
   <div class="logo">M.<span>Almodalal</span></div>
-  <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('nav ul').classList.toggle('open')" aria-label="Toggle menu">
+  <button class="hamburger" type="button" aria-label="Toggle menu" aria-controls="primary-nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-  <ul>
+  <ul id="primary-nav-links">
     <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
     <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
     <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
