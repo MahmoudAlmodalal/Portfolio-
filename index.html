@@ -11,15 +11,30 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- Page Preloader -->
+<!-- Branded Studio Entrance (Cinematic curtain) -->
 <div id="page-preloader" class="preloader" aria-hidden="true">
+  <div class="preloader-curtain preloader-curtain-top"></div>
+  <div class="preloader-curtain preloader-curtain-bottom"></div>
   <div class="preloader-content">
-    <div class="preloader-logo">Mahmoud <span>Almodalal</span></div>
+    <div class="preloader-badge">ENGINEERING STUDIO &middot; 2026</div>
+    <div class="preloader-logo">
+      <span class="logo-name">Mahmoud</span>
+      <span class="logo-surname">Almodalal</span>
+    </div>
     <div class="preloader-track">
       <div class="preloader-bar"></div>
     </div>
-    <div class="preloader-status">Loading engineering portfolio...</div>
+    <div class="preloader-status">
+      <span class="status-pulse"></span>
+      <span class="status-text">INITIALIZING ARCHITECTURE MATRIX</span>
+    </div>
   </div>
+</div>
+
+<!-- Precision Desktop Cursor -->
+<div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
 </div>
 
 <!-- Scroll Progress Bar -->
@@ -46,12 +61,31 @@
 <main id="main-content">
 <section id="hero" aria-labelledby="hero-title">
   <div class="hero-shell">
-    <div class="hero-copy fade-in">
-      <p class="hero-kicker">Mahmoud H. Almodalal · Backend Engineer</p>
-      <h1 id="hero-title">I build backend systems that stay clear when the product <em>gets real.</em></h1>
+    <div class="hero-copy">
+      <div class="hero-kicker-wrap">
+        <p class="hero-kicker">Mahmoud H. Almodalal · Backend &amp; AI Engineer</p>
+        <span class="hero-status-pill"><span class="status-dot"></span> Available for Roles</span>
+      </div>
+      <h1 id="hero-title">
+        <span class="hero-line-mask"><span class="hero-line">I build backend systems</span></span>
+        <span class="hero-line-mask"><span class="hero-line">that stay clear when</span></span>
+        <span class="hero-line-mask"><span class="hero-line">the product <em>gets real.</em></span></span>
+      </h1>
       <p class="hero-desc">
         Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I turn complex product requirements into systems teams can understand, operate, and extend.
       </p>
+      
+      <!-- Interactive Architecture Signature Visual -->
+      <div class="hero-architecture-signal" aria-label="Interactive architecture node map">
+        <div class="signal-header">
+          <span class="signal-tag">SYSTEM METRICS &amp; CONCURRENCY PIPELINE</span>
+          <span class="signal-status">LIVE CLUSTER // 60 FPS</span>
+        </div>
+        <div class="signal-canvas-wrap">
+          <canvas id="architecture-canvas" width="680" height="150" aria-label="Live backend architecture visualization"></canvas>
+        </div>
+      </div>
+
       <div class="hero-ledger" aria-label="Engineering focus">
         <span>Backend architecture</span>
         <span>Data &amp; async workflows</span>
@@ -59,9 +93,9 @@
       </div>
 
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Selected work</a>
-        <a href="mailto:ghg17273@gmail.com" class="btn btn-ghost">Email me</a>
-        <a href="Mahmoud_Almodalal_CV.pdf" download class="text-link">Download CV <span aria-hidden="true">↘</span></a>
+        <a href="#projects" class="btn btn-primary magnet-target">Selected work <span class="btn-arrow" aria-hidden="true">&darr;</span></a>
+        <a href="mailto:ghg17273@gmail.com" class="btn btn-ghost magnet-target">Email me</a>
+        <a href="Mahmoud_Almodalal_CV.pdf" download class="text-link magnet-target">Download CV <span aria-hidden="true">&searr;</span></a>
       </div>
     </div>
 
@@ -113,49 +147,76 @@
     </div>
 
     <div class="projects-grid featured-projects">
-      <article class="project-card featured-project fade-in" data-category="backend">
-        <div class="project-kicker">School operations SaaS</div>
-        <div class="project-card-img"><img loading="eager" fetchpriority="high" decoding="async" width="1600" height="1000" src="images/v2-mockup-edutracker.webp" alt="EduTracker school management SaaS on laptop and phone" /></div>
+      <article class="project-card featured-project fade-in" data-category="backend" data-tilt="true">
+        <div class="project-kicker-row">
+          <span class="project-kicker">School operations SaaS</span>
+          <span class="project-badge-pill">FLAGSHIP PLATFORM</span>
+        </div>
+        <div class="project-card-img tilt-box">
+          <img loading="eager" fetchpriority="high" decoding="async" width="1600" height="1000" src="images/v2-mockup-edutracker.webp" alt="EduTracker school management SaaS on laptop and phone" />
+          <div class="img-glare" aria-hidden="true"></div>
+        </div>
         <span class="project-num">01</span>
         <div class="project-title">EduTracker</div>
         <p class="project-desc">Bilingual school-operations SaaS that unifies attendance, tuition, messaging, and role-based dashboards—built multi-tenant with offline sync for unreliable networks.</p>
         <dl class="project-facts">
           <div><dt>Role</dt><dd>Co-Founder · Backend Developer</dd></div>
-          <div><dt>Architecture</dt><dd>Multi-tenant SaaS</dd></div>
-          <div><dt>Constraint</dt><dd>Offline sync · weak networks</dd></div>
+          <div><dt>Architecture</dt><dd>Multi-tenant SaaS · Clean Architecture</dd></div>
+          <div><dt>Constraint</dt><dd>Offline sync · weak networks · 32-entity DB</dd></div>
         </dl>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">React 19</span><span class="stack-pill">Celery</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span></div>
-        <div class="project-actions"><a href="https://edutracker.site/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener" class="project-link project-link-muted">LinkedIn <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions">
+          <a href="https://edutracker.site/" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">LinkedIn <span class="project-link-arrow">&#8599;</span></a>
+        </div>
       </article>
 
-      <article class="project-card featured-project fade-in" data-category="frontend">
-        <div class="project-kicker">Offline-first education platform</div>
-        <div class="project-card-img"><img loading="lazy" decoding="async" width="1600" height="1000" src="images/v2-mockup-noor-alhuda.webp" alt="Noor Al-Huda Quran center platform on laptop and phone" /></div>
+      <article class="project-card featured-project fade-in" data-category="frontend" data-tilt="true">
+        <div class="project-kicker-row">
+          <span class="project-kicker">Offline-first education platform</span>
+          <span class="project-badge-pill">300+ ACTIVE USERS</span>
+        </div>
+        <div class="project-card-img tilt-box">
+          <img loading="lazy" decoding="async" width="1600" height="1000" src="images/v2-mockup-noor-alhuda.webp" alt="Noor Al-Huda Quran center platform on laptop and phone" />
+          <div class="img-glare" aria-hidden="true"></div>
+        </div>
         <span class="project-num">02</span>
         <div class="project-title">Noor Al-Huda</div>
         <p class="project-desc">Offline-first Quran center platform replacing paper logs with memorization tracking, automated PDF report cards, and targeted family updates for 300+ students.</p>
         <dl class="project-facts">
           <div><dt>Scale</dt><dd>300+ students</dd></div>
-          <div><dt>Architecture</dt><dd>Offline-first workflow</dd></div>
+          <div><dt>Architecture</dt><dd>Offline-first workflow · Dexie.js sync</dd></div>
           <div><dt>Output</dt><dd>Automated reports · family updates</dd></div>
         </dl>
         <div class="project-stack"><span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Dexie.js</span><span class="stack-pill">DRF</span><span class="stack-pill">PostgreSQL</span></div>
-        <div class="project-actions"><a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions">
+          <a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
+        </div>
       </article>
 
-      <article class="project-card featured-project fade-in" data-category="ai">
-        <div class="project-kicker">AI support infrastructure</div>
-        <div class="project-card-img"><img loading="lazy" decoding="async" width="1600" height="1000" src="images/v2-mockup-clientmore.webp" alt="clientMORE AI support SaaS on laptop and phone" /></div>
+      <article class="project-card featured-project fade-in" data-category="ai" data-tilt="true">
+        <div class="project-kicker-row">
+          <span class="project-kicker">AI support infrastructure</span>
+          <span class="project-badge-pill">APPLIED RAG PIPELINE</span>
+        </div>
+        <div class="project-card-img tilt-box">
+          <img loading="lazy" decoding="async" width="1600" height="1000" src="images/v2-mockup-clientmore.webp" alt="clientMORE AI support SaaS on laptop and phone" />
+          <div class="img-glare" aria-hidden="true"></div>
+        </div>
         <span class="project-num">03</span>
         <div class="project-title">clientMORE</div>
         <p class="project-desc">Bilingual AI support workspace that grounds answers in business documents, routes WhatsApp, SMS, and email conversations, and escalates complex cases to human agents.</p>
         <dl class="project-facts">
-          <div><dt>Focus</dt><dd>Bilingual RAG support</dd></div>
+          <div><dt>Focus</dt><dd>Bilingual RAG support · ChromaDB</dd></div>
           <div><dt>Channels</dt><dd>WhatsApp · SMS · email</dd></div>
-          <div><dt>Flow</dt><dd>AI answer → human escalation</dd></div>
+          <div><dt>Flow</dt><dd>AI answer &rarr; human escalation</dd></div>
         </dl>
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">RAG</span><span class="stack-pill">LLMs</span><span class="stack-pill">WebSockets</span><span class="stack-pill">ChromaDB</span><span class="stack-pill">Twilio</span></div>
-        <div class="project-actions"><a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions">
+          <a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
+        </div>
       </article>
     </div>
 
@@ -581,15 +642,25 @@
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <p class="section-label">contact</p>
-      <h2>Have a backend problem worth solving?</h2>
-      <p class="contact-desc">I’m open to backend and AI engineering roles, SaaS collaborations, and product work where reliability, architecture, and practical delivery matter.</p>
-      <div class="contact-links">
-        <a href="mailto:ghg17273@gmail.com" class="contact-link">Email</a>
-        <a href="tel:+972597747084" class="contact-link">Phone</a>
-        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener" class="contact-link">LinkedIn ↗</a>
-        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener" class="contact-link">GitHub ↗</a>
-        <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link">Download CV ↘</a>
+      <div class="contact-kicker-wrap">
+        <p class="section-label">contact</p>
+        <span class="contact-status-badge"><span class="status-dot"></span> DIRECT CHANNEL &middot; FAST RESPONSE</span>
+      </div>
+      <h2 class="contact-title">Have a complex problem <em>worth solving?</em></h2>
+      <p class="contact-desc">I’m open to backend and AI engineering roles, high-concurrency SaaS collaborations, and technical products where reliability, architecture, and practical delivery matter.</p>
+      
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <span class="contact-lead-label">PRIMARY INBOX</span>
+          <a href="mailto:ghg17273@gmail.com" class="contact-primary-email magnet-target">ghg17273@gmail.com <span class="arrow" aria-hidden="true">&nearr;</span></a>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:ghg17273@gmail.com" class="contact-link magnet-target"><span class="icon">&commat;</span> Email</a>
+          <a href="tel:+972597747084" class="contact-link magnet-target"><span class="icon">&phone;</span> Phone (+972 59-774-7084)</a>
+          <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener" class="contact-link magnet-target"><span class="icon">&infin;</span> LinkedIn &nearr;</a>
+          <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener" class="contact-link magnet-target"><span class="icon">&lt;/&gt;</span> GitHub &nearr;</a>
+          <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link contact-link-accent magnet-target"><span class="icon">&darr;</span> Download CV &searr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -608,6 +679,9 @@
   </svg>
 </button>
 
+<!-- Core Animation Engine (GSAP + ScrollTrigger with graceful fallback) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
