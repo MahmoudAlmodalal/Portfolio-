@@ -11,22 +11,12 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- Branded Studio Entrance (Cinematic curtain) -->
+<!-- Branded Engineering Studio Entrance (≤1.2s Clip-Path Exit) -->
 <div id="page-preloader" class="preloader" aria-hidden="true">
-  <div class="preloader-curtain preloader-curtain-top"></div>
-  <div class="preloader-curtain preloader-curtain-bottom"></div>
   <div class="preloader-content">
-    <div class="preloader-badge">ENGINEERING STUDIO &middot; 2026</div>
-    <div class="preloader-logo">
-      <span class="logo-name">Mahmoud</span>
-      <span class="logo-surname">Almodalal</span>
-    </div>
+    <div class="preloader-text-status">Loading engineering portfolio...</div>
     <div class="preloader-track">
       <div class="preloader-bar"></div>
-    </div>
-    <div class="preloader-status">
-      <span class="status-pulse"></span>
-      <span class="status-text">INITIALIZING ARCHITECTURE MATRIX</span>
     </div>
   </div>
 </div>
@@ -37,18 +27,20 @@
   <div class="cursor-ring"></div>
 </div>
 
-<!-- Scroll Progress Bar -->
+<!-- Thin Scroll Progress Bar -->
 <div id="scroll-progress-container" class="scroll-progress-container" aria-hidden="true">
   <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
 </div>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
-<nav aria-label="Primary navigation">
+<nav id="site-nav" aria-label="Primary navigation">
   <a class="logo" href="#hero" aria-label="Mahmoud Almodalal home">Mahmoud <span>Almodalal</span></a>
   <button class="hamburger" type="button" aria-label="Toggle menu" aria-controls="primary-nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul id="primary-nav-links">
+    <!-- Sliding underline indicator -->
+    <li class="nav-indicator-track" aria-hidden="true"><span class="nav-indicator-bar"></span></li>
     <li><a href="#projects" onclick="closeMenu()">Work</a></li>
     <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
     <li><a href="#skills" onclick="closeMenu()">Expertise</a></li>
@@ -64,12 +56,12 @@
     <div class="hero-copy">
       <div class="hero-kicker-wrap">
         <p class="hero-kicker">Mahmoud H. Almodalal · Backend &amp; AI Engineer</p>
-        <span class="hero-status-pill"><span class="status-dot"></span> Available for Roles</span>
+        <span class="hero-status-pill"><span class="status-dot"></span> Open to roles</span>
       </div>
       <h1 id="hero-title">
         <span class="hero-line-mask"><span class="hero-line">I build backend systems</span></span>
         <span class="hero-line-mask"><span class="hero-line">that stay clear when</span></span>
-        <span class="hero-line-mask"><span class="hero-line">the product <em>gets real.</em></span></span>
+        <span class="hero-line-mask"><span class="hero-line">the product <em class="gets-real-em">gets real.<span class="drawn-underline" aria-hidden="true"></span></em></span></span>
       </h1>
       <p class="hero-desc">
         Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I turn complex product requirements into systems teams can understand, operate, and extend.
@@ -679,9 +671,10 @@
   </svg>
 </button>
 
-<!-- Core Animation Engine (GSAP + ScrollTrigger with graceful fallback) -->
+<!-- Core Animation Engine (GSAP + ScrollTrigger + animations.js) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/animations.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
