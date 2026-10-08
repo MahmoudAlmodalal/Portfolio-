@@ -116,3 +116,64 @@ if (sections.length && 'IntersectionObserver' in window) {
 
   sections.forEach((section) => sectionObserver.observe(section));
 }
+
+// ---------------------------------------------------------------------------
+// UI/UX Enhancements: Preloader, Scroll Progress, & Back To Top
+// ---------------------------------------------------------------------------
+
+// 1. Page Preloader
+const preloader = document.getElementById('page-preloader');
+if (preloader) {
+  const hidePreloader = () => {
+    preloader.classList.add('fade-out');
+    setTimeout(() => {
+      preloader.remove();
+    }, 450);
+  };
+
+  if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 350);
+  } else {
+    window.addEventListener('load', () => {
+      setTimeout(hidePreloader, 350);
+    });
+    // Fallback safeguard in case window.load is delayed
+    setTimeout(hidePreloader, 2000);
+  }
+}
+
+// 2. Scroll Progress Bar & Back-to-Top Button
+const progressBar = document.getElementById('scroll-progress-bar');
+const backToTopBtn = document.getElementById('back-to-top');
+
+function handleScrollInteractions() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  
+  // Progress bar
+  if (progressBar && docHeight > 0) {
+    const progressPercent = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+    progressBar.style.width = `${progressPercent}%`;
+  }
+
+  // Back to top button visibility
+  if (backToTopBtn) {
+    if (scrollTop > 450) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+}
+
+window.addEventListener('scroll', handleScrollInteractions, { passive: true });
+handleScrollInteractions();
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion.matches ? 'auto' : 'smooth'
+    });
+  });
+}
