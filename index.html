@@ -54,11 +54,11 @@
 <section id="hero" aria-labelledby="hero-title">
   <div class="hero-shell">
     <div class="hero-copy">
-      <div class="hero-kicker-wrap">
+      <div class="hero-kicker-wrap hero-fade-up">
         <p class="hero-kicker">Mahmoud H. Almodalal · Backend &amp; AI Engineer</p>
         <span class="hero-status-pill"><span class="status-dot"></span> Open to roles</span>
       </div>
-      <h1 id="hero-title" aria-label="I build backend systems that stay clear when the product gets real.">
+      <h1 id="hero-title" class="hero-fade-up" aria-label="I build backend systems that stay clear when the product gets real.">
         <span class="hero-line-mask">
           <span class="hero-word-mask"><span class="hero-word">I</span></span>
           <span class="hero-word-mask"><span class="hero-word">build</span></span>
@@ -81,12 +81,12 @@
           </em>
         </span>
       </h1>
-      <p class="hero-desc">
+      <p class="hero-desc hero-fade-up">
         Computer Engineer focused on backend architecture, multi-tenant SaaS, production APIs, and practical AI integrations. I turn complex product requirements into systems teams can understand, operate, and extend.
       </p>
       
       <!-- Interactive Architecture Signature Visual -->
-      <div class="hero-architecture-signal" aria-label="Interactive architecture node map">
+      <div class="hero-architecture-signal hero-fade-up" aria-label="Interactive architecture node map">
         <div class="signal-header">
           <span class="signal-tag">SYSTEM METRICS &amp; CONCURRENCY PIPELINE</span>
           <span class="signal-status">LIVE CLUSTER // 60 FPS</span>
@@ -96,20 +96,20 @@
         </div>
       </div>
 
-      <div class="hero-ledger" aria-label="Engineering focus">
+      <div class="hero-ledger hero-fade-up" aria-label="Engineering focus">
         <span>Backend architecture</span>
         <span>Data &amp; async workflows</span>
         <span>Applied AI integration</span>
       </div>
 
-      <div class="hero-actions">
+      <div class="hero-actions hero-fade-up">
         <a href="#projects" class="btn btn-primary magnet-target">Selected work <span class="btn-arrow arrow-diag" aria-hidden="true">&nearr;</span></a>
         <a href="mailto:ghg17273@gmail.com" class="btn btn-ghost magnet-target">Email me <span class="btn-arrow arrow-diag" aria-hidden="true">&nearr;</span></a>
         <a href="Mahmoud_Almodalal_CV.pdf" download class="text-link magnet-target">Download CV <span class="btn-arrow arrow-diag" aria-hidden="true">&nearr;</span></a>
       </div>
     </div>
 
-    <aside class="hero-profile fade-in" aria-label="Professional profile">
+    <aside class="hero-profile hero-fade-up" aria-label="Professional profile">
       <div class="profile-status"><span></span> Open to backend &amp; AI engineering roles</div>
       <dl class="profile-facts">
         <div class="profile-card">
@@ -141,7 +141,7 @@
 
 <section id="projects">
   <div class="container">
-    <div class="projects-heading">
+    <div class="projects-heading scroll-reveal">
       <div>
         <p class="section-label">selected work</p>
         <h2>Systems built for <em>real workflows.</em></h2>
@@ -149,7 +149,8 @@
       <p class="projects-heading-note">Three projects that best represent how I think about architecture, constraints, and product delivery.</p>
     </div>
 
-    <div class="filter-bar" aria-label="Project filters">
+    <div class="filter-bar scroll-reveal" role="toolbar" aria-label="Project categories">
+      <span class="filter-indicator" aria-hidden="true"></span>
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="backend">Backend &amp; SaaS</button>
       <button class="filter-btn" data-filter="frontend">Product &amp; UI</button>
@@ -157,7 +158,7 @@
     </div>
 
     <div class="projects-grid featured-projects">
-      <article class="project-card featured-project fade-in" data-category="backend" data-tilt="true">
+      <article class="project-card featured-project scroll-reveal" data-category="backend" data-tilt="true">
         <div class="project-kicker-row">
           <span class="project-kicker">School operations SaaS</span>
           <span class="project-badge-pill">FLAGSHIP PLATFORM</span>
@@ -181,7 +182,7 @@
         </div>
       </article>
 
-      <article class="project-card featured-project fade-in" data-category="frontend" data-tilt="true">
+      <article class="project-card featured-project scroll-reveal" data-category="frontend" data-tilt="true">
         <div class="project-kicker-row">
           <span class="project-kicker">Offline-first education platform</span>
           <span class="project-badge-pill">300+ ACTIVE USERS</span>
@@ -205,7 +206,7 @@
         </div>
       </article>
 
-      <article class="project-card featured-project fade-in" data-category="ai" data-tilt="true">
+      <article class="project-card featured-project scroll-reveal" data-category="ai" data-tilt="true">
         <div class="project-kicker-row">
           <span class="project-kicker">AI support infrastructure</span>
           <span class="project-badge-pill">APPLIED RAG PIPELINE</span>
@@ -417,11 +418,16 @@
 
 <div class="divider"></div>
 
-<section id="experience">
+<section id="experience" class="scroll-reveal">
   <div class="container">
-    <p class="section-label">background</p>
-    <h2>Experience</h2>
-    <div class="timeline">
+    <div class="section-heading scroll-reveal">
+      <p class="section-label">background</p>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline" id="experience-timeline">
+      <div class="tl-spine" aria-hidden="true">
+        <div class="tl-spine-progress"></div>
+      </div>
 
       <div class="tl-item fade-in">
         <div class="tl-date">May 2025 &ndash; Present<br/>Part-time &middot; Remote</div>
@@ -486,9 +492,9 @@
 
 <div class="divider"></div>
 
-<section id="skills">
+<section id="skills" class="scroll-reveal">
   <div class="container">
-    <div class="section-heading">
+    <div class="section-heading scroll-reveal">
       <p class="section-label">expertise</p>
       <h2>Engineering capabilities</h2>
       <p class="section-intro">The tools change by project. The approach stays consistent: explicit architecture, observable behavior, and simple operational paths.</p>
@@ -536,10 +542,12 @@
 
 <div class="divider"></div>
 
-<section id="education">
+<section id="education" class="scroll-reveal">
   <div class="container">
-    <p class="section-label">credentials</p>
-    <h2>Education &amp; Certifications</h2>
+    <div class="section-heading scroll-reveal">
+      <p class="section-label">credentials</p>
+      <h2>Education &amp; Certifications</h2>
+    </div>
     <div class="edu-block">
       <div>
         <div class="edu-card fade-in">
@@ -619,9 +627,9 @@
 
 <div class="divider"></div>
 
-<section id="references">
+<section id="references" class="scroll-reveal">
   <div class="container">
-    <div class="section-heading">
+    <div class="section-heading scroll-reveal">
       <p class="section-label">references</p>
       <h2>Professional recommendations</h2>
       <p class="section-intro">Two recommendation letters available for review from academic and education-sector leaders.</p>
@@ -649,9 +657,9 @@
 
 <div class="divider"></div>
 
-<section id="contact">
+<section id="contact" class="scroll-reveal">
   <div class="container">
-    <div class="contact-inner">
+    <div class="contact-inner scroll-reveal">
       <div class="contact-kicker-wrap">
         <p class="section-label">contact</p>
         <span class="contact-status-badge"><span class="status-dot"></span> DIRECT CHANNEL &middot; FAST RESPONSE</span>

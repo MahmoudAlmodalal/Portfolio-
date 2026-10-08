@@ -94,46 +94,72 @@ document.querySelectorAll('.project-card').forEach((card) => {
 });
 
 // ---------------------------------------------------------------------------
-// 4. Interactive Architecture Signature Canvas (Backend & AI Signal)
+// ---------------------------------------------------------------------------
+// 4. Interactive Architecture Signature Canvas (Live Cluster Visualization)
 // ---------------------------------------------------------------------------
 const archCanvas = document.getElementById('architecture-canvas');
 if (archCanvas && !reducedMotion.matches) {
   const ctx = archCanvas.getContext('2d');
   let animationFrameId;
+  let width = 680;
+  let height = 95;
+  let dashOffset = 0;
+  let startTime = performance.now();
 
-  const dpr = window.devicePixelRatio || 1;
-  const width = archCanvas.clientWidth || 680;
-  const height = archCanvas.clientHeight || 95;
-  archCanvas.width = width * dpr;
-  archCanvas.height = height * dpr;
-  ctx.scale(dpr, dpr);
-
-  const nodes = [
-    { label: 'CLIENT/API', x: width * 0.08, y: height * 0.5, color: '#b94a1f', radius: 4 },
-    { label: 'FASTAPI GATEWAY', x: width * 0.30, y: height * 0.35, color: '#5f5148', radius: 5 },
-    { label: 'REDIS QUEUE', x: width * 0.52, y: height * 0.25, color: '#b94a1f', radius: 4 },
-    { label: 'CELERY WORKERS', x: width * 0.74, y: height * 0.32, color: '#607768', radius: 4.5 },
-    { label: 'POSTGRES / DB', x: width * 0.38, y: height * 0.75, color: '#5f5148', radius: 5 },
-    { label: 'CHROMADB / RAG', x: width * 0.70, y: height * 0.75, color: '#b94a1f', radius: 5.5 },
-    { label: 'LLM INFERENCE', x: width * 0.92, y: height * 0.5, color: '#607768', radius: 4 },
+  const nodeRatios = [
+    { label: 'CLIENT/API', rx: 0.08, ry: 0.50, color: '#b94a1f', radius: 4 },
+    { label: 'FASTAPI GATEWAY', rx: 0.30, ry: 0.35, color: '#5f5148', radius: 5 },
+    { label: 'REDIS QUEUE', rx: 0.52, ry: 0.25, color: '#b94a1f', radius: 4 },
+    { label: 'CELERY WORKERS', rx: 0.74, ry: 0.32, color: '#607768', radius: 4.5 },
+    { label: 'POSTGRES / DB', rx: 0.38, ry: 0.75, color: '#5f5148', radius: 5 },
+    { label: 'CHROMADB / RAG', rx: 0.70, ry: 0.75, color: '#b94a1f', radius: 5.5 },
+    { label: 'LLM INFERENCE', rx: 0.92, ry: 0.50, color: '#607768', radius: 4 },
   ];
 
   const links = [
     [0, 1], [1, 2], [2, 3], [1, 4], [3, 4], [1, 5], [5, 6], [3, 6]
   ];
 
-  const pulses = links.map(([fromIdx, toIdx], i) => ({
-    from: nodes[fromIdx],
-    to: nodes[toIdx],
-    progress: (i * 0.18) % 1,
-    speed: 0.006 + Math.random() * 0.006,
-  }));
+  let nodes = [];
+  let pulses = [];
 
-  function drawArchitectureMatrix() {
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = archCanvas.parentElement ? archCanvas.parentElement.clientWidth : (archCanvas.clientWidth || 680);
+    height = 95;
+    archCanvas.width = width * dpr;
+    archCanvas.height = height * dpr;
+    if (ctx.resetTransform) ctx.resetTransform();
+    else ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    nodes = nodeRatios.map((n) => ({
+      ...n,
+      x: width * n.rx,
+      y: height * n.ry,
+    }));
+
+    pulses = links.map(([fromIdx, toIdx], i) => ({
+      fromIdx,
+      toIdx,
+      progress: (i * 0.18) % 1,
+      speed: 0.005 + (i % 3) * 0.002,
+    }));
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+
+  function drawArchitectureMatrix(now) {
+    const elapsed = (now - startTime) / 1000;
+    dashOffset = (elapsed * 18) % 16;
+
     ctx.clearRect(0, 0, width, height);
 
+    // 1. Base network topology lines (static faint background)
+    ctx.setLineDash([]);
     ctx.lineWidth = 1;
-    ctx.strokeStyle = 'rgba(215, 207, 196, 0.7)';
+    ctx.strokeStyle = 'rgba(215, 207, 196, 0.45)';
     links.forEach(([a, b]) => {
       ctx.beginPath();
       ctx.moveTo(nodes[a].x, nodes[a].y);
@@ -141,43 +167,68 @@ if (archCanvas && !reducedMotion.matches) {
       ctx.stroke();
     });
 
+    // 2. Animated dashed connection stream lines (dash offset flowing forward)
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([4, 4]);
+    ctx.lineDashOffset = -dashOffset;
+    ctx.strokeStyle = 'rgba(185, 74, 31, 0.42)';
+    links.forEach(([a, b]) => {
+      ctx.beginPath();
+      ctx.moveTo(nodes[a].x, nodes[a].y);
+      ctx.lineTo(nodes[b].x, nodes[b].y);
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    // 3. Traveling packets with glow
     pulses.forEach((p) => {
       p.progress += p.speed;
       if (p.progress > 1) p.progress = 0;
 
-      const px = p.from.x + (p.to.x - p.from.x) * p.progress;
-      const py = p.from.y + (p.to.y - p.from.y) * p.progress;
+      const nFrom = nodes[p.fromIdx];
+      const nTo = nodes[p.toIdx];
+      const px = nFrom.x + (nTo.x - nFrom.x) * p.progress;
+      const py = nFrom.y + (nTo.y - nFrom.y) * p.progress;
 
       ctx.beginPath();
       ctx.arc(px, py, 2.5, 0, Math.PI * 2);
       ctx.fillStyle = '#b94a1f';
-      ctx.shadowColor = 'rgba(185, 74, 31, 0.6)';
+      ctx.shadowColor = 'rgba(185, 74, 31, 0.65)';
       ctx.shadowBlur = 6;
       ctx.fill();
       ctx.shadowBlur = 0;
     });
 
-    nodes.forEach((node) => {
+    // 4. Cluster nodes with pulsing aura
+    nodes.forEach((node, i) => {
+      const pulse = Math.sin(elapsed * 2.4 + i * 1.1) * 0.5 + 0.5;
+      const auraRadius = node.radius + 2 + pulse * 3.5;
+
+      // Pulsing outer halo
       ctx.beginPath();
-      ctx.arc(node.x, node.y, node.radius + 3, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(185, 74, 31, 0.15)';
+      ctx.arc(node.x, node.y, auraRadius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(185, 74, 31, ${0.12 + pulse * 0.28})`;
+      ctx.lineWidth = 1;
       ctx.stroke();
 
+      // Node core
       ctx.beginPath();
       ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
       ctx.fillStyle = node.color;
       ctx.fill();
 
-      ctx.fillStyle = 'rgba(95, 81, 72, 0.85)';
+      // Label text
+      ctx.fillStyle = 'rgba(95, 81, 72, 0.88)';
       ctx.font = '500 7.5px "IBM Plex Mono", monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(node.label, node.x, node.y + (node.y > height * 0.5 ? 14 : -10));
+      const labelY = node.y + (node.y > height * 0.5 ? 13 : -10);
+      ctx.fillText(node.label, node.x, labelY);
     });
 
     animationFrameId = requestAnimationFrame(drawArchitectureMatrix);
   }
 
-  drawArchitectureMatrix();
+  animationFrameId = requestAnimationFrame(drawArchitectureMatrix);
 
   window.addEventListener('beforeunload', () => {
     cancelAnimationFrame(animationFrameId);
