@@ -1,15 +1,14 @@
 /**
  * ===========================================================================
- * animations.js — Motion Layer
- * Engineering Studio Motion Experience for Mahmoud H. Almodalal Portfolio
+ * animations.js — Motion Design System
+ * Mahmoud Hisham Almodalal Portfolio
  *
- * Rules & Standards:
- * - GPU Compositing: transforms & opacity only (zero layout shifts).
- * - Easing: cubic-bezier(0.16, 1, 0.3, 1) mapped to GSAP power3.out / CSS.
- * - Durations: fast & subtle (300-600ms), hover 180ms, stagger 60ms.
- * - Progressive enhancement: .js-anim added by JS only if reduced motion is false.
- * - Every scroll reveal triggers once only.
- * - Parallax and heavy staggers disabled on mobile (<768px) and touch devices.
+ * Rules & Architecture:
+ * - GPU Composited: transform and opacity only (zero layout shifts).
+ * - Fast & Subtle: 300-550ms durations, 180ms hover, 60-80ms staggers.
+ * - Progressive Enhancement: 100% visible by default; .js-anim added only if
+ *   prefers-reduced-motion is false.
+ * - One-shot scroll reveals: unobserved once in view.
  * ===========================================================================
  */
 
@@ -23,66 +22,24 @@
     return;
   }
 
-  // Add .js-anim class to enable motion styles safely
+  // Add .js-anim class to enable motion safely
   document.documentElement.classList.add('js-anim');
 
-  // Device capabilities detection
   const isMobile = window.innerWidth < 768;
-  const isTouch = window.matchMedia('(pointer: coarse)').matches;
-  const disableHeavyMotion = isMobile || isTouch;
-
-  // Read root motion tokens for synchronicity
-  const computedRoot = getComputedStyle(document.documentElement);
-  const durationRevealMs = parseFloat(computedRoot.getPropertyValue('--duration-reveal')) || 550;
-  const staggerDelayMs = parseFloat(computedRoot.getPropertyValue('--stagger-delay')) || 60;
-  const durationRevealSec = durationRevealMs / 1000;
-  const staggerDelaySec = staggerDelayMs / 1000;
-
-  // Ensure GSAP & ScrollTrigger exist
   const hasGSAP = typeof window.gsap !== 'undefined';
   if (hasGSAP && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
   }
 
   // ---------------------------------------------------------------------------
-  // 1. LOADER: Fast Non-blocking Lifecycle (≤ 700ms total), Slide-Up Exit
-  // ---------------------------------------------------------------------------
-  function initLoader(onHeroStart) {
-    const preloader = document.getElementById('page-preloader');
-    const bar = document.querySelector('.preloader-bar');
-    if (!preloader) {
-      if (onHeroStart) onHeroStart();
-      return;
-    }
-
-    // Progress line expands rapidly (0 -> 100% via transform: scaleX)
-    requestAnimationFrame(() => {
-      if (bar) bar.style.transform = 'scaleX(1)';
-    });
-
-    // Preloader begins fade + slide-up exit at 320ms
-    setTimeout(() => {
-      preloader.classList.add('fade-out');
-
-      // Start Hero reveal concurrently as preloader exits (zero dead time)
-      if (onHeroStart) onHeroStart();
-
-      // Completely remove preloader from view at 660ms
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 340);
-    }, 320);
-  }
-
-  // ---------------------------------------------------------------------------
-  // 2. NAVBAR: Scroll Blur/Shadow & Sliding Underline Indicator (Scrollspy)
+  // 1. Navigation: Scroll Blur/Shadow & Sliding Underline Indicator
   // ---------------------------------------------------------------------------
   function initNavbar() {
     const nav = document.getElementById('site-nav') || document.querySelector('nav');
     const indicatorTrack = document.querySelector('.nav-indicator-track');
     const navLinks = Array.from(document.querySelectorAll('nav ul a[href^="#"]'));
 
-    // 2.1 Scroll elevation (blur & shadow)
+    // 1.1 Header scroll elevation (blur & shadow)
     function onScrollNav() {
       const isScrolled = (window.scrollY || document.documentElement.scrollTop) > 24;
       if (nav) nav.classList.toggle('scrolled', isScrolled);
@@ -90,8 +47,8 @@
     window.addEventListener('scroll', onScrollNav, { passive: true });
     onScrollNav();
 
-    // 2.2 Sliding Underline Indicator (Pure Transform: translateX + scaleX)
-    if (!indicatorTrack || !navLinks.length || disableHeavyMotion) return;
+    // 1.2 Sliding Underline Indicator (Pure Transform: translateX + scaleX)
+    if (!indicatorTrack || !navLinks.length || isMobile) return;
 
     function moveIndicator(link) {
       if (!link) {
@@ -120,7 +77,7 @@
       moveIndicator(link);
     }
 
-    // Scrollspy tracking matching sections
+    // Scrollspy tracking active section
     const sectionIds = ['projects', 'experience', 'skills', 'education', 'references', 'contact'];
 
     function updateScrollspy() {
@@ -146,7 +103,6 @@
 
     window.addEventListener('scroll', updateScrollspy, { passive: true });
 
-    // Update immediately on click
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         setActiveLink(link);
@@ -160,7 +116,7 @@
   }
 
   // ---------------------------------------------------------------------------
-  // 3. HERO: Staggered Fade-Up of Headline, Subtitle, Buttons, and Profile Panel
+  // 2. Hero: Staggered Fade-Up of Headline, Subtitle, and Buttons on Load
   // ---------------------------------------------------------------------------
   function initHero() {
     const heroWords = document.querySelectorAll('.hero-word');
@@ -168,30 +124,31 @@
     const heroFadeUps = Array.from(document.querySelectorAll('.hero-fade-up'));
 
     if (!hasGSAP) {
-      // Fallback CSS staggered reveals
+      // CSS Fallback
       heroWords.forEach((word, idx) => {
-        setTimeout(() => word.classList.add('revealed'), idx * staggerDelayMs);
+        setTimeout(() => word.classList.add('revealed'), idx * 35);
       });
       heroFadeUps.forEach((el, idx) => {
-        setTimeout(() => el.classList.add('is-visible', 'revealed'), 100 + idx * staggerDelayMs);
+        setTimeout(() => el.classList.add('is-visible', 'revealed'), 120 + idx * 70);
       });
       setTimeout(() => {
         if (drawnUnderline) drawnUnderline.classList.add('active');
-      }, heroWords.length * staggerDelayMs + 80);
+      }, heroWords.length * 35 + 60);
       return;
     }
 
-    // GSAP Orchestrated Entrance Timeline
+    // GSAP Orchestrated Staggered Entrance
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    // Step A: Word-by-word masked reveal
     if (heroWords.length) {
-      tl.fromTo(heroWords,
-        { yPercent: 115 },
+      tl.fromTo(
+        heroWords,
+        { yPercent: 115, opacity: 0 },
         {
           yPercent: 0,
-          duration: durationRevealSec,
-          stagger: disableHeavyMotion ? 0.025 : staggerDelaySec,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.03,
           onComplete: () => {
             heroWords.forEach((word) => word.classList.add('revealed'));
           },
@@ -199,51 +156,55 @@
       );
     }
 
-    // Step B: Underline on "gets real" smoothly draws (scaleX 0 -> 1)
     if (drawnUnderline) {
       tl.add(() => {
         drawnUnderline.classList.add('active');
-      }, '-=0.3');
+      }, '-=0.25');
     }
 
-    // Step C: Staggered entrance for all hero elements
     if (heroFadeUps.length) {
-      tl.fromTo(heroFadeUps,
+      tl.fromTo(
+        heroFadeUps,
         { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: durationRevealSec * 0.85,
-          stagger: disableHeavyMotion ? 0.03 : staggerDelaySec,
+          duration: 0.42,
+          stagger: 0.06,
           onComplete: () => {
             heroFadeUps.forEach((el) => el.classList.add('is-visible', 'revealed'));
           },
         },
-        '-=0.35'
+        '-=0.3'
       );
     }
   }
 
   // ---------------------------------------------------------------------------
-  // 4. SCROLL REVEAL: IntersectionObserver for Sections and Cards (One-shot)
+  // 3. Scroll Reveal: IntersectionObserver for Sections and Cards (One-shot)
   // ---------------------------------------------------------------------------
   function initScrollReveal() {
-    const revealElements = document.querySelectorAll('.scroll-reveal, .fade-in');
+    const revealElements = document.querySelectorAll(
+      '.scroll-reveal, .fade-in, .section-heading, .additional-projects-head, .expertise-row, .reference-row, .cert-item'
+    );
     if (!revealElements.length) return;
 
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible', 'visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08,
-      });
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible', 'visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.08,
+        }
+      );
 
       revealElements.forEach((el) => observer.observe(el));
     } else {
@@ -252,48 +213,67 @@
   }
 
   // ---------------------------------------------------------------------------
-  // 5. FEATURED WORK: Parallax & Hover Interactions
+  // 4. Featured Work: Subtle Image Parallax on Desktop
   // ---------------------------------------------------------------------------
   function initFeaturedProjects() {
-    const featuredCards = document.querySelectorAll('.featured-project');
-    if (!featuredCards.length) return;
+    if (isMobile || !hasGSAP) return;
 
+    const featuredCards = document.querySelectorAll('.featured-project');
     featuredCards.forEach((card) => {
-      // Subtle Image Parallax (±20px): desktop only, disabled on touch/mobile
-      if (!disableHeavyMotion && hasGSAP) {
-        const img = card.querySelector('.project-card-img img');
-        if (img) {
-          ScrollTrigger.create({
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-            onUpdate: (self) => {
-              const y = (self.progress - 0.5) * 36;
-              img.style.setProperty('--parallax-y', `${y.toFixed(1)}px`);
-            },
-          });
-        }
-      }
+      const img = card.querySelector('.project-card-img img');
+      if (!img) return;
+
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+        onUpdate: (self) => {
+          const y = (self.progress - 0.5) * 24;
+          img.style.setProperty('--parallax-y', `${y.toFixed(1)}px`);
+        },
+      });
     });
   }
 
   // ---------------------------------------------------------------------------
-  // 6. EXPERIENCE TIMELINE: Vertical Line Draw + Dot Pulse on Viewport Entry
+  // 5. Experience Timeline: Dynamic Spine & Vertical Draw with Dot Pulse
   // ---------------------------------------------------------------------------
   function initTimelineProgress() {
     const timeline = document.getElementById('experience-timeline');
     if (!timeline) return;
 
+    const spine = timeline.querySelector('.tl-spine');
     const spineProgress = timeline.querySelector('.tl-spine-progress');
     const items = Array.from(timeline.querySelectorAll('.tl-item'));
+
+    // Precision measurement: anchor spine top at center of dot 1, end at center of dot 5
+    function updateSpineGeometry() {
+      const dots = timeline.querySelectorAll('.tl-dot');
+      if (dots.length < 2 || !spine) return;
+
+      const firstDot = dots[0];
+      const lastDot = dots[dots.length - 1];
+      const timelineRect = timeline.getBoundingClientRect();
+      const firstRect = firstDot.getBoundingClientRect();
+      const lastRect = lastDot.getBoundingClientRect();
+
+      const topOffset = firstRect.top - timelineRect.top + firstRect.height / 2;
+      const spineHeight = lastRect.top - firstRect.top;
+
+      spine.style.top = `${topOffset}px`;
+      spine.style.height = `${spineHeight}px`;
+    }
+
+    updateSpineGeometry();
+    window.addEventListener('resize', updateSpineGeometry, { passive: true });
 
     function onScrollTimeline() {
       const rect = timeline.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      // Calculate vertical drawing progress based on scroll position
-      const triggerStart = vh * 0.70;
+      // Scroll progress mapping
+      const triggerStart = vh * 0.72;
       const triggerEnd = vh * 0.35;
       const timelineHeight = rect.height;
 
@@ -303,12 +283,15 @@
         } else if (rect.bottom < triggerEnd) {
           spineProgress.style.transform = 'scaleY(1)';
         } else {
-          const progress = Math.min(1, Math.max(0, (triggerStart - rect.top) / (timelineHeight + (triggerStart - triggerEnd))));
+          const progress = Math.min(
+            1,
+            Math.max(0, (triggerStart - rect.top) / (timelineHeight + (triggerStart - triggerEnd)))
+          );
           spineProgress.style.transform = `scaleY(${progress.toFixed(3)})`;
         }
       }
 
-      // Activate and pulse dots as each experience milestone is reached
+      // Activate dot and pulse when each experience milestone enters view
       items.forEach((item) => {
         const itemRect = item.getBoundingClientRect();
         const dot = item.querySelector('.tl-dot');
@@ -324,9 +307,9 @@
   }
 
   // ---------------------------------------------------------------------------
-  // 7. PROJECT FILTER: Sliding Tab Indicator & Smooth FLIP Card Transitions
+  // 6. Project Filter: Sliding Tab Indicator & Smooth Layout Transition
   // ---------------------------------------------------------------------------
-  function initFilterFlip() {
+  function initFilterTabs() {
     const filterBar = document.querySelector('.filter-bar');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const indicator = document.querySelector('.filter-indicator');
@@ -340,10 +323,8 @@
       indicator.style.width = `${btn.offsetWidth}px`;
     }
 
-    // Initial position on active button
     const initialActive = filterBar.querySelector('.filter-btn.active') || filterButtons[0];
     if (initialActive) {
-      // Allow slight frame settle for initial measurement
       requestAnimationFrame(() => moveFilterIndicator(initialActive));
     }
 
@@ -362,87 +343,50 @@
 
         const filter = btn.dataset.filter;
 
-        // Step 1: FIRST — Record bounding boxes of currently visible cards
-        const firstPositions = new Map();
+        // Smooth transition of filtered cards
         allCards.forEach((card) => {
-          if (!card.hasAttribute('hidden') && card.offsetParent !== null) {
-            firstPositions.set(card, card.getBoundingClientRect());
-          }
-        });
+          const matches = filter === 'all' || card.dataset.category === filter;
 
-        // Step 2: LAST — Toggle hidden state based on filter
-        allCards.forEach((card) => {
-          const matches = (filter === 'all' || card.dataset.category === filter);
           if (matches) {
             card.removeAttribute('hidden');
-          } else {
-            card.setAttribute('hidden', '');
-          }
-        });
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            card.style.transition = 'none';
 
-        // Step 3: INVERT — Compute delta offsets and apply counter-transform
-        const animatingCards = [];
-        allCards.forEach((card) => {
-          if (!card.hasAttribute('hidden')) {
-            const first = firstPositions.get(card);
-            const last = card.getBoundingClientRect();
-
-            if (first) {
-              const dx = first.left - last.left;
-              const dy = first.top - last.top;
-              if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
-                card.style.transform = `translate(${dx}px, ${dy}px)`;
-                card.style.transition = 'none';
-                animatingCards.push(card);
-              }
-            } else {
-              // Newly revealed card: smooth fade & gentle upward settle
-              card.style.opacity = '0';
-              card.style.transform = 'translateY(16px)';
-              card.style.transition = 'none';
-              animatingCards.push(card);
-            }
-          }
-        });
-
-        // Step 4: PLAY — Animate to natural layout position
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            animatingCards.forEach((card) => {
-              card.style.transition = 'transform var(--duration-filter) var(--ease), opacity var(--duration-filter) var(--ease)';
-              card.style.transform = 'translate(0, 0)';
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity 280ms var(--ease), transform 280ms var(--ease)';
               card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
             });
-
-            // Clean up inline styles after transition finishes
+          } else {
+            card.style.transition = 'opacity 180ms var(--ease), transform 180ms var(--ease)';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(8px)';
             setTimeout(() => {
-              animatingCards.forEach((card) => {
-                card.style.transition = '';
-                card.style.transform = '';
-                card.style.opacity = '';
-              });
-              if (window.ScrollTrigger) ScrollTrigger.refresh();
-            }, 320);
-          });
+              card.setAttribute('hidden', '');
+              card.style.transition = '';
+              card.style.transform = '';
+            }, 180);
+          }
         });
+
+        if (window.ScrollTrigger) {
+          setTimeout(() => ScrollTrigger.refresh(), 300);
+        }
       });
     });
   }
 
   // ---------------------------------------------------------------------------
-  // INITIALIZATION: Orchestrate Motion Suite on DOM Ready
+  // INITIALIZATION: Run on DOMContentLoaded with immediate Hero entrance
   // ---------------------------------------------------------------------------
   function initMotionSuite() {
     initNavbar();
+    initHero();
     initScrollReveal();
     initFeaturedProjects();
     initTimelineProgress();
-    initFilterFlip();
-
-    // Fast non-blocking preloader handles smooth hero entrance
-    initLoader(() => {
-      initHero();
-    });
+    initFilterTabs();
   }
 
   if (document.readyState === 'loading') {

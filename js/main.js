@@ -1,5 +1,5 @@
 // ===========================================================================
-// js/main.js — Core Functionality & Interactive Signals
+// js/main.js — Core Functionality, UI Interactions & Architecture Canvas
 // Mahmoud Hisham Almodalal Portfolio
 // ===========================================================================
 
@@ -32,6 +32,16 @@ if (menuButton && navMenu) {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+
+  document.addEventListener('click', (event) => {
+    if (
+      navMenu.classList.contains('open') &&
+      !navMenu.contains(event.target) &&
+      !menuButton.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -47,8 +57,8 @@ function onWindowScroll() {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-  // Nav class
-  if (nav) nav.classList.toggle('scrolled', scrollTop > 32);
+  // Header elevation
+  if (nav) nav.classList.toggle('scrolled', scrollTop > 24);
 
   // Scroll Progress Bar
   if (progressBar && docHeight > 0) {
@@ -58,17 +68,21 @@ function onWindowScroll() {
 
   // Floating Back to Top Button
   if (backToTopBtn) {
-    if (scrollTop > 450) backToTopBtn.classList.add('visible');
+    if (scrollTop > 400) backToTopBtn.classList.add('visible');
     else backToTopBtn.classList.remove('visible');
   }
 }
 
-window.addEventListener('scroll', () => {
-  if (!scrollTick) {
-    scrollTick = true;
-    requestAnimationFrame(onWindowScroll);
-  }
-}, { passive: true });
+window.addEventListener(
+  'scroll',
+  () => {
+    if (!scrollTick) {
+      scrollTick = true;
+      requestAnimationFrame(onWindowScroll);
+    }
+  },
+  { passive: true }
+);
 onWindowScroll();
 
 if (backToTopBtn) {
@@ -93,7 +107,6 @@ document.querySelectorAll('.project-card').forEach((card) => {
   });
 });
 
-// ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // 4. Interactive Architecture Signature Canvas (Live Cluster Visualization)
 // ---------------------------------------------------------------------------
@@ -241,7 +254,7 @@ if (archCanvas && !reducedMotion.matches) {
 if (!reducedMotion.matches && window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 768) {
   const tiltCards = document.querySelectorAll('[data-tilt="true"]');
   tiltCards.forEach((card) => {
-    const tiltTarget = card.querySelector('.tilt-box');
+    const tiltTarget = card.querySelector('.project-card-img');
     if (!tiltTarget) return;
 
     card.addEventListener('mousemove', (e) => {
@@ -251,11 +264,11 @@ if (!reducedMotion.matches && window.matchMedia('(pointer: fine)').matches && wi
       const xPct = (x / rect.width - 0.5) * 2;
       const yPct = (y / rect.height - 0.5) * 2;
 
-      // Restrained clamp (max 3.5 degrees)
-      const rotX = -yPct * 3.5;
-      const rotY = xPct * 3.5;
+      // Restrained clamp (max 3 degrees)
+      const rotX = -yPct * 3;
+      const rotY = xPct * 3;
 
-      tiltTarget.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
+      tiltTarget.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
     });
 
     card.addEventListener('mouseleave', () => {
