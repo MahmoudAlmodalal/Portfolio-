@@ -5,7 +5,7 @@
   --paper-strong: #fffdf8;
   --ink: #241914;
   --ink-soft: #5f5148;
-  --muted: #8a7c72;
+  --muted: #6F625A;
   --line: #d7cfc4;
   --line-strong: #bfb3a6;
   --accent: #b94a1f;
@@ -918,7 +918,7 @@ h2 em,
 
 .featured-project .project-title {
   grid-area: title;
-  margin-bottom: var(--space-3);
+  margin: 0 0 var(--space-3) 0;
   font-size: clamp(2rem, 3.8vw, 3.6rem);
   font-weight: 600;
   letter-spacing: -.06em;
@@ -1796,9 +1796,9 @@ h2 em,
 
 .contact-link {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 44px;
   align-items: center;
-  gap: .45rem;
+  gap: .5rem;
   padding: 0.5rem 1rem;
   border: 1px solid rgba(255,255,255,.2);
   color: var(--cream);
@@ -1810,6 +1810,15 @@ h2 em,
     transform 160ms var(--ease),
     border-color 160ms var(--ease),
     background 160ms var(--ease);
+}
+
+.contact-link .contact-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  stroke: currentColor;
 }
 
 .contact-link:hover {

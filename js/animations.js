@@ -307,74 +307,10 @@
   }
 
   // ---------------------------------------------------------------------------
-  // 6. Project Filter: Sliding Tab Indicator & Smooth Layout Transition
+  // 6. Project Filter: Handled centrally in main.js for full a11y & reduced-motion
   // ---------------------------------------------------------------------------
   function initFilterTabs() {
-    const filterBar = document.querySelector('.filter-bar');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const indicator = document.querySelector('.filter-indicator');
-    const allCards = Array.from(document.querySelectorAll('.projects-grid .project-card'));
-    if (!filterBar || !filterButtons.length || !allCards.length) return;
-
-    // Reposition the sliding indicator pill
-    function moveFilterIndicator(btn) {
-      if (!btn || !indicator) return;
-      indicator.style.transform = `translateX(${btn.offsetLeft}px)`;
-      indicator.style.width = `${btn.offsetWidth}px`;
-    }
-
-    const initialActive = filterBar.querySelector('.filter-btn.active') || filterButtons[0];
-    if (initialActive) {
-      requestAnimationFrame(() => moveFilterIndicator(initialActive));
-    }
-
-    window.addEventListener('resize', () => {
-      const currentActive = filterBar.querySelector('.filter-btn.active');
-      if (currentActive) moveFilterIndicator(currentActive);
-    }, { passive: true });
-
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        if (btn.classList.contains('active')) return;
-
-        filterButtons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        moveFilterIndicator(btn);
-
-        const filter = btn.dataset.filter;
-
-        // Smooth transition of filtered cards
-        allCards.forEach((card) => {
-          const matches = filter === 'all' || card.dataset.category === filter;
-
-          if (matches) {
-            card.removeAttribute('hidden');
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(12px)';
-            card.style.transition = 'none';
-
-            requestAnimationFrame(() => {
-              card.style.transition = 'opacity 280ms var(--ease), transform 280ms var(--ease)';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          } else {
-            card.style.transition = 'opacity 180ms var(--ease), transform 180ms var(--ease)';
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(8px)';
-            setTimeout(() => {
-              card.setAttribute('hidden', '');
-              card.style.transition = '';
-              card.style.transform = '';
-            }, 180);
-          }
-        });
-
-        if (window.ScrollTrigger) {
-          setTimeout(() => ScrollTrigger.refresh(), 300);
-        }
-      });
-    });
+    // Managed in main.js
   }
 
   // ---------------------------------------------------------------------------

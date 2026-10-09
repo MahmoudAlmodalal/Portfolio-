@@ -12,12 +12,6 @@
 </head>
 <body>
 
-<!-- Precision Desktop Cursor -->
-<div id="custom-cursor" class="custom-cursor" aria-hidden="true">
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-</div>
-
 <!-- Thin Scroll Progress Bar -->
 <div id="scroll-progress-container" class="scroll-progress-container" aria-hidden="true">
   <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
@@ -121,8 +115,8 @@
         </div>
       </dl>
       <div class="profile-links">
-        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
       </div>
     </aside>
   </div>
@@ -142,10 +136,10 @@
 
     <div class="filter-bar scroll-reveal" role="toolbar" aria-label="Project categories">
       <span class="filter-indicator" aria-hidden="true"></span>
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="backend">Backend &amp; SaaS</button>
-      <button class="filter-btn" data-filter="frontend">Product &amp; UI</button>
-      <button class="filter-btn" data-filter="ai">AI / RAG</button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="backend" aria-pressed="false">Backend &amp; SaaS</button>
+      <button class="filter-btn" data-filter="frontend" aria-pressed="false">Product &amp; UI</button>
+      <button class="filter-btn" data-filter="ai" aria-pressed="false">AI / RAG</button>
     </div>
 
     <div class="projects-grid featured-projects">
@@ -159,7 +153,7 @@
           <div class="img-glare" aria-hidden="true"></div>
         </div>
         <span class="project-num">01</span>
-        <div class="project-title">EduTracker</div>
+        <h3 class="project-title">EduTracker</h3>
         <p class="project-desc">Bilingual school-operations SaaS that unifies attendance, tuition, messaging, and role-based dashboards—built multi-tenant with offline sync for unreliable networks.</p>
         <dl class="project-facts">
           <div><dt>Role</dt><dd>Co-Founder · Backend Developer</dd></div>
@@ -168,8 +162,8 @@
         </dl>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">React 19</span><span class="stack-pill">Celery</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span></div>
         <div class="project-actions">
-          <a href="https://edutracker.site/" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
-          <a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">LinkedIn <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://edutracker.site/" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted magnet-target">LinkedIn <span class="project-link-arrow">&#8599;</span></a>
         </div>
       </article>
 
@@ -183,7 +177,7 @@
           <div class="img-glare" aria-hidden="true"></div>
         </div>
         <span class="project-num">02</span>
-        <div class="project-title">Noor Al-Huda</div>
+        <h3 class="project-title">Noor Al-Huda</h3>
         <p class="project-desc">Offline-first Quran center platform replacing paper logs with memorization tracking, automated PDF report cards, and targeted family updates for 300+ students.</p>
         <dl class="project-facts">
           <div><dt>Scale</dt><dd>300+ students</dd></div>
@@ -192,8 +186,8 @@
         </dl>
         <div class="project-stack"><span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Dexie.js</span><span class="stack-pill">DRF</span><span class="stack-pill">PostgreSQL</span></div>
         <div class="project-actions">
-          <a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
-          <a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://github.com/MahmoudAlmodalal/noor_alhoda" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
         </div>
       </article>
 
@@ -207,7 +201,7 @@
           <div class="img-glare" aria-hidden="true"></div>
         </div>
         <span class="project-num">03</span>
-        <div class="project-title">clientMORE</div>
+        <h3 class="project-title">clientMORE</h3>
         <p class="project-desc">Bilingual AI support workspace that grounds answers in business documents, routes WhatsApp, SMS, and email conversations, and escalates complex cases to human agents.</p>
         <dl class="project-facts">
           <div><dt>Focus</dt><dd>Bilingual RAG support · ChromaDB</dd></div>
@@ -216,8 +210,8 @@
         </dl>
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">RAG</span><span class="stack-pill">LLMs</span><span class="stack-pill">WebSockets</span><span class="stack-pill">ChromaDB</span><span class="stack-pill">Twilio</span></div>
         <div class="project-actions">
-          <a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
-          <a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
         </div>
       </article>
     </div>
@@ -232,109 +226,109 @@
       <div class="project-card fade-in" data-category="ai">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-human-tracking.webp" alt="Human tracking computer vision system on laptop and phone" /></div>
         <span class="project-num">04</span>
-        <div class="project-title">Human Tracking &amp; Face Recognition</div>
+        <h4 class="project-title">Human Tracking &amp; Face Recognition</h4>
         <p class="project-desc">Applied computer-vision system that detects, tracks, and recognizes faces in video while turning movement into reviewable analytics.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">YOLOv8</span><span class="stack-pill">DeepSort</span><span class="stack-pill">InsightFace</span><span class="stack-pill">PyTorch</span><span class="stack-pill">OpenCV</span></div>
-        <div><a href="https://github.com/MahmoudAlmodalal/FaseDetection" target="_blank" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
+        <div><a href="https://github.com/MahmoudAlmodalal/FaseDetection" target="_blank" rel="noopener noreferrer" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-bookhaven.webp" alt="BookHaven bookstore application on laptop and phone" /></div>
         <span class="project-num">05</span>
-        <div class="project-title">BookHaven</div>
+        <h4 class="project-title">BookHaven</h4>
         <p class="project-desc">Django bookstore that takes a customer from search to checkout, with authentication, cart management, and sales analytics for administrators.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Django</span><span class="stack-pill">JavaScript</span><span class="stack-pill">CSS</span><span class="stack-pill">HTML</span></div>
-        <div><a href="https://github.com/MahmoudAlmodalal/djangoProject" target="_blank" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
+        <div><a href="https://github.com/MahmoudAlmodalal/djangoProject" target="_blank" rel="noopener noreferrer" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-registration.webp" alt="Student registration and attendance system on laptop and phone" /></div>
         <span class="project-num">06</span>
-        <div class="project-title">Registration System</div>
+        <h4 class="project-title">Registration System</h4>
         <p class="project-desc">Administrative web app for turning student registration and attendance into a searchable, reportable workflow.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">TypeScript</span><span class="stack-pill">JavaScript</span><span class="stack-pill">CSS</span></div>
-        <div><a href="https://github.com/MahmoudAlmodalal/RegistrationSystem" target="_blank" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
+        <div><a href="https://github.com/MahmoudAlmodalal/RegistrationSystem" target="_blank" rel="noopener noreferrer" class="project-link">View on GitHub <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-mysell-shell.webp" alt="MySell command line shell on laptop and phone" /></div>
         <span class="project-num">07</span>
-        <div class="project-title">MySellProject (Shell)</div>
+        <h4 class="project-title">MySellProject (Shell)</h4>
         <p class="project-desc">C-based Unix shell built to explore process control: built-ins, external commands, redirection, background jobs, and batch execution.</p>
         <div class="project-stack"><span class="stack-pill">C</span><span class="stack-pill">Shell</span><span class="stack-pill">Linux</span><span class="stack-pill">Processes</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/myshell-c/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/MySellProject" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/myshell-c/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/MySellProject" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-docsorter.webp" alt="Doc-sorter automation utility on laptop and phone" /></div>
         <span class="project-num">08</span>
-        <div class="project-title">Doc-sorter</div>
+        <h4 class="project-title">Doc-sorter</h4>
         <p class="project-desc">Python automation tool that turns an unstructured folder into an organized archive by classifying PDF, DOCX, and XLSX files recursively.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Automation</span><span class="stack-pill">File systems</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/docu-sort/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/doc-sorter" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/docu-sort/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/doc-sorter" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-java-attendance.webp" alt="Java student attendance application on laptop and phone" /></div>
         <span class="project-num">09</span>
-        <div class="project-title">Java Student Attendance</div>
+        <h4 class="project-title">Java Student Attendance</h4>
         <p class="project-desc">Java desktop attendance tool for recording sessions, reviewing presence, and producing clear summaries from one structured workflow.</p>
         <div class="project-stack"><span class="stack-pill">Java</span><span class="stack-pill">Desktop UI</span><span class="stack-pill">Reports</span></div>
-        <div class="project-actions"><a href="https://raw.githack.com/MahmoudAlmodalal/student-attendance-management-system/main/docs/index.html" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/JavaStudentAttendance" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://raw.githack.com/MahmoudAlmodalal/student-attendance-management-system/main/docs/index.html" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/JavaStudentAttendance" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-summit-creative-studio.webp" alt="Summit Creative Studio brand and digital experience on laptop and phone" /></div>
         <span class="project-num">10</span>
-        <div class="project-title">Summit Creative Studio</div>
+        <h4 class="project-title">Summit Creative Studio</h4>
         <p class="project-desc">Editorial studio website that turns brand strategy, visual identity, and digital experiences into one clear, memorable point of view.</p>
         <div class="project-stack"><span class="stack-pill">Brand Strategy</span><span class="stack-pill">Visual Identity</span><span class="stack-pill">Web Design</span><span class="stack-pill">Editorial UI</span></div>
-        <div><a href="https://mahmoudalmodalal.github.io/summit-creative-studio/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
+        <div><a href="https://mahmoudalmodalal.github.io/summit-creative-studio/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-bookflow-lms.webp" alt="BookFlow LMS library inventory dashboard on laptop and phone" /></div>
         <span class="project-num">11</span>
-        <div class="project-title">BookFlow LMS</div>
+        <h4 class="project-title">BookFlow LMS</h4>
         <p class="project-desc">Polished Django library dashboard for cataloging books, tracking available, borrowed, and sold stock, and keeping lending activity visible at a glance.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Python</span><span class="stack-pill">Library Inventory</span><span class="stack-pill">Dashboard UI</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/bookflow-lms/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/bookflow-lms" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/bookflow-lms/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/bookflow-lms" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-vividplay.webp" alt="VividPlay media player on laptop and phone" /></div>
         <span class="project-num">12</span>
-        <div class="project-title">VividPlay</div>
+        <h4 class="project-title">VividPlay</h4>
         <p class="project-desc">Calm JavaFX media player for local video and audio with playback controls, seeking, volume, fullscreen, drag-and-drop, and a lightweight browser companion demo.</p>
         <div class="project-stack"><span class="stack-pill">Java 21</span><span class="stack-pill">JavaFX</span><span class="stack-pill">Media</span><span class="stack-pill">Browser Demo</span></div>
-        <div class="project-actions"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/MahmoudAlmodalal/vividplay-javafx/main/docs/index.html" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/vividplay-javafx" target="_blank" rel="noopener" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/MahmoudAlmodalal/vividplay-javafx/main/docs/index.html" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a><a href="https://github.com/MahmoudAlmodalal/vividplay-javafx" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-taskflow-workspace.webp" alt="TaskFlow Workspace productivity dashboard on laptop and phone" /></div>
         <span class="project-num">13</span>
-        <div class="project-title">TaskFlow Workspace</div>
+        <h4 class="project-title">TaskFlow Workspace</h4>
         <p class="project-desc">Calm productivity workspace for seeing what is next, focusing today’s priorities, tracking momentum, and closing open loops without visual noise.</p>
         <div class="project-stack"><span class="stack-pill">Product UI</span><span class="stack-pill">Task Management</span><span class="stack-pill">Responsive Web</span><span class="stack-pill">Workspace</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/taskflow-workspace/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/taskflow-workspace/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-momentum-productivity-suite.webp" alt="Momentum Productivity Suite focus and habit dashboard" /></div>
         <span class="project-num">14</span>
-        <div class="project-title">Momentum Productivity Suite</div>
+        <h4 class="project-title">Momentum Productivity Suite</h4>
         <p class="project-desc">Intentional productivity workspace that brings tasks, habits, focus sessions, calendar planning, and weekly reflection into one calmer rhythm.</p>
         <div class="project-stack"><span class="stack-pill">Product UI</span><span class="stack-pill">Tasks</span><span class="stack-pill">Habits</span><span class="stack-pill">Focus</span><span class="stack-pill">Reflection</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/momentum-productivity-suite/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/momentum-productivity-suite/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-electricalpower.webp" alt="VoltGrid electrical power operations interface" /></div>
         <span class="project-num">15</span>
-        <div class="project-title">ElectricalPower / VoltGrid</div>
+        <h4 class="project-title">ElectricalPower / VoltGrid</h4>
         <p class="project-desc">Editorial energy-operations interface that turns complex power networks into readable signals for demand, capacity, storage, and the next field decision.</p>
         <div class="project-stack"><span class="stack-pill">React</span><span class="stack-pill">Vite</span><span class="stack-pill">Data UI</span><span class="stack-pill">Energy Systems</span></div>
-        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/ElectricalPower/" target="_blank" rel="noopener" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mahmoudalmodalal.github.io/ElectricalPower/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
@@ -345,10 +339,10 @@
           <div class="visual-caption">A conversion-focused landing page</div>
         </div>
         <span class="project-num">16</span>
-        <div class="project-title">Real Estate Landing Page</div>
+        <h4 class="project-title">Real Estate Landing Page</h4>
         <p class="project-desc">Conversion-focused real-estate landing page designed to turn property discovery into a clear, confident enquiry journey.</p>
         <div class="project-stack"><span class="stack-pill">Landing Page</span><span class="stack-pill">UX/UI</span><span class="stack-pill">Responsive Web</span><span class="stack-pill">Real Estate</span></div>
-        <div class="project-actions"><a href="https://mostaql.com/portfolio/3416259-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%B5%D9%81%D8%AD%D8%A9-%D9%87%D8%A8%D9%88%D8%B7-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D8%B4%D8%B1%D9%83%D8%A9-%D8%B9%D9%82%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener" class="project-link">View on Mostaql <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://mostaql.com/portfolio/3416259-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%B5%D9%81%D8%AD%D8%A9-%D9%87%D8%A8%D9%88%D8%B7-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D8%B4%D8%B1%D9%83%D8%A9-%D8%B9%D9%82%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener noreferrer" class="project-link">View on Mostaql <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="frontend">
@@ -359,10 +353,10 @@
           <div class="visual-task"><span></span> Plan next release <b>Tomorrow</b></div>
         </div>
         <span class="project-num">17</span>
-        <div class="project-title">Quick Tasks</div>
+        <h4 class="project-title">Quick Tasks</h4>
         <p class="project-desc">Minimal task-management product built around fast capture, clear priorities, lightweight organization, and a low-cognitive-load dashboard.</p>
         <div class="project-stack"><span class="stack-pill">React</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Vite</span><span class="stack-pill">Product UI</span></div>
-        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/p2" target="_blank" rel="noopener" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/p2" target="_blank" rel="noopener noreferrer" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
@@ -372,10 +366,10 @@
           <div class="visual-api">GET /resources <span>200 OK</span></div>
         </div>
         <span class="project-num">18</span>
-        <div class="project-title">Itqan Quranic CMS</div>
+        <h4 class="project-title">Itqan Quranic CMS</h4>
         <p class="project-desc">Extensible content-management backend for licensed Quranic resources, versioning, publisher workflows, developer APIs, and usage analytics.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Django Ninja</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">OAuth2</span><span class="stack-pill">Docker</span></div>
-        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/cms-backend" target="_blank" rel="noopener" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/cms-backend" target="_blank" rel="noopener noreferrer" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="backend">
@@ -385,10 +379,10 @@
           <div class="visual-metric"><strong>REST</strong><span>Django + DRF marketplace API</span></div>
         </div>
         <span class="project-num">19</span>
-        <div class="project-title">Market API</div>
+        <h4 class="project-title">Market API</h4>
         <p class="project-desc">Django and DRF marketplace backend shaped around clear specifications, a deliberate data model, containerized delivery, and dependable APIs.</p>
         <div class="project-stack"><span class="stack-pill">Django 5</span><span class="stack-pill">DRF</span><span class="stack-pill">REST API</span><span class="stack-pill">Docker</span></div>
-        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/Market" target="_blank" rel="noopener" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/Market" target="_blank" rel="noopener noreferrer" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
 
       <div class="project-card fade-in" data-category="ai">
@@ -398,10 +392,10 @@
           <div class="visual-flow"><span>RECITATION</span><i>&#8594;</i><span>ANALYSIS</span><i>&#8594;</i><span>SCORE</span></div>
         </div>
         <span class="project-num">20</span>
-        <div class="project-title">Qur'an Recitation Evaluation</div>
+        <h4 class="project-title">Qur'an Recitation Evaluation</h4>
         <p class="project-desc">Audio-based AI system that evaluates recited Qur'an verses with explainable pronunciation, Tajweed, and fluency score breakdowns.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Audio AI</span><span class="stack-pill">ML</span><span class="stack-pill">Tajweed</span><span class="stack-pill">Evaluation</span></div>
-        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/Quran_Recitation_model" target="_blank" rel="noopener" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
+        <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/Quran_Recitation_model" target="_blank" rel="noopener noreferrer" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
     </div>
   </div>
@@ -436,7 +430,7 @@
         <div class="tl-line-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
         <div class="tl-content">
           <div class="tl-role">Co-Founder &amp; Backend Developer</div>
-          <div class="tl-company"><a class="inline-link" href="https://edutracker.site/" target="_blank" rel="noopener">EduTracker</a> &middot; Self-employed &middot; <a class="inline-link inline-link-small" href="https://www.linkedin.com/in/edutracker-company-6074993b3" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+          <div class="tl-company"><a class="inline-link" href="https://edutracker.site/" target="_blank" rel="noopener noreferrer">EduTracker</a> &middot; Self-employed &middot; <a class="inline-link inline-link-small" href="https://www.linkedin.com/in/edutracker-company-6074993b3" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
           <p class="tl-desc">Built and deployed a bilingual multi-tenant school-management SaaS with Clean Architecture, a 32-entity PostgreSQL schema, Arabic full-text search, role-specific dashboards, offline support, automatic sync, and production CI/CD.</p>
           <div class="tl-tags"><span class="tag">Django</span><span class="tag">DRF</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span><span class="tag">Celery</span><span class="tag">Redis</span><span class="tag">Nginx</span></div>
         </div>
@@ -450,7 +444,7 @@
           <div class="tl-company">Ministry of Health, IT Department</div>
           <p class="tl-desc">Built responsive interfaces and server-side functionality with HTML, CSS, JavaScript, Bootstrap, PHP, and Laravel. Worked with MySQL and Oracle DB for management and optimization.</p>
           <div class="tl-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Oracle DB</span></div>
-          <a href="https://drive.google.com/file/d/1H_FdSsaltjV1vTKjU2tUGsFjHvarKGod/view?usp=drivesdk" target="_blank" rel="noopener" class="evidence-link">View internship proof ↗</a>
+          <a href="https://drive.google.com/file/d/1H_FdSsaltjV1vTKjU2tUGsFjHvarKGod/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="evidence-link">View internship proof ↗</a>
         </div>
       </div>
 
@@ -473,7 +467,7 @@
           <div class="tl-company">Al-Raja International Training Company</div>
           <p class="tl-desc">Completed intensive Python training focused on Machine Learning, AI, algorithms, and supervised software-project development.</p>
           <div class="tl-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Algorithms</span></div>
-          <a href="https://drive.google.com/file/d/1RlaWqB8QyC5B2vpcOuQ_T5vArafchTEE/view?usp=drivesdk" target="_blank" rel="noopener" class="evidence-link">View experience certificate ↗</a>
+          <a href="https://drive.google.com/file/d/1RlaWqB8QyC5B2vpcOuQ_T5vArafchTEE/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="evidence-link">View experience certificate ↗</a>
         </div>
       </div>
 
@@ -554,7 +548,7 @@
       <div>
         <div class="cert-list">
 
-          <a href="https://drive.google.com/file/d/1ZFQYfGdLu73LOr8wxRNhCBUvOfyc7mOH/view?usp=drivesdk" target="_blank" class="cert-item fade-in">
+          <a href="https://drive.google.com/file/d/1ZFQYfGdLu73LOr8wxRNhCBUvOfyc7mOH/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">Machine Learning</div>
               <div class="cert-by">HOP International Center, Jordan</div>
@@ -562,7 +556,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://www.coursera.org/account/accomplishments/verify/50FYZOK7Z0T7" target="_blank" class="cert-item fade-in">
+          <a href="https://www.coursera.org/account/accomplishments/verify/50FYZOK7Z0T7" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">Django Application Development with SQL</div>
               <div class="cert-by">Coursera &middot; IBM</div>
@@ -570,7 +564,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://www.coursera.org/account/accomplishments/verify/OORNZJRR3MY5" target="_blank" class="cert-item fade-in">
+          <a href="https://www.coursera.org/account/accomplishments/verify/OORNZJRR3MY5" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">Neural Networks and Deep Learning</div>
               <div class="cert-by">DeepLearning.AI &middot; Coursera</div>
@@ -578,7 +572,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://www.coursera.org/account/accomplishments/verify/UN888SH5CCT9" target="_blank" class="cert-item fade-in">
+          <a href="https://www.coursera.org/account/accomplishments/verify/UN888SH5CCT9" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">Getting Started with Git and GitHub</div>
               <div class="cert-by">Coursera &middot; IBM</div>
@@ -586,7 +580,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://drive.google.com/file/d/1kmmxExq2e7vNspxOlzKUUaXNAhP_vGq2/view?usp=drivesdk" target="_blank" class="cert-item fade-in">
+          <a href="https://drive.google.com/file/d/1kmmxExq2e7vNspxOlzKUUaXNAhP_vGq2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">ICDL</div>
               <div class="cert-by">Othman Center, Gaza</div>
@@ -594,7 +588,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://drive.google.com/file/d/18ZY4TXF7KED_IOCufIkCxhqRvHlBp9dw/view?usp=drivesdk" target="_blank" class="cert-item fade-in">
+          <a href="https://drive.google.com/file/d/18ZY4TXF7KED_IOCufIkCxhqRvHlBp9dw/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">21st Century Skills &amp; Freelancing</div>
               <div class="cert-by">IESCO</div>
@@ -602,7 +596,7 @@
             <span class="cert-badge">Certified</span>
           </a>
 
-          <a href="https://drive.google.com/file/d/1qBWt67BhOoK0XjMtXb6hp7qORS9EIanI/view?usp=drivesdk" target="_blank" class="cert-item fade-in">
+          <a href="https://drive.google.com/file/d/1qBWt67BhOoK0XjMtXb6hp7qORS9EIanI/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="cert-item fade-in">
             <div>
               <div class="cert-name">English Placement Test (Score: 9/12)</div>
               <div class="cert-by">Islamic University of Gaza (IUG)</div>
@@ -632,7 +626,7 @@
           <h3>Walid Mizyed</h3>
           <p>Founder &amp; Executive Director, Reach Education Fund</p>
         </div>
-        <a href="https://drive.google.com/file/d/1RqoE0oy-VETh7bBWEVgYZQ8gQNSDRoGc/view?usp=drivesdk" target="_blank" rel="noopener">Recommendation letter ↗</a>
+        <a href="https://drive.google.com/file/d/1RqoE0oy-VETh7bBWEVgYZQ8gQNSDRoGc/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Recommendation letter ↗</a>
       </article>
 
       <article class="reference-row fade-in">
@@ -640,7 +634,7 @@
           <h3>Dr. Ahmed Mahdi</h3>
           <p>Assistant Professor, Computer Engineering Department · IUG</p>
         </div>
-        <a href="https://drive.google.com/file/d/1QDfudN18snAbrgE5Dfl66BUVxR7DY1Tn/view?usp=drivesdk" target="_blank" rel="noopener">Recommendation letter ↗</a>
+        <a href="https://drive.google.com/file/d/1QDfudN18snAbrgE5Dfl66BUVxR7DY1Tn/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Recommendation letter ↗</a>
       </article>
     </div>
   </div>
@@ -664,11 +658,11 @@
           <a href="mailto:ghg17273@gmail.com" class="contact-primary-email magnet-target">ghg17273@gmail.com <span class="arrow" aria-hidden="true">&nearr;</span></a>
         </div>
         <div class="contact-links">
-          <a href="mailto:ghg17273@gmail.com" class="contact-link magnet-target"><span class="icon">&commat;</span> Email</a>
-          <a href="tel:+972597747084" class="contact-link magnet-target"><span class="icon">&phone;</span> Phone (+972 59-774-7084)</a>
-          <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener" class="contact-link magnet-target"><span class="icon">&infin;</span> LinkedIn &nearr;</a>
-          <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener" class="contact-link magnet-target"><span class="icon">&lt;/&gt;</span> GitHub &nearr;</a>
-          <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link contact-link-accent magnet-target"><span class="icon">&darr;</span> Download CV &searr;</a>
+          <a href="mailto:ghg17273@gmail.com" class="contact-link magnet-target"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email</a>
+          <a href="tel:+972597747084" class="contact-link magnet-target"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Phone (+972 59-774-7084)</a>
+          <a href="https://www.linkedin.com/in/mahmoud-almodalal-7a296a360" target="_blank" rel="noopener noreferrer" class="contact-link magnet-target"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn &nearr;</a>
+          <a href="https://github.com/MahmoudAlmodalal" target="_blank" rel="noopener noreferrer" class="contact-link magnet-target"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> GitHub &nearr;</a>
+          <a href="Mahmoud_Almodalal_CV.pdf" download class="contact-link contact-link-accent magnet-target"><svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download CV &searr;</a>
         </div>
       </div>
     </div>

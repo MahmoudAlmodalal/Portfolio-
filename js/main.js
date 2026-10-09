@@ -276,3 +276,78 @@ if (!reducedMotion.matches && window.matchMedia('(pointer: fine)').matches && wi
     });
   });
 }
+
+// ---------------------------------------------------------------------------
+// 6. Project Filter Controls & Tabs (Robust Vanilla Implementation)
+// ---------------------------------------------------------------------------
+const filterBar = document.querySelector('.filter-bar');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const filterIndicator = document.querySelector('.filter-indicator');
+const projectCards = document.querySelectorAll('.project-card');
+
+function updateFilterIndicator(btn) {
+  if (!btn || !filterIndicator) return;
+  filterIndicator.style.transform = `translateX(${btn.offsetLeft}px)`;
+  filterIndicator.style.width = `${btn.offsetWidth}px`;
+}
+
+if (filterBar && filterButtons.length && projectCards.length) {
+  const initialActive = filterBar.querySelector('.filter-btn.active') || filterButtons[0];
+  if (initialActive) {
+    requestAnimationFrame(() => updateFilterIndicator(initialActive));
+  }
+
+  window.addEventListener('resize', () => {
+    const currentActive = filterBar.querySelector('.filter-btn.active');
+    if (currentActive) updateFilterIndicator(currentActive);
+  }, { passive: true });
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) return;
+
+      filterButtons.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      updateFilterIndicator(btn);
+
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach((card) => {
+        const matches = filter === 'all' || card.dataset.category === filter;
+
+        if (reducedMotion.matches) {
+          card.style.display = matches ? '' : 'none';
+          card.style.opacity = matches ? '1' : '0';
+          card.style.transform = 'none';
+        } else {
+          if (matches) {
+            card.style.display = '';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            card.style.transition = 'none';
+
+            requestAnimationFrame(() => {
+              card.style.transition = 'opacity 280ms var(--ease), transform 280ms var(--ease)';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          } else {
+            card.style.transition = 'opacity 180ms var(--ease), transform 180ms var(--ease)';
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.97)';
+            setTimeout(() => {
+              if (btn.dataset.filter !== 'all' && card.dataset.category !== btn.dataset.filter) {
+                card.style.display = 'none';
+              }
+            }, 180);
+          }
+        }
+      });
+    });
+  });
+}
+
