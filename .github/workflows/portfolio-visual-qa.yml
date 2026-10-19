@@ -50,6 +50,20 @@ jobs:
                       await page.locator("#projects").scroll_into_view_if_needed()
                       await page.wait_for_timeout(250)
                       await page.screenshot(path=f"qa-artifacts/{label}-projects.png",animations="disabled")
+                      # Validate the additional gallery, not just featured case studies.
+                      gallery_card = page.locator(".additional-projects-grid .project-card:not(.spotlight-project)").first
+                      await gallery_card.scroll_into_view_if_needed()
+                      image = gallery_card.locator(":scope > .project-card-img, :scope > .project-illustration, :scope > .project-live-preview")
+                      await image.locator("img").evaluate("(img) => img.decode().catch(() => {})")
+                      await page.wait_for_timeout(350)
+                      card_box, image_box = await gallery_card.bounding_box(), await image.bounding_box()
+                      assert card_box and image_box, f"{label}: missing gallery or image"
+                      fraction = image_box["width"] / card_box["width"]
+                      assert fraction >= 0.94, f"{label}: preview too narrow: {fraction:.2f}"
+                      ratio = image_box["width"] / image_box["height"]
+                      assert 1.48 <= ratio <= 1.72, f"{label}: wrong preview aspect ratio: {ratio:.2f}"
+                      await page.screenshot(path=f"qa-artifacts/{label}-gallery.png",animations="disabled")
+                      print(f"{label}: project image width={fraction:.2%} of card, ratio={ratio:.2f}")
                       await page.close()
                   await browser.close()
           asyncio.run(main())
