@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Conceptual real estate property browsing interface">
+<title>Conceptual real estate property browsing interface</title>
+<defs>
+<linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#153536"/><stop offset="1" stop-color="#0e292e"/></linearGradient>
+<linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f1f5f9"/></linearGradient>
+<filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="14" stdDeviation="19" flood-color="#020617" flood-opacity=".25"/></filter>
+<pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#ffffff" opacity=".1"/></pattern>
+</defs>
+<rect width="1200" height="750" fill="url(#background)"/>
+<rect width="1200" height="750" fill="url(#dots)"/>
+<circle cx="1050" cy="90" r="310" fill="#d9b88d" opacity=".11"/>
+<circle cx="130" cy="760" r="285" fill="#d9b88d" opacity=".09"/>
+<g filter="url(#shadow)"><rect x="85" y="94" width="1030" height="572" rx="23" fill="#fbfbf8" stroke="none"/><rect x="85" y="94" width="1030" height="68" rx="23" fill="#f3f5ee" stroke="none"/><line x1="86" y1="162" x2="1114" y2="162" stroke="#d8dfdb" stroke-width="2" stroke-linecap="round"/></g>
+<text x="121" y="139" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#14453b" >HABITAT</text><text x="648" y="136" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#64756f" >Explore homes     Neighborhoods     Saved</text>
+<rect x="121" y="206" width="422" height="402" rx="18" fill="#d3dfd2" stroke="none"/>
+<path d="M160 438 L253 302 L343 382 L402 336 L499 443 V580 H160Z" fill="#639181"/>
+<path d="M176 449 L266 323 L343 390 L402 350 L488 450 V580 H176Z" fill="#7fab95"/>
+<path d="M290 380 L360 278 L464 431 V579 H290Z" fill="#355e58"/>
+<rect x="322" y="455" width="60" height="124" fill="#f1e5d4"/><rect x="392" y="455" width="35" height="44" fill="#d8ecdf"/>
+<circle cx="459" cy="294" r="34" fill="#f9e8bd"/>
+<text x="594" y="250" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#173d38" >Find a place</text><text x="594" y="293" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#173d38" >to call yours.</text>
+<text x="596" y="341" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6a807a" >Search properties by location and lifestyle</text>
+<rect x="596" y="370" width="459" height="63" rx="13" fill="#eef2ed" stroke="none"/><text x="618" y="409" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="500" fill="#799089" >City or neighborhood</text><circle cx="1014" cy="400" r="22" fill="#226d59"/>
+<rect x="595" y="470" width="143" height="95" rx="12" fill="#f3f4ef" stroke="none"/><rect x="754" y="470" width="143" height="95" rx="12" fill="#f3f4ef" stroke="none"/><rect x="912" y="470" width="143" height="95" rx="12" fill="#f3f4ef" stroke="none"/>
+<text x="614" y="513" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="700" fill="#246952" >24</text><text x="614" y="538" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="400" fill="#708580" >Listings</text>
+<text x="774" y="513" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="700" fill="#246952" >08</text><text x="774" y="538" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="400" fill="#708580" >Districts</text>
+<text x="929" y="513" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="700" fill="#246952" >12</text><text x="929" y="538" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="400" fill="#708580" >Saved homes</text>
+<text x="126" y="639" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#9fada7" >REAL ESTATE · CONCEPT ARTWORK</text>
+</svg>

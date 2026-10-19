@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Conceptual AI audio analysis dashboard for Quran recitation feedback">
+<title>Conceptual AI audio analysis dashboard for Quran recitation feedback</title>
+<defs>
+<linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a3330"/><stop offset="1" stop-color="#15574a"/></linearGradient>
+<linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f1f5f9"/></linearGradient>
+<filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="14" stdDeviation="19" flood-color="#020617" flood-opacity=".25"/></filter>
+<pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#ffffff" opacity=".1"/></pattern>
+</defs>
+<rect width="1200" height="750" fill="url(#background)"/>
+<rect width="1200" height="750" fill="url(#dots)"/>
+<circle cx="1050" cy="90" r="310" fill="#dab988" opacity=".11"/>
+<circle cx="130" cy="760" r="285" fill="#dab988" opacity=".09"/>
+<g filter="url(#shadow)"><rect x="103" y="97" width="994" height="553" rx="22" fill="#fdfcf7" stroke="none"/><rect x="103" y="97" width="994" height="74" rx="22" fill="#e7efe8" stroke="none"/></g>
+<text x="153" y="143" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#235b50" >RECITATION INTELLIGENCE</text>
+<text x="151" y="228" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#20483f" >Listen. Analyze. Learn.</text>
+<text x="152" y="264" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="400" fill="#6c8c80" >Explainable audio feedback and progress</text>
+<rect x="150" y="304" width="897" height="181" rx="18" fill="#153d39" stroke="none"/>
+<text x="183" y="348" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#b1d2bf" >AUDIO INPUT</text>
+<g fill="none" stroke="#81d7b7" stroke-width="8" stroke-linecap="round">
+<path d="M205 396.5 V435.5"/><path d="M231 360.50327796097184 V471.49672203902816"/><path d="M257 398.08486520506665 V433.91513479493335"/><path d="M283 367.3403215757445 V464.6596784242555"/><path d="M309 399.1610226022464 V432.8389773977536"/><path d="M335 363.06412267277653 V468.93587732722347"/><path d="M361 390.733218347761 V441.266781652239"/><path d="M387 360.2996106960609 V471.7003893039391"/><path d="M413 389.2781353506931 V442.7218646493069"/><path d="M439 365.1250652452376 V466.8749347547624"/><path d="M465 394.28212827750957 V437.71787172249043"/><path d="M491 367.6565530400054 V464.3434469599946"/><path d="M517 386.43228748039314 V445.56771251960686"/><path d="M543 362.56786828416386 V469.43213171583614"/><path d="M569 381.9070070837814 V450.0929929162186"/><path d="M595 364.744212154564 V467.255787845436"/><path d="M621 384.8294129005659 V447.1705870994341"/><path d="M647 373.14413332311847 V458.85586667688153"/><path d="M673 383.50793664483547 V448.49206335516453"/><path d="M699 367.19282999328453 V464.80717000671547"/><path d="M725 376.33619839071787 V455.66380160928213"/><path d="M751 366.5042537202375 V465.4957462797625"/><path d="M777 376.5350532034584 V455.4649467965416"/><path d="M803 373.2020466626001 V458.7979533373999"/><path d="M829 381.71691542671886 V450.28308457328114"/><path d="M855 373.83941785411054 V458.16058214588946"/><path d="M881 372.7224498709416 V459.2775501290584"/><path d="M907 370.51989055121567 V461.48010944878433"/><path d="M933 369.9690695326682 V462.0309304673318"/><path d="M959 374.6986457052511 V457.3013542947489"/><path d="M985 374.43183619050836 V457.56816380949164"/>
+</g>
+<rect x="150" y="515" width="276" height="98" rx="13" fill="#e8f5eb" stroke="none"/><rect x="460" y="515" width="276" height="98" rx="13" fill="#eaf0fd" stroke="none"/><rect x="770" y="515" width="275" height="98" rx="13" fill="#f9f0dd" stroke="none"/>
+<text x="175" y="550" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#5b8d72" >Pronunciation</text><text x="175" y="591" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#216b50" >94%</text>
+<text x="484" y="550" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#6d83b5" >Fluency</text><text x="484" y="591" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#445d99" >90%</text>
+<text x="793" y="550" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="600" fill="#ae8d52" >Feedback</text><text x="793" y="591" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#836230" >Ready</text>
+</svg>

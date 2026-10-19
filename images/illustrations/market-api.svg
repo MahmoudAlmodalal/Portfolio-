@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Conceptual marketplace order and API operations dashboard">
+<title>Conceptual marketplace order and API operations dashboard</title>
+<defs>
+<linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#301f32"/><stop offset="1" stop-color="#432845"/></linearGradient>
+<linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#f1f5f9"/></linearGradient>
+<filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="14" stdDeviation="19" flood-color="#020617" flood-opacity=".25"/></filter>
+<pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#ffffff" opacity=".1"/></pattern>
+</defs>
+<rect width="1200" height="750" fill="url(#background)"/>
+<rect width="1200" height="750" fill="url(#dots)"/>
+<circle cx="1050" cy="90" r="310" fill="#e3a7ab" opacity=".11"/>
+<circle cx="130" cy="760" r="285" fill="#e3a7ab" opacity=".09"/>
+<g filter="url(#shadow)"><rect x="96" y="82" width="1006" height="593" rx="24" fill="#f7f3f6" stroke="none"/><rect x="96" y="82" width="1006" height="72" rx="22" fill="#211b30" stroke="none"/></g>
+<text x="138" y="128" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#f9d5d9" >MARKET CORE</text><text x="759" y="126" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" fill="#d7cbd7" >Orders     Catalog     Analytics</text>
+<text x="146" y="215" font-family="Inter, Arial, sans-serif" font-size="39" font-weight="700" fill="#332439" >Commerce operations</text>
+<text x="147" y="249" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#897c8b" >Products, orders, and clean API workflows</text>
+<rect x="145" y="290" width="278" height="117" rx="16" fill="#fff" stroke="#ece3ec"/><rect x="439" y="290" width="278" height="117" rx="16" fill="#fff" stroke="#ece3ec"/><rect x="735" y="290" width="278" height="117" rx="16" fill="#fff" stroke="#ece3ec"/>
+<text x="172" y="330" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#77687d" >Orders</text><text x="171" y="382" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#573c60" >1,248</text>
+<text x="464" y="330" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#77687d" >Revenue</text><text x="465" y="382" font-family="Inter, Arial, sans-serif" font-size="39" font-weight="700" fill="#573c60" >$48.9K</text>
+<text x="763" y="330" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#77687d" >Products</text><text x="763" y="382" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#573c60" >386</text>
+<rect x="145" y="444" width="580" height="184" rx="15" fill="#fff" stroke="#ece3ec"/>
+<text x="168" y="482" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#826e84" >ORDER PIPELINE</text>
+<rect x="169" y="511" width="95" height="72" rx="12" fill="#f3e6ef" stroke="none"/><rect x="283" y="511" width="95" height="72" rx="12" fill="#e7ddec" stroke="none"/><rect x="396" y="511" width="95" height="72" rx="12" fill="#dedbea" stroke="none"/><rect x="507" y="511" width="95" height="72" rx="12" fill="#d8e7e8" stroke="none"/>
+<text x="178" y="552" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#67476e" >New</text><text x="289" y="552" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#67476e" >Paid</text><text x="401" y="552" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#67476e" >Packed</text><text x="512" y="552" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#315f61" >Shipped</text>
+<rect x="747" y="444" width="267" height="183" rx="15" fill="#382e45" stroke="none"/>
+<text x="772" y="486" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#f8d7df" >REST API</text><text x="771" y="523" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#d8b5e1" >/products</text><text x="771" y="557" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#d8b5e1" >/orders</text><text x="771" y="593" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="500" fill="#d8b5e1" >/checkout</text>
+</svg>
