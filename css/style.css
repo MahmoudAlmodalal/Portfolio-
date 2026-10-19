@@ -2236,3 +2236,27 @@ button:focus-visible {
     transition: none !important;
   }
 }
+
+
+/* Portfolio refresh — portrait, project preview links and editorial concept cards */
+.profile-portrait{position:relative;isolation:isolate;margin:0 0 1.4rem;aspect-ratio:5/4;overflow:hidden;border:1px solid var(--line-strong);border-radius:4px;background:#ece9e3}
+.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 33%;filter:saturate(.98)}
+.profile-portrait::after{content:"";position:absolute;inset:36% 0 0;background:linear-gradient(transparent,rgba(14,18,20,.78));pointer-events:none}
+.profile-portrait figcaption{position:absolute;z-index:1;left:1.1rem;right:.9rem;bottom:1rem;display:grid;gap:.15rem;color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.25)}
+.profile-portrait figcaption span{font:600 .75rem/1.35 var(--sans);letter-spacing:.065em}
+.profile-portrait figcaption small{font:400 .55rem/1.55 var(--mono);color:rgba(255,255,255,.88)}
+a.project-preview-link{position:relative;color:inherit;cursor:pointer;text-decoration:none}
+a.project-preview-link:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.project-preview-link img{transition:transform .3s var(--ease),filter .3s var(--ease)}
+.project-preview-link:hover img{filter:saturate(1.07)}
+.spotlight-project{background:var(--paper-strong)!important;border-color:var(--line-strong)!important}
+.project-card-visual--okfbi::before{background:radial-gradient(circle at 85% 12%,#556381,transparent 57%),linear-gradient(145deg,#162d46,#0e1823)}
+.project-card-visual--andalusia::before{background:radial-gradient(circle at 82% 14%,#986a53,transparent 60%),linear-gradient(145deg,#723b31,#211b19)}
+.project-card-visual--phone::before{background:radial-gradient(circle at 82% 9%,#39836d,transparent 61%),linear-gradient(145deg,#19433e,#0c2427)}
+.project-card-visual--okfbi .visual-kicker,.project-card-visual--andalusia .visual-kicker,.project-card-visual--phone .visual-kicker{color:#f6c8a8}
+.project-card-visual--okfbi .visual-title,.project-card-visual--andalusia .visual-title,.project-card-visual--phone .visual-title{font-size:clamp(1.03rem,1.6vw,1.45rem);line-height:1.09;letter-spacing:-.045em}
+.spotlight-project .project-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem}
+.spotlight-project .project-actions .project-link:first-child{color:var(--accent-dark);font-weight:600}
+.edu-proof-link{display:inline-block;margin-top:.4rem;color:var(--accent-dark);font-size:.76rem;text-underline-offset:3px}
+@media(max-width:800px){.profile-portrait{max-height:330px;aspect-ratio:16/10}.profile-portrait img{object-position:center 30%}}
+@media(max-width:600px){.profile-portrait{max-height:310px}.profile-portrait figcaption{left:.9rem;bottom:.8rem}}
