@@ -7,6 +7,7 @@ on:
     paths:
       - "index.html"
       - "css/style.css"
+      - "js/animations.js"
       - ".github/workflows/portfolio-visual-qa.yml"
 
 permissions:
@@ -44,6 +45,27 @@ jobs:
                   for label,width,height in [("desktop",1440,900),("mobile",390,844)]:
                       page = await browser.new_page(viewport={"width":width,"height":height},device_scale_factor=1)
                       await page.goto(url,wait_until="load",timeout=40000)
+                      # Test the *real* hero animation before adding any QA override CSS.
+                      await page.wait_for_timeout(2500)
+                      headline = await page.evaluate("""() => {
+                          const words = [...document.querySelectorAll('#hero-title .hero-word')];
+                          return {
+                              gsap: !!window.gsap,
+                              words: words.map(word => {
+                                  const mask = word.closest('.hero-word-mask');
+                                  const w = word.getBoundingClientRect();
+                                  const m = mask.getBoundingClientRect();
+                                  const visible = Math.max(0, Math.min(w.bottom,m.bottom) - Math.max(w.top,m.top));
+                                  return {text:word.textContent,opacity:getComputedStyle(word).opacity,
+                                          inFrame: w.height ? visible/w.height : 0,
+                                          transform:getComputedStyle(word).transform};
+                              })
+                          };
+                      }""")
+                      assert headline['words'], f"{label}: headline words missing"
+                      failures = [w for w in headline['words'] if float(w['opacity']) < .99 or w['inFrame'] < .82]
+                      assert not failures, f"{label}: hero words hidden after animation (GSAP={headline['gsap']}): {failures}"
+                      print(f"{label}: {len(headline['words'])} words visible after hero animation, GSAP={headline['gsap']}")
                       await page.add_style_tag(content="*{animation:none!important;transition:none!important} .hero-fade-up,.scroll-reveal,.fade-in,.hero-word{opacity:1!important;transform:none!important;visibility:visible!important}")
                       await page.wait_for_timeout(500)
                       await page.screenshot(path=f"qa-artifacts/{label}-hero.png",animations="disabled")
