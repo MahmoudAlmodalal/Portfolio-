@@ -2457,3 +2457,58 @@ a.project-preview-link:focus-visible{outline:3px solid var(--accent);outline-off
   .additional-projects-grid .spotlight-project .project-title { font-size:clamp(1.32rem,2vw,1.65rem); }
   .additional-projects-grid .spotlight-project .project-desc { font-size:.83rem;max-width:470px; }
 }
+
+/* October 2026 performance/layout refinements */
+#hero {
+  padding-top: clamp(1rem, 2.2vw, 1.75rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.4rem);
+}
+#hero .hero-shell { gap: clamp(1.45rem, 3vw, 2.5rem); align-items: start; }
+#hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.72rem);
+  line-height: 1.02;
+  letter-spacing: -.06em;
+  margin: 0 0 1rem;
+  max-width: none;
+}
+#hero .hero-line-mask { white-space: nowrap; }
+#hero .hero-word-mask { margin-right: .15em; }
+#hero .hero-desc { font-size: clamp(.91rem,1.05vw,1rem); line-height:1.62; margin-bottom:1rem; }
+#hero .hero-architecture-signal {
+  margin: .95rem 0 1.15rem; padding: .7rem 1rem;
+  box-shadow: 2px 3px 0 #e9dfd1;
+}
+#hero .signal-canvas-wrap { height:62px; }
+#hero .hero-ledger { margin-bottom: 1rem; }
+#hero .hero-ledger span { min-height: 36px; }
+#hero .hero-kicker-wrap { margin-bottom:.65rem; }
+#hero .hero-profile { padding:clamp(1.15rem,1.65vw,1.5rem); }
+
+/* Efficient image paints: preserve dimensions before lazy image decode. */
+.additional-projects-grid .project-illustration {
+  display:block; width:100%; aspect-ratio:16/10; overflow:hidden;
+  border:1px solid rgba(255,255,255,.25); background:#19383c;
+  border-radius:4px;
+}
+.additional-projects-grid .project-illustration img {
+  display:block; width:100%; height:100%; object-fit:cover; object-position:center;
+  transform:none; transition:transform 180ms ease-out;
+}
+.additional-projects-grid .project-card:hover .project-illustration img {transform:scale(1.025);}
+.project-illustration:focus-visible {outline:3px solid var(--accent);outline-offset:3px}
+.project-card-img img {color:transparent;}
+.additional-projects-grid .project-card { content-visibility:auto; contain-intrinsic-size: 280px; }
+.featured-projects .featured-project { content-visibility:auto; contain-intrinsic-size: 530px; }
+@media (max-width: 800px) {
+  #hero { padding-top:.9rem; padding-bottom:1.35rem; }
+  #hero h1 { font-size:clamp(2rem, 7.4vw, 3.25rem); line-height:1.02; }
+  #hero .hero-line-mask {white-space:normal;}
+  #hero .hero-architecture-signal {margin:.85rem 0;padding:.7rem;}
+  #hero .hero-ledger {margin-bottom:.8rem;}
+  #hero .signal-canvas-wrap {height:52px;}
+  #hero .hero-shell {gap:1.4rem;}
+}
+@media (max-width: 420px) {
+  #hero h1 {font-size:clamp(1.9rem,7.8vw,2.35rem); letter-spacing:-.048em;}
+  #hero .hero-line-mask {white-space:normal;}
+}
