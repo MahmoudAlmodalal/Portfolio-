@@ -2396,3 +2396,64 @@ a.project-preview-link:focus-visible{outline:3px solid var(--accent);outline-off
   .project-live-preview::after { font-size: 9px; }
   .additional-projects-grid .project-live-preview { aspect-ratio: 16 / 10; }
 }
+
+/* Prioritize the portrait on mobile without duplicating a second large headshot. */
+.hero-mobile-photo { display:none; }
+@media (max-width:800px) {
+  .hero-kicker-wrap {
+    position:relative;
+    min-height:80px;
+    padding-right:86px;
+    align-content:flex-start;
+    justify-content:flex-start;
+    gap:.45rem;
+  }
+  .hero-mobile-photo {
+    display:block;
+    position:absolute;
+    top:0;
+    right:0;
+    width:76px;
+    height:76px;
+    object-fit:cover;
+    object-position:center 25%;
+    border:3px solid #fffdf8;
+    border-radius:50%;
+    box-shadow:0 5px 16px rgba(34,24,17,.14);
+    background:#eee9e1;
+  }
+  .hero-profile .profile-identity{display:none;}
+}
+@media (max-width:420px) {
+  .hero-kicker-wrap{padding-right:77px;min-height:76px}
+  .hero-mobile-photo{width:70px;height:70px}
+}
+
+/* Expand newest live captures into full-width editorial feature rows. */
+@media (min-width:701px) {
+  .additional-projects-grid .spotlight-project {
+    grid-column:1 / -1;
+    grid-template-columns: minmax(0, 1.13fr) minmax(0, .87fr);
+    grid-template-areas:
+      "image number"
+      "image title"
+      "image desc"
+      "image stack"
+      "image actions";
+    min-height:322px;
+  }
+  .additional-projects-grid .spotlight-project .project-live-preview {
+    height:100%;
+    min-height:304px;
+    align-self:stretch;
+    aspect-ratio:auto;
+    border-radius:6px;
+  }
+  .additional-projects-grid .spotlight-project .project-live-preview img {
+    object-fit:cover;
+    object-position:top center;
+  }
+  .additional-projects-grid .spotlight-project .project-num { margin-top:var(--space-5); }
+  .additional-projects-grid .spotlight-project .project-title { font-size:clamp(1.32rem,2vw,1.65rem); }
+  .additional-projects-grid .spotlight-project .project-desc { font-size:.83rem;max-width:470px; }
+}
