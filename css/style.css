@@ -2260,3 +2260,67 @@ a.project-preview-link:focus-visible{outline:3px solid var(--accent);outline-off
 .edu-proof-link{display:inline-block;margin-top:.4rem;color:var(--accent-dark);font-size:.76rem;text-underline-offset:3px}
 @media(max-width:800px){.profile-portrait{max-height:330px;aspect-ratio:16/10}.profile-portrait img{object-position:center 30%}}
 @media(max-width:600px){.profile-portrait{max-height:310px}.profile-portrait figcaption{left:.9rem;bottom:.8rem}}
+
+/* Refined editorial identity: portrait aligned with professional heading */
+.profile-identity {
+  display: grid;
+  grid-template-columns: clamp(94px, 29%, 126px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(.85rem, 1.5vw, 1.25rem);
+  margin-bottom: 1.45rem;
+  padding: .55rem;
+  border: 1px solid #dfd5c8;
+  background: linear-gradient(120deg, #eee6da 0%, #f9f5ed 70%);
+  border-radius: 6px;
+}
+.hero-profile .profile-identity .profile-portrait {
+  width: 100%;
+  height: clamp(135px, 13.5vw, 162px);
+  max-height: none;
+  min-height: 0;
+  margin: 0;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: #f6f3ee;
+  box-shadow: 0 4px 16px rgba(36,25,20,.11);
+}
+.hero-profile .profile-identity .profile-portrait::after { display: none; }
+.hero-profile .profile-identity .profile-portrait img {
+  display:block;width:100%;height:100%;
+  object-fit:cover;
+  object-position: center 25%;
+  filter:none;
+  transform: none;
+}
+.profile-identity-copy { min-width: 0; }
+.identity-eyebrow {
+  display:block;
+  font: 600 .53rem/1.4 var(--mono);
+  color:var(--accent-dark);
+  letter-spacing:.055em;
+  margin-bottom:.68rem;
+}
+.profile-identity-copy h2 {
+  margin:0 0 .48rem;
+  color:var(--ink);
+  font:600 clamp(1.12rem,1.55vw,1.43rem)/1.12 var(--sans);
+  letter-spacing:-.045em;
+}
+.profile-identity-copy p {
+  color:var(--ink-soft);
+  font:.64rem/1.65 var(--sans);
+  margin:0;
+}
+@media(max-width:800px){
+  .hero-profile .profile-identity .profile-portrait {
+    max-height:none; height:150px; aspect-ratio:auto;
+  }
+}
+@media(max-width:440px){
+  .profile-identity {grid-template-columns:96px minmax(0,1fr);gap:.8rem;padding:.45rem}
+  .hero-profile .profile-identity .profile-portrait{height:132px;max-height:none}
+  .profile-identity-copy h2{font-size:1.16rem}
+  .identity-eyebrow{font-size:.48rem}
+}
