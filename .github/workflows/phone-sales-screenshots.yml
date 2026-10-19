@@ -1,0 +1,81 @@
+name: Phone Sales portfolio screenshots
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/phone-sales-screenshots.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Chromium and Playwright
+        run: |
+          python -m pip install "playwright==1.56.0" "Pillow==11.3.0"
+          python -m playwright install --with-deps chromium
+      - name: Screenshot live Phone Sales website
+        run: |
+          python - <<'PY'
+          import asyncio
+          import json
+          from pathlib import Path
+          from playwright.async_api import async_playwright
+          BASE="https://phone-sales-dusky.vercel.app"
+          shots=[
+            ("01-home-desktop","/",1440,900),
+            ("02-phone-catalog","/search",1440,900),
+            ("03-iphone-details","/product/p1",1440,900),
+            ("04-phone-comparison","/compare",1440,900),
+            ("05-home-mobile","/",390,844),
+            ("06-compare-mobile","/compare",390,844),
+            ("07-product-mobile","/product/p1",390,844),
+          ]
+          async def main():
+            dest=Path("phone-sales-captures")
+            dest.mkdir(parents=True,exist_ok=True)
+            success=[]
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(headless=True,args=["--no-sandbox"])
+              for name,path,w,h in shots:
+                page=await browser.new_page(viewport={"width":w,"height":h},device_scale_factor=1,locale="ar-SA",is_mobile=w<500,has_touch=w<500)
+                try:
+                  response=await page.goto(BASE+path,wait_until="domcontentloaded",timeout=35000)
+                  if response is None or response.status>=400:
+                    print(f"SKIP {name}: HTTP {response.status if response else 'no response'}",flush=True)
+                    continue
+                  try: await page.wait_for_load_state("networkidle",timeout=9000)
+                  except Exception: pass
+                  await page.evaluate("document.fonts.ready")
+                  await page.wait_for_timeout(1300)
+                  text=await page.locator("body").inner_text()
+                  if len(text.strip())<50 or "DEPLOYMENT_NOT_FOUND" in text:
+                    print(f"SKIP {name}: appears empty or missing",flush=True)
+                    continue
+                  await page.screenshot(path=str(dest/(name+".png")),animations="disabled",full_page=False)
+                  print(f"CAPTURED {name}: {page.url} / {await page.title()}",flush=True)
+                  success.append({"file":name+".png","url":BASE+path,"viewport":f"{w}x{h}","title":await page.title()})
+                except Exception as error:
+                  print(f"SKIP {name}: {type(error).__name__}: {str(error)[:190]}",flush=True)
+                finally:
+                  await page.close()
+              await browser.close()
+            (dest/"sources.json").write_text(json.dumps(success,ensure_ascii=False,indent=2),encoding="utf-8")
+            if len(success)<3: raise RuntimeError("Insufficient live screenshots")
+          asyncio.run(main())
+          PY
+      - name: Upload genuine screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: phone-sales-real-screenshots
+          path: phone-sales-captures/
+          retention-days: 3
