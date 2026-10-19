@@ -1,0 +1,72 @@
+name: Capture Souqi live preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/capture-souqi-preview.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out portfolio
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install headless browser
+        run: |
+          python -m pip install "playwright==1.56.0" "pillow==11.3.0"
+          python -m playwright install --with-deps chromium
+      - name: Take a real screenshot of Souqi
+        run: |
+          python - <<'PY'
+          import asyncio, io, pathlib
+          from PIL import Image, ImageStat
+          from playwright.async_api import async_playwright
+          url = "https://market-inky-zeta.vercel.app/ar"
+          async def main():
+              async with async_playwright() as p:
+                  browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
+                  page = await browser.new_page(viewport={"width": 1200, "height": 900}, device_scale_factor=1, locale="ar")
+                  response = await page.goto(url, wait_until="domcontentloaded", timeout=50000)
+                  assert response and response.status < 400, f"Site not available: {response.status if response else 'unknown'}"
+                  await page.evaluate("document.fonts.ready")
+                  try:
+                      await page.wait_for_load_state("networkidle", timeout=12000)
+                  except Exception:
+                      pass
+                  await page.wait_for_timeout(2000)
+                  body = await page.locator("body").inner_text(timeout=12000)
+                  print(f"Status: {response.status}; Title: {await page.title()}; Text: {body[:250]!r}", flush=True)
+                  assert len(body.strip()) > 80, "Site rendered with insufficient visible content"
+                  assert not any(message in body.lower() for message in ("deployment_not_found", "application error: a server-side exception", "404: not_found")), "An error page was returned"
+                  screenshot = await page.screenshot(type="png", full_page=False, animations="disabled")
+                  img = Image.open(io.BytesIO(screenshot)).convert("RGB")
+                  assert max(ImageStat.Stat(img.resize((90,60))).stddev) > 8, "Blank screenshot"
+                  img = img.resize((1200, 900), Image.Resampling.LANCZOS)
+                  output = pathlib.Path("images/live/souqi-market.webp")
+                  output.parent.mkdir(parents=True,exist_ok=True)
+                  img.save(output,format="WEBP",quality=78,method=5)
+                  print(f"Saved {output}, {output.stat().st_size} bytes", flush=True)
+                  await browser.close()
+          asyncio.run(main())
+          PY
+      - name: Commit real market screenshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/live/souqi-market.webp
+          if git diff --cached --quiet; then
+            echo "Screenshot unchanged"
+          else
+            git commit -m "Add real screenshot of Souqi marketplace deployment"
+            git push origin HEAD:main
+          fi
