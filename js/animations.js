@@ -27,6 +27,10 @@
 
   const isMobile = window.innerWidth < 768;
   const hasGSAP = typeof window.gsap !== 'undefined';
+  // GSAP animates words with yPercent. The CSS fallback uses translateY(115%).
+  // Never combine the two: GSAP otherwise preserves the CSS percentage as a
+  // pixel y offset, leaving every word hidden below its overflow mask.
+  if (hasGSAP) document.documentElement.classList.add('gsap-enabled');
   if (hasGSAP && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -151,6 +155,9 @@
           stagger: 0.03,
           onComplete: () => {
             heroWords.forEach((word) => word.classList.add('revealed'));
+            // Return presentation ownership to CSS after the one-shot tween.
+            // No persistent inline transform should obscure the headline.
+            gsap.set(heroWords, { clearProps: 'transform,opacity' });
           },
         }
       );
