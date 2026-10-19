@@ -1944,11 +1944,21 @@ footer {
 }
 
 .js-anim .hero-word {
+  /* Used only when GSAP is unavailable. */
   transform: translateY(115%);
+}
+
+/* GSAP controls yPercent, so its initial baseline must have no CSS translation. */
+.js-anim.gsap-enabled .hero-word {
+  transform: none;
 }
 
 .js-anim .hero-word.revealed {
   transform: translateY(0);
+}
+
+.js-anim.gsap-enabled .hero-word.revealed {
+  transform: none;
 }
 
 .js-anim .scroll-reveal,
