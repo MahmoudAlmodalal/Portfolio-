@@ -1,0 +1,94 @@
+name: Optimize portfolio images
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/optimize-preview-images.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portfolio-image-optimization
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout images
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Pillow
+        run: python -m pip install "Pillow==11.3.0"
+      - name: Compress oversized mockup photos
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import io
+
+          root = Path("images")
+          total_before = total_after = 0
+          changed = 0
+          for path in sorted(root.glob("*.webp")):
+              old = path.read_bytes()
+              total_before += len(old)
+              if len(old) < 95_000:
+                  total_after += len(old)
+                  continue
+              with Image.open(io.BytesIO(old)) as source:
+                  image = source.convert("RGB")
+                  if image.width > 1050:
+                      image.thumbnail((1050, 850), Image.Resampling.LANCZOS)
+                  new = old
+                  for quality in (77, 71, 65, 59):
+                      out = io.BytesIO()
+                      image.save(out, format="WEBP", quality=quality, method=6)
+                      candidate = out.getvalue()
+                      if len(candidate) < len(new):
+                          new = candidate
+                      if len(new) <= 92_000:
+                          break
+              if len(new) < len(old) * .96:
+                  path.write_bytes(new)
+                  changed += 1
+                  print(f"{path}: {len(old)//1024} KB -> {len(new)//1024} KB", flush=True)
+              total_after += len(path.read_bytes())
+
+          portrait = root / "mahmoud-headshot.jpg"
+          if portrait.is_file():
+              original = portrait.read_bytes()
+              total_before += len(original)
+              with Image.open(io.BytesIO(original)) as source:
+                  image = source.convert("RGB")
+                  if image.width > 550:
+                      image.thumbnail((550, 780), Image.Resampling.LANCZOS)
+                  out = io.BytesIO()
+                  image.save(out, format="JPEG", quality=79, progressive=True, optimize=True)
+                  candidate = out.getvalue()
+              if len(candidate) < len(original) * .92:
+                  portrait.write_bytes(candidate)
+                  changed += 1
+                  print(f"Portrait: {len(original)//1024} KB -> {len(candidate)//1024} KB", flush=True)
+              total_after += len(portrait.read_bytes())
+
+          print(f"Updated {changed} images, {total_before//1024} KB -> {total_after//1024} KB total", flush=True)
+          PY
+      - name: Save optimized files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/*.webp images/mahmoud-headshot.jpg
+          if git diff --cached --quiet; then
+            echo "Nothing to optimize."
+          else
+            git commit -m "Optimize project image assets to speed up portfolio loading"
+            git push origin HEAD:main
+          fi
