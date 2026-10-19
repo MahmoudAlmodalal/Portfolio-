@@ -10,7 +10,8 @@ A responsive portfolio presenting backend architecture, SaaS platforms, AI integ
 - `css/style.css` — responsive design and project visual styles.
 - `js/` — portfolio interactions, animations and project filtering.
 - `images/mahmoud-headshot.jpg` — professional portrait, responsively positioned in desktop and mobile hero layouts.
-- `images/live/*.webp` — authentic screen captures of 12 deployed projects (not generated interface mockups).
+- `images/live/*.webp` — genuine captures of 12 deployed projects (not invented screenshots).
+- `images/illustrations/*.svg` — five original vector illustrations for projects without public visual previews. These are concept illustrations, not screenshots.
 - `scripts/capture_live_previews.py` and `.github/workflows/capture-project-previews.yml` — reproducible Playwright screen capture workflow.
 - `.github/workflows/portfolio-visual-qa.yml` — desktop/mobile automated visual preview artifacts.
 - `resume.html` — up-to-date ATS-oriented resume; open in a browser and print to PDF when needed.
@@ -29,3 +30,7 @@ A responsive portfolio presenting backend architecture, SaaS platforms, AI integ
 Open `index.html` in a browser or run `python3 -m http.server 8000` in the repository root.
 
 The site is static HTML, CSS and JavaScript, and can be hosted with GitHub Pages.
+
+## Image performance
+
+Run the `Optimize portfolio images` GitHub Actions workflow to resize and compress the older project visuals in-place without changing their URLs. Live-site screenshots are already small optimized WebP assets; the five concept images are lightweight scalable SVGs.
