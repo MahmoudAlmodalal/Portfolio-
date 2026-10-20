@@ -1,6 +1,6 @@
 # Mahmoud Hisham Almodalal — Engineering Portfolio
 
-Live site: https://mahmoudalmodalal.github.io/Portfolio-/
+Live site: https://mahmoud-almoudalal.me/
 
 A responsive portfolio presenting backend architecture, SaaS platforms, AI integrations, engineering leadership, training operations, and teaching experience.
 
