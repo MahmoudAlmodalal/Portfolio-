@@ -9,6 +9,7 @@
 <meta property="og:url" content="https://mahmoud-almoudalal.me/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="images/live/2wash.webp" type="image/webp" fetchpriority="high"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -127,7 +128,7 @@
         <p class="section-label">selected work</p>
         <h2>Systems built for <em>real workflows.</em></h2>
       </div>
-      <p class="projects-heading-note">Three featured case studies, followed by recent launches and focused engineering work. Select any visual to explore a project.</p>
+      <p class="projects-heading-note">Four featured case studies, followed by recent launches and focused engineering work. Select any visual to explore a project.</p>
     </div>
 
     <div class="filter-bar scroll-reveal" role="toolbar" aria-label="Project categories">
@@ -141,14 +142,39 @@
     <div class="projects-grid featured-projects">
       <article class="project-card featured-project scroll-reveal" data-category="backend" data-tilt="true">
         <div class="project-kicker-row">
+          <span class="project-kicker">On-demand car care marketplace</span>
+          <span class="project-badge-pill">COMMERCIAL SAAS PLATFORM</span>
+        </div>
+        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://2wash.app/" target="_blank" rel="noopener noreferrer" aria-label="Open 2Wash live platform" data-domain="2wash.app" data-lightbox="true" data-title="2Wash" data-kicker="On-demand car care marketplace · Saudi Arabia" data-images="images/live/2wash.webp,images/live/2wash-partner-dashboard.webp" data-link="https://2wash.app/">
+          <img loading="eager" fetchpriority="high" decoding="async" width="1200" height="750" src="images/live/2wash.webp" alt="2Wash car care marketplace home page, captured from the live website" />
+          <div class="img-glare" aria-hidden="true"></div>
+          <span class="lightbox-trigger-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg> View visual</span>
+        </a>
+        <span class="project-num">01</span>
+        <h3 class="project-title">2Wash</h3>
+        <p class="project-desc">Bilingual automotive care marketplace and partner SaaS in Saudi Arabia connecting car owners with 20+ partner centers—featuring OTP authentication, real-time bay queueing, and automated financial settlements.</p>
+        <dl class="project-facts">
+          <div><dt>Scale</dt><dd>20+ partner centers · 500+ bookings</dd></div>
+          <div><dt>Architecture</dt><dd>Django REST + Next.js · PostGIS</dd></div>
+          <div><dt>Operations</dt><dd>Automated settlements · OTP auth · Bay queue</dd></div>
+        </dl>
+        <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Next.js</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">PostGIS</span><span class="stack-pill">Redis</span><span class="stack-pill">Celery</span><span class="stack-pill">TypeScript</span></div>
+        <div class="project-actions">
+          <a href="https://2wash.app/" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+        </div>
+      </article>
+
+      <article class="project-card featured-project scroll-reveal" data-category="backend" data-tilt="true">
+        <div class="project-kicker-row">
           <span class="project-kicker">School operations SaaS</span>
           <span class="project-badge-pill">FLAGSHIP PLATFORM</span>
         </div>
-        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://edutracker.site/" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="edutracker.site">
-          <img loading="eager" fetchpriority="high" decoding="async" width="1200" height="750" src="images/live/edutracker.webp" alt="EduTracker home page, captured from the live website" />
+        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://edutracker.site/" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="edutracker.site" data-lightbox="true" data-title="EduTracker" data-kicker="School operations SaaS" data-images="images/live/edutracker.webp" data-link="https://edutracker.site/">
+          <img loading="lazy" decoding="async" width="1200" height="750" src="images/live/edutracker.webp" alt="EduTracker home page, captured from the live website" />
           <div class="img-glare" aria-hidden="true"></div>
+          <span class="lightbox-trigger-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg> View visual</span>
         </a>
-        <span class="project-num">01</span>
+        <span class="project-num">02</span>
         <h3 class="project-title">EduTracker</h3>
         <p class="project-desc">Bilingual school-operations SaaS that unifies attendance, tuition, messaging, and role-based dashboards—built multi-tenant with offline sync for unreliable networks.</p>
         <dl class="project-facts">
@@ -168,11 +194,12 @@
           <span class="project-kicker">Offline-first education platform</span>
           <span class="project-badge-pill">OFFLINE-FIRST PLATFORM</span>
         </div>
-        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="nooralhodaa.vercel.app">
+        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://nooralhodaa.vercel.app/login" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="nooralhodaa.vercel.app" data-lightbox="true" data-title="Noor Al-Huda" data-kicker="Offline-first education platform" data-images="images/live/noor-al-huda.webp" data-link="https://nooralhodaa.vercel.app/login">
           <img loading="lazy" decoding="async" width="1200" height="750" src="images/live/noor-al-huda.webp" alt="Noor Al-Huda login page, captured from the live website" />
           <div class="img-glare" aria-hidden="true"></div>
+          <span class="lightbox-trigger-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg> View visual</span>
         </a>
-        <span class="project-num">02</span>
+        <span class="project-num">03</span>
         <h3 class="project-title">Noor Al-Huda</h3>
         <p class="project-desc">Offline-first Quran center platform replacing paper logs with memorization tracking, automated PDF report cards, and targeted family updates for 300+ students.</p>
         <dl class="project-facts">
@@ -192,11 +219,12 @@
           <span class="project-kicker">AI support infrastructure</span>
           <span class="project-badge-pill">APPLIED RAG PIPELINE</span>
         </div>
-        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://more-client-bay.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="more-client-bay.vercel.app">
+        <a class="project-card-img tilt-box project-preview-link project-live-preview" href="https://more-client-bay.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open live website" data-domain="more-client-bay.vercel.app" data-lightbox="true" data-title="clientMORE" data-kicker="AI support infrastructure" data-images="images/live/clientmore.webp" data-link="https://more-client-bay.vercel.app">
           <img loading="lazy" decoding="async" width="1200" height="750" src="images/live/clientmore.webp" alt="clientMORE home page, captured from the live website" />
           <div class="img-glare" aria-hidden="true"></div>
+          <span class="lightbox-trigger-badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg> View visual</span>
         </a>
-        <span class="project-num">03</span>
+        <span class="project-num">04</span>
         <h3 class="project-title">clientMORE</h3>
         <p class="project-desc">Bilingual AI support workspace that grounds answers in business documents, routes WhatsApp, SMS, and email conversations, and escalates complex cases to human agents.</p>
         <dl class="project-facts">
@@ -221,7 +249,7 @@
     <div class="projects-grid additional-projects-grid">
       <div class="project-card fade-in spotlight-project" data-category="backend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://okfbi.com/" target="_blank" rel="noopener noreferrer" data-domain="okfbi.com" aria-label="Open okfbi live website"><img src="images/live/okfbi.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Actual screenshot of the OK FBI investigation website"/></a>
-        <span class="project-num">04</span><h4 class="project-title">OK FBI</h4>
+        <span class="project-num">05</span><h4 class="project-title">OK FBI</h4>
         <p class="project-desc">Interactive role-based investigation platform with cases, team play and streamer workflows. Worked on backend improvements, security and testing.</p>
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">MongoDB</span><span class="stack-pill">React</span><span class="stack-pill">Pytest</span></div>
         <div class="project-actions"><a class="project-link" href="https://okfbi.com/" target="_blank" rel="noopener noreferrer">View website &#8599;</a></div>
@@ -229,7 +257,7 @@
 
       <div class="project-card fade-in spotlight-project" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://cms-drab-eight.vercel.app/" target="_blank" rel="noopener noreferrer" data-domain="cms-drab-eight.vercel.app" aria-label="Open andalusia live website"><img src="images/live/andalusia-cms.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Actual screenshot of the Andalusia music and culture website"/></a>
-        <span class="project-num">05</span><h4 class="project-title">Andalusia CMS</h4>
+        <span class="project-num">06</span><h4 class="project-title">Andalusia CMS</h4>
         <p class="project-desc">Bilingual music and cultural platform with an administrative CMS for artists, releases, events, articles, media and booking requests.</p>
         <div class="project-stack"><span class="stack-pill">Next.js</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Supabase</span><span class="stack-pill">PostgreSQL</span></div>
         <div class="project-actions"><a class="project-link" href="https://cms-drab-eight.vercel.app/" target="_blank" rel="noopener noreferrer">View website &#8599;</a></div>
@@ -237,14 +265,14 @@
 
       <div class="project-card fade-in spotlight-project" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://phone-sales-dusky.vercel.app/" target="_blank" rel="noopener noreferrer" data-domain="phone-sales-dusky.vercel.app" aria-label="Open phone live website"><img src="images/live/phone-sales.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Actual screenshot of the Phone Sales price-comparison website"/></a>
-        <span class="project-num">06</span><h4 class="project-title">Phone Sales</h4>
+        <span class="project-num">07</span><h4 class="project-title">Phone Sales</h4>
         <p class="project-desc">Saudi-focused smartphone search and price-comparison experience featuring brand browsing, price-drop highlights and phone comparisons.</p>
         <div class="project-stack"><span class="stack-pill">Next.js 16</span><span class="stack-pill">React</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Zustand</span></div>
         <div class="project-actions"><a class="project-link" href="https://phone-sales-dusky.vercel.app/" target="_blank" rel="noopener noreferrer">View website &#8599;</a><a class="project-link project-link-muted" href="https://github.com/MahmoudAlmodalal/phone-sales" target="_blank" rel="noopener noreferrer">Source &#8599;</a></div>
       </div>
       <div class="project-card fade-in" data-category="ai">
         <a class="project-card-img project-preview-link" href="https://github.com/MahmoudAlmodalal/FaseDetection" target="_blank" rel="noopener noreferrer" aria-label="Open project preview"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-human-tracking.webp" alt="Human tracking computer vision system on laptop and phone" /></a>
-        <span class="project-num">07</span>
+        <span class="project-num">08</span>
         <h4 class="project-title">Human Tracking &amp; Face Recognition</h4>
         <p class="project-desc">Applied computer-vision system that detects, tracks, and recognizes faces in video while turning movement into reviewable analytics.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">YOLOv8</span><span class="stack-pill">DeepSort</span><span class="stack-pill">InsightFace</span><span class="stack-pill">PyTorch</span><span class="stack-pill">OpenCV</span></div>
@@ -253,7 +281,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <div class="project-card-img"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-bookhaven.webp" alt="BookHaven bookstore application on laptop and phone" /></div>
-        <span class="project-num">08</span>
+        <span class="project-num">09</span>
         <h4 class="project-title">BookHaven</h4>
         <p class="project-desc">Django bookstore that takes a customer from search to checkout, with authentication, cart management, and sales analytics for administrators.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Django</span><span class="stack-pill">JavaScript</span><span class="stack-pill">CSS</span><span class="stack-pill">HTML</span></div>
@@ -262,7 +290,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <a class="project-card-img project-preview-link" href="https://github.com/MahmoudAlmodalal/RegistrationSystem" target="_blank" rel="noopener noreferrer" aria-label="Open project preview"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-registration.webp" alt="Student registration and attendance system on laptop and phone" /></a>
-        <span class="project-num">09</span>
+        <span class="project-num">10</span>
         <h4 class="project-title">Registration System</h4>
         <p class="project-desc">Administrative web app for turning student registration and attendance into a searchable, reportable workflow.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">TypeScript</span><span class="stack-pill">JavaScript</span><span class="stack-pill">CSS</span></div>
@@ -271,7 +299,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/myshell-c/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/myshell.webp" alt="MyShell demo, captured from the live website" /></a>
-        <span class="project-num">10</span>
+        <span class="project-num">11</span>
         <h4 class="project-title">MySellProject (Shell)</h4>
         <p class="project-desc">C-based Unix shell built to explore process control: built-ins, external commands, redirection, background jobs, and batch execution.</p>
         <div class="project-stack"><span class="stack-pill">C</span><span class="stack-pill">Shell</span><span class="stack-pill">Linux</span><span class="stack-pill">Processes</span></div>
@@ -280,7 +308,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/docu-sort/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/docu-sort.webp" alt="Doc sorter demo, captured from the live website" /></a>
-        <span class="project-num">11</span>
+        <span class="project-num">12</span>
         <h4 class="project-title">Doc-sorter</h4>
         <p class="project-desc">Python automation tool that turns an unstructured folder into an organized archive by classifying PDF, DOCX, and XLSX files recursively.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Automation</span><span class="stack-pill">File systems</span></div>
@@ -289,7 +317,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link" href="https://github.com/MahmoudAlmodalal/student-attendance-management-system" target="_blank" rel="noopener noreferrer" aria-label="Open project preview"><img loading="lazy" decoding="async" width="1200" height="900" src="images/v2-mockup-java-attendance.webp" alt="Java student attendance application on laptop and phone" /></a>
-        <span class="project-num">12</span>
+        <span class="project-num">13</span>
         <h4 class="project-title">Java Student Attendance</h4>
         <p class="project-desc">Java desktop attendance tool for recording sessions, reviewing presence, and producing clear summaries from one structured workflow.</p>
         <div class="project-stack"><span class="stack-pill">Java</span><span class="stack-pill">Desktop UI</span><span class="stack-pill">Reports</span></div>
@@ -298,7 +326,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/summit-creative-studio/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/summit.webp" alt="Summit Creative Studio home page, captured from the live website" /></a>
-        <span class="project-num">13</span>
+        <span class="project-num">14</span>
         <h4 class="project-title">Summit Creative Studio</h4>
         <p class="project-desc">Editorial studio website that turns brand strategy, visual identity, and digital experiences into one clear, memorable point of view.</p>
         <div class="project-stack"><span class="stack-pill">Brand Strategy</span><span class="stack-pill">Visual Identity</span><span class="stack-pill">Web Design</span><span class="stack-pill">Editorial UI</span></div>
@@ -307,7 +335,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/bookflow-lms/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/bookflow.webp" alt="BookFlow LMS dashboard, captured from the live website" /></a>
-        <span class="project-num">14</span>
+        <span class="project-num">15</span>
         <h4 class="project-title">BookFlow LMS</h4>
         <p class="project-desc">Polished Django library dashboard for cataloging books, tracking available, borrowed, and sold stock, and keeping lending activity visible at a glance.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Python</span><span class="stack-pill">Library Inventory</span><span class="stack-pill">Dashboard UI</span></div>
@@ -316,7 +344,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link" href="https://github.com/MahmoudAlmodalal/vividplay-javafx" target="_blank" rel="noopener noreferrer" aria-label="Open project preview"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-vividplay.webp" alt="VividPlay media player on laptop and phone" /></a>
-        <span class="project-num">15</span>
+        <span class="project-num">16</span>
         <h4 class="project-title">VividPlay</h4>
         <p class="project-desc">Calm JavaFX media player for local video and audio with playback controls, seeking, volume, fullscreen, drag-and-drop, and a lightweight browser companion demo.</p>
         <div class="project-stack"><span class="stack-pill">Java 21</span><span class="stack-pill">JavaFX</span><span class="stack-pill">Media</span><span class="stack-pill">Browser Demo</span></div>
@@ -325,7 +353,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/taskflow-workspace/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/taskflow.webp" alt="TaskFlow Workspace, captured from the live website" /></a>
-        <span class="project-num">16</span>
+        <span class="project-num">17</span>
         <h4 class="project-title">TaskFlow Workspace</h4>
         <p class="project-desc">Calm productivity workspace for seeing what is next, focusing today’s priorities, tracking momentum, and closing open loops without visual noise.</p>
         <div class="project-stack"><span class="stack-pill">Product UI</span><span class="stack-pill">Task Management</span><span class="stack-pill">Responsive Web</span><span class="stack-pill">Workspace</span></div>
@@ -334,7 +362,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://mahmoudalmodalal.github.io/momentum-productivity-suite/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview" data-domain="mahmoudalmodalal.github.io"><img loading="lazy" decoding="async" width="1200" height="750" src="images/live/momentum.webp" alt="Momentum productivity website, captured from the live website" /></a>
-        <span class="project-num">17</span>
+        <span class="project-num">18</span>
         <h4 class="project-title">Momentum Productivity Suite</h4>
         <p class="project-desc">Intentional productivity workspace that brings tasks, habits, focus sessions, calendar planning, and weekly reflection into one calmer rhythm.</p>
         <div class="project-stack"><span class="stack-pill">Product UI</span><span class="stack-pill">Tasks</span><span class="stack-pill">Habits</span><span class="stack-pill">Focus</span><span class="stack-pill">Reflection</span></div>
@@ -343,7 +371,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link" href="https://mahmoudalmodalal.github.io/ElectricalPower/" target="_blank" rel="noopener noreferrer" aria-label="Open project preview"><img loading="lazy" decoding="async" width="1200" height="900" src="images/mockup-electricalpower.webp" alt="VoltGrid electrical power operations interface" /></a>
-        <span class="project-num">18</span>
+        <span class="project-num">19</span>
         <h4 class="project-title">ElectricalPower / VoltGrid</h4>
         <p class="project-desc">Editorial energy-operations interface that turns complex power networks into readable signals for demand, capacity, storage, and the next field decision.</p>
         <div class="project-stack"><span class="stack-pill">React</span><span class="stack-pill">Vite</span><span class="stack-pill">Data UI</span><span class="stack-pill">Energy Systems</span></div>
@@ -352,7 +380,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-illustration" href="https://mostaql.com/portfolio/3416259-%D8%AA%D8%B5%D9%85%D9%8A%D9%85-%D8%B5%D9%81%D8%AD%D8%A9-%D9%87%D8%A8%D9%88%D8%B7-%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D8%B4%D8%B1%D9%83%D8%A9-%D8%B9%D9%82%D8%A7%D8%B1%D8%A7%D8%AA" target="_blank" rel="noopener noreferrer" aria-label="Open Real Estate Landing Page project"><img src="images/illustrations/real-estate.svg" loading="lazy" decoding="async" width="1200" height="750" alt="Concept illustration: real-estate property browsing interface"/></a>
-        <span class="project-num">19</span>
+        <span class="project-num">20</span>
         <h4 class="project-title">Real Estate Landing Page</h4>
         <p class="project-desc">Conversion-focused real-estate landing page designed to turn property discovery into a clear, confident enquiry journey.</p>
         <div class="project-stack"><span class="stack-pill">Landing Page</span><span class="stack-pill">UX/UI</span><span class="stack-pill">Responsive Web</span><span class="stack-pill">Real Estate</span></div>
@@ -361,7 +389,7 @@
 
       <div class="project-card fade-in" data-category="frontend">
         <a class="project-card-img project-preview-link project-illustration" href="https://github.com/MahmoudAlmodalal/p2" target="_blank" rel="noopener noreferrer" aria-label="Open Quick Tasks project"><img src="images/illustrations/quick-tasks.svg" loading="lazy" decoding="async" width="1200" height="750" alt="Concept illustration: simple personal task dashboard"/></a>
-        <span class="project-num">20</span>
+        <span class="project-num">21</span>
         <h4 class="project-title">Quick Tasks</h4>
         <p class="project-desc">Minimal task-management product built around fast capture, clear priorities, lightweight organization, and a low-cognitive-load dashboard.</p>
         <div class="project-stack"><span class="stack-pill">React</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Vite</span><span class="stack-pill">Product UI</span></div>
@@ -370,7 +398,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <a class="project-card-img project-preview-link project-illustration" href="https://github.com/MahmoudAlmodalal/cms-backend" target="_blank" rel="noopener noreferrer" aria-label="Open Itqan Quranic CMS project"><img src="images/illustrations/itqan-cms.svg" loading="lazy" decoding="async" width="1200" height="750" alt="Concept illustration: Quranic content publishing API dashboard"/></a>
-        <span class="project-num">21</span>
+        <span class="project-num">22</span>
         <h4 class="project-title">Itqan Quranic CMS</h4>
         <p class="project-desc">Extensible content-management backend for licensed Quranic resources, versioning, publisher workflows, developer APIs, and usage analytics.</p>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Django Ninja</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">OAuth2</span><span class="stack-pill">Docker</span></div>
@@ -379,7 +407,7 @@
 
       <div class="project-card fade-in" data-category="backend">
         <a class="project-card-img project-preview-link project-live-preview" href="https://market-inky-zeta.vercel.app/ar" target="_blank" rel="noopener noreferrer" data-domain="market-inky-zeta.vercel.app" aria-label="View live Souqi marketplace"><img src="images/live/souqi-market.webp" loading="lazy" decoding="async" width="1200" height="900" alt="Actual screenshot of Souqi Arabic marketplace featuring local sellers, seasonal promotions and product categories"/></a>
-        <span class="project-num">22</span>
+        <span class="project-num">23</span>
         <h4 class="project-title">Souqi — Marketplace</h4>
         <p class="project-desc">Bilingual, mobile-first marketplace featuring local sellers, product search, category browsing, promotions and shopping flows, built with Next.js and Django REST APIs.</p>
         <div class="project-stack"><span class="stack-pill">Next.js 15</span><span class="stack-pill">React 19</span><span class="stack-pill">TypeScript</span><span class="stack-pill">Django / DRF</span><span class="stack-pill">RTL / LTR</span></div>
@@ -388,7 +416,7 @@
 
       <div class="project-card fade-in" data-category="ai">
         <a class="project-card-img project-preview-link project-illustration" href="https://github.com/MahmoudAlmodalal/Quran_Recitation_model" target="_blank" rel="noopener noreferrer" aria-label="Open Quran Recitation Evaluation project"><img src="images/illustrations/quran-recitation.svg" loading="lazy" decoding="async" width="1200" height="750" alt="Concept illustration: recitation audio analysis feedback"/></a>
-        <span class="project-num">23</span>
+        <span class="project-num">24</span>
         <h4 class="project-title">Qur'an Recitation Evaluation</h4>
         <p class="project-desc">Audio-based AI system that evaluates recited Qur'an verses with explainable pronunciation, Tajweed, and fluency score breakdowns.</p>
         <div class="project-stack"><span class="stack-pill">Python</span><span class="stack-pill">Audio AI</span><span class="stack-pill">ML</span><span class="stack-pill">Tajweed</span><span class="stack-pill">Evaluation</span></div>
@@ -711,10 +739,43 @@
   </svg>
 </button>
 
+<!-- Interactive Visual Lightbox Modal -->
+<div id="project-lightbox" class="project-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project Visual Preview">
+  <div class="lightbox-backdrop" data-close="lightbox"></div>
+  <div class="lightbox-panel" role="document">
+    <div class="lightbox-header">
+      <div class="lightbox-info">
+        <span id="lightbox-kicker" class="lightbox-kicker"></span>
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+      </div>
+      <button type="button" class="lightbox-close" aria-label="Close visual preview" data-close="lightbox">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="lightbox-media-container">
+      <img id="lightbox-img" class="lightbox-image" src="images/live/2wash.webp" alt="Expanded project view" />
+      <div id="lightbox-gallery-nav" class="lightbox-gallery-nav" hidden>
+        <button type="button" id="lightbox-prev-btn" class="lightbox-nav-btn prev" aria-label="Previous screenshot">&#8592;</button>
+        <span id="lightbox-counter" class="lightbox-counter">1 / 2</span>
+        <button type="button" id="lightbox-next-btn" class="lightbox-nav-btn next" aria-label="Next screenshot">&#8594;</button>
+      </div>
+    </div>
+    <div class="lightbox-footer">
+      <div id="lightbox-view-label" class="lightbox-view-label"></div>
+      <a id="lightbox-link" class="btn btn-primary btn-sm magnet-target" href="https://2wash.app/" target="_blank" rel="noopener noreferrer">
+        Open live platform <span class="btn-arrow arrow-diag" aria-hidden="true">&nearr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- Core Animation Engine (GSAP + ScrollTrigger + animations.js) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

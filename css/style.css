@@ -2570,3 +2570,274 @@ a.project-preview-link:focus-visible{outline:3px solid var(--accent);outline-off
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ==========================================================================
+   Visual Lightbox Modal & Enhanced Micro-Interactions
+   ========================================================================== */
+
+/* 1. Lightbox Trigger Badge inside Project Cards */
+.project-card-img {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.lightbox-trigger-badge {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  font: 500 0.62rem var(--mono);
+  letter-spacing: 0.04em;
+  background: rgba(33, 23, 17, 0.78);
+  color: #fff8ed;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 248, 237, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+}
+
+.featured-project:hover .lightbox-trigger-badge,
+.project-card:hover .lightbox-trigger-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .lightbox-trigger-badge {
+    opacity: 0.85;
+    transform: none;
+  }
+}
+
+/* 2. Interactive Lightbox Modal */
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1), visibility 260ms;
+}
+
+.project-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.lightbox-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 19, 14, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+
+.lightbox-panel {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1180px;
+  max-height: 92vh;
+  background: #fbf8f1;
+  border: 1px solid rgba(185, 74, 31, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 32px 72px -16px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 248, 237, 0.3) inset;
+  overflow: hidden;
+  transform: scale(0.96) translateY(10px);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-lightbox.active .lightbox-panel {
+  transform: scale(1) translateY(0);
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: #f3efe6;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.lightbox-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lightbox-kicker {
+  font: 500 0.62rem var(--mono);
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lightbox-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+
+.lightbox-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  background: var(--paper);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.lightbox-media-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a120d;
+  min-height: 260px;
+  max-height: 68vh;
+  overflow: hidden;
+  padding: 0.75rem;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 64vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+}
+
+.lightbox-gallery-nav {
+  position: absolute;
+  bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(33, 23, 17, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 248, 237, 0.2);
+  border-radius: 20px;
+  color: #fff8ed;
+}
+
+.lightbox-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #fff8ed;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.lightbox-nav-btn:hover,
+.lightbox-nav-btn:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.lightbox-counter {
+  font: 500 0.72rem var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  background: #fbf8f1;
+  border-top: 1px solid var(--line-strong);
+}
+
+.lightbox-view-label {
+  font: 500 0.78rem var(--mono);
+  color: var(--muted);
+}
+
+/* 3. Refined Card Transitions & Hover Elevations */
+.featured-project {
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project .project-card-img {
+  border-radius: 6px;
+  transition: box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1), border-color 380ms cubic-bezier(0.16, 1, 0.3, 1), transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project:hover .project-card-img {
+  border-color: rgba(185, 74, 31, 0.45);
+  box-shadow: 0 16px 36px -10px rgba(43, 29, 20, 0.12), 0 0 0 1px rgba(185, 74, 31, 0.15);
+}
+
+.additional-projects-grid .project-card {
+  border-radius: 6px;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1), border-color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.additional-projects-grid .project-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(185, 74, 31, 0.35);
+  box-shadow: 0 14px 32px -8px rgba(43, 29, 20, 0.09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-lightbox,
+  .lightbox-panel,
+  .lightbox-image,
+  .featured-project,
+  .additional-projects-grid .project-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+

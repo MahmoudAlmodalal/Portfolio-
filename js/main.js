@@ -95,14 +95,163 @@ if (backToTopBtn) {
 }
 
 // ---------------------------------------------------------------------------
-// 3. Card Click Delegation (Primary Link)
+// 3. Interactive Visual Lightbox Controller ("الصور تفتح عدل")
 // ---------------------------------------------------------------------------
+const lightbox = document.getElementById('project-lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxTitle = document.getElementById('lightbox-title');
+const lightboxKicker = document.getElementById('lightbox-kicker');
+const lightboxLink = document.getElementById('lightbox-link');
+const lightboxNav = document.getElementById('lightbox-gallery-nav');
+const lightboxPrevBtn = document.getElementById('lightbox-prev-btn');
+const lightboxNextBtn = document.getElementById('lightbox-next-btn');
+const lightboxCounter = document.getElementById('lightbox-counter');
+const lightboxViewLabel = document.getElementById('lightbox-view-label');
+
+let currentGallery = [];
+let currentGalleryIndex = 0;
+let lastActiveElement = null;
+
+function updateLightboxImage() {
+  if (!currentGallery.length || !lightboxImg) return;
+  const currentItem = currentGallery[currentGalleryIndex];
+  lightboxImg.style.opacity = '0';
+  lightboxImg.style.transform = 'scale(0.98)';
+
+  const tempImg = new Image();
+  tempImg.onload = () => {
+    lightboxImg.src = currentItem.src;
+    lightboxImg.alt = currentItem.alt || (lightboxTitle ? lightboxTitle.textContent : 'Project visual');
+    lightboxImg.style.opacity = '1';
+    lightboxImg.style.transform = 'scale(1)';
+  };
+  tempImg.src = currentItem.src;
+
+  if (lightboxCounter) {
+    lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${currentGallery.length}`;
+  }
+  if (lightboxViewLabel) {
+    lightboxViewLabel.textContent = currentItem.label || (currentGallery.length > 1 ? `View ${currentGalleryIndex + 1} of ${currentGallery.length}` : 'Production preview');
+  }
+}
+
+function openLightbox(gallery, initialIndex = 0, meta = {}) {
+  if (!lightbox) return;
+  lastActiveElement = document.activeElement;
+  currentGallery = gallery;
+  currentGalleryIndex = initialIndex;
+
+  if (lightboxTitle) lightboxTitle.textContent = meta.title || '';
+  if (lightboxKicker) lightboxKicker.textContent = meta.kicker || 'PROJECT PREVIEW';
+  if (lightboxLink) {
+    if (meta.link) {
+      lightboxLink.href = meta.link;
+      lightboxLink.style.display = 'inline-flex';
+    } else {
+      lightboxLink.style.display = 'none';
+    }
+  }
+
+  if (lightboxNav) {
+    lightboxNav.hidden = currentGallery.length <= 1;
+  }
+
+  updateLightboxImage();
+
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lightbox-open');
+
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeLightbox() {
+  if (!lightbox || !lightbox.classList.contains('active')) return;
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lightbox-open');
+  if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+    lastActiveElement.focus();
+  }
+}
+
+if (lightbox) {
+  lightbox.querySelectorAll('[data-close="lightbox"]').forEach((el) => {
+    el.addEventListener('click', closeLightbox);
+  });
+
+  if (lightboxPrevBtn) {
+    lightboxPrevBtn.addEventListener('click', () => {
+      if (currentGallery.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateLightboxImage();
+    });
+  }
+
+  if (lightboxNextBtn) {
+    lightboxNextBtn.addEventListener('click', () => {
+      if (currentGallery.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex + 1) % currentGallery.length;
+      updateLightboxImage();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') {
+      if (lightboxPrevBtn && currentGallery.length > 1) lightboxPrevBtn.click();
+    }
+    if (e.key === 'ArrowRight') {
+      if (lightboxNextBtn && currentGallery.length > 1) lightboxNextBtn.click();
+    }
+  });
+
+  // Attach Lightbox triggers to all project card visual containers
+  document.querySelectorAll('.project-card').forEach((card) => {
+    const cardImgAnchor = card.querySelector('.project-card-img');
+    if (!cardImgAnchor) return;
+
+    cardImgAnchor.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.button === 1) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const imgEl = cardImgAnchor.querySelector('img');
+      const titleEl = card.querySelector('.project-title');
+      const kickerEl = card.querySelector('.project-kicker') || card.querySelector('.project-kicker-row');
+      const primaryLink = card.querySelector('.project-link');
+
+      let customImages = [];
+      if (cardImgAnchor.dataset.images) {
+        customImages = cardImgAnchor.dataset.images.split(',').map((s) => s.trim());
+      } else if (imgEl && imgEl.src) {
+        customImages = [imgEl.src];
+      }
+
+      const gallery = customImages.map((src, i) => ({
+        src,
+        alt: `${titleEl ? titleEl.textContent.trim() : 'Project'} preview ${i + 1}`,
+        label: i === 0 && customImages.length > 1 ? 'Live Platform Overview' : (i === 1 && customImages.length > 1 ? 'Partner Dashboard & Operations' : 'Interface Inspection'),
+      }));
+
+      openLightbox(gallery, 0, {
+        title: cardImgAnchor.dataset.title || (titleEl ? titleEl.textContent.trim() : ''),
+        kicker: cardImgAnchor.dataset.kicker || (kickerEl ? kickerEl.textContent.trim() : 'CASE STUDY PREVIEW'),
+        link: cardImgAnchor.dataset.link || (primaryLink ? primaryLink.href : ''),
+      });
+    });
+  });
+}
+
+// 3.1 Card Click Delegation (Primary Link on Background Area)
 document.querySelectorAll('.project-card').forEach((card) => {
   const primaryLink = card.querySelector('.project-link');
   if (!primaryLink) return;
 
   card.addEventListener('click', (event) => {
-    if (event.target.closest('a, button')) return;
+    if (event.target.closest('a, button, .project-card-img')) return;
     window.open(primaryLink.href, '_blank', 'noopener');
   });
 });

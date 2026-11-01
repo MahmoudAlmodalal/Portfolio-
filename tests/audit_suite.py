@@ -10,7 +10,7 @@ import re
 import sys
 from pathlib import Path
 
-WORKSPACE = Path("/root/Portfolio-")
+WORKSPACE = Path(__file__).resolve().parent.parent
 INDEX_HTML = WORKSPACE / "index.html"
 STYLE_CSS = WORKSPACE / "css/style.css"
 MAIN_JS = WORKSPACE / "js/main.js"
