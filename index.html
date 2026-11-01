@@ -122,6 +122,7 @@
 
 <div class="divider"></div>
 
+<div id="work" class="anchor-target" aria-hidden="true"></div>
 <section id="projects">
   <div class="container">
     <div class="projects-heading scroll-reveal">
@@ -185,11 +186,15 @@
         <dl class="project-facts">
           <div><dt>Role</dt><dd>Co-Founder · Backend Developer</dd></div>
           <div><dt>Architecture</dt><dd>Multi-tenant SaaS · Clean Architecture</dd></div>
-          <div><dt>Constraint</dt><dd>Offline sync · weak networks · 32-entity DB</dd></div>
+          <div><dt>Constraint</dt><dd>Offline sync · weak networks · 64-entity DB</dd></div>
         </dl>
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">React 19</span><span class="stack-pill">Celery</span><span class="stack-pill">Redis</span><span class="stack-pill">Docker</span></div>
         <div class="project-actions">
           <a href="https://edutracker.site/" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <button type="button" class="arch-drawer-trigger magnet-target" data-arch-trigger="edutracker" aria-haspopup="dialog" aria-expanded="false" aria-controls="arch-drawer-overlay">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Inspect Architecture
+          </button>
           <a href="https://www.linkedin.com/company/edutracker-ps/" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted magnet-target">LinkedIn <span class="project-link-arrow">&#8599;</span></a>
         </div>
       </article>
@@ -240,6 +245,10 @@
         <div class="project-stack"><span class="stack-pill">FastAPI</span><span class="stack-pill">RAG</span><span class="stack-pill">LLMs</span><span class="stack-pill">WebSockets</span><span class="stack-pill">ChromaDB</span><span class="stack-pill">Twilio</span></div>
         <div class="project-actions">
           <a href="https://more-client-bay.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <button type="button" class="arch-drawer-trigger magnet-target" data-arch-trigger="clientmore" aria-haspopup="dialog" aria-expanded="false" aria-controls="arch-drawer-overlay">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Inspect Architecture
+          </button>
           <a href="https://github.com/MahmoudAlmodalal/MoreClient" target="_blank" rel="noopener noreferrer" class="project-link project-link-muted magnet-target">Repository <span class="project-link-arrow">&#8599;</span></a>
         </div>
       </article>
@@ -428,6 +437,13 @@
         <div class="project-actions"><a href="https://github.com/MahmoudAlmodalal/Quran_Recitation_model" target="_blank" rel="noopener noreferrer" class="project-link">Repository <span class="project-link-arrow">&#8599;</span></a></div>
       </div>
     </div>
+
+    <div class="projects-expand-wrapper">
+      <button type="button" id="projects-toggle-btn" class="projects-toggle-btn magnet-target" aria-expanded="false" aria-controls="additional-projects-grid">
+        <span class="toggle-btn-text">SHOW ALL PROJECTS (+14)</span>
+        <svg class="toggle-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -535,6 +551,7 @@
 
 <div class="divider"></div>
 
+<div id="expertise" class="anchor-target" aria-hidden="true"></div>
 <section id="skills" class="scroll-reveal">
   <div class="container">
     <div class="section-heading scroll-reveal">
@@ -735,6 +752,47 @@
 <footer>
   &copy; 2026 Mahmoud Hisham Almodalal &middot; Engineering portfolio
 </footer>
+
+<!-- Mobile Bottom Navigation Dock (Instagram-Style) -->
+<nav id="mobile-dock" class="mobile-dock" aria-label="Mobile bottom navigation">
+  <div class="mobile-dock-inner">
+    <a href="#work" class="mobile-dock-item active" data-section="work" aria-label="Work">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span class="dock-indicator" aria-hidden="true"></span>
+      </div>
+      <span class="dock-label">Work</span>
+    </a>
+    <a href="#experience" class="mobile-dock-item" data-section="experience" aria-label="Experience">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+        <span class="dock-indicator" aria-hidden="true"></span>
+      </div>
+      <span class="dock-label">Experience</span>
+    </a>
+    <a href="#expertise" class="mobile-dock-item" data-section="expertise" aria-label="Expertise">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        <span class="dock-indicator" aria-hidden="true"></span>
+      </div>
+      <span class="dock-label">Expertise</span>
+    </a>
+    <a href="#education" class="mobile-dock-item" data-section="education" aria-label="Education &amp; References">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+        <span class="dock-indicator" aria-hidden="true"></span>
+      </div>
+      <span class="dock-label">Edu &amp; Refs</span>
+    </a>
+    <a href="#contact" class="mobile-dock-item" data-section="contact" aria-label="Contact">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span class="dock-indicator" aria-hidden="true"></span>
+      </div>
+      <span class="dock-label">Contact</span>
+    </a>
+  </div>
+</nav>
 
 <!-- Back to top floating button -->
 <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top" title="Back to top">
