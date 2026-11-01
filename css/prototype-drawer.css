@@ -951,3 +951,11 @@ body.arch-drawer-open {
     transform: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  .prototype-switcher {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%) scale(0.92);
+  }
+}
+
