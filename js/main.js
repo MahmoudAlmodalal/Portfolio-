@@ -548,7 +548,7 @@ if (!reducedMotion.matches && window.matchMedia('(pointer: fine)').matches && wi
 const filterBar = document.querySelector('.filter-bar');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const filterIndicator = document.querySelector('.filter-indicator');
-const additionalGrid = document.getElementById('additional-projects-grid');
+const additionalGrid = document.getElementById('additional-projects-grid') || document.querySelector('.additional-projects-grid');
 const additionalCards = additionalGrid ? Array.from(additionalGrid.querySelectorAll('.project-card')) : [];
 const featuredCards = Array.from(document.querySelectorAll('.featured-project'));
 const toggleProjectsBtn = document.getElementById('projects-toggle-btn');
