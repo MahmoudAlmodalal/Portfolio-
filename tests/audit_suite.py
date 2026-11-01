@@ -194,6 +194,36 @@ def check_accessibility():
     else:
         record_fail("A11Y", "Core project filter logic is missing from main.js (locked inside animations.js)")
 
+    # Architectural Inspection Drawer Verification (Issue #12)
+    # Check dialog overlay structure in index.html
+    has_overlay = 'id="arch-drawer-overlay"' in html_content and 'role="dialog"' in html_content and 'aria-modal="true"' in html_content
+    if has_overlay:
+        record_pass("A11Y", "Architectural Drawer dialog markup with proper ARIA attributes present in index.html")
+    else:
+        record_fail("A11Y", "Missing or invalid architectural drawer dialog markup in index.html")
+
+    # Check triggers in featured project cards
+    triggers = re.findall(r'data-arch-trigger="([^"]+)"', html_content)
+    expected_triggers = {"2wash", "edutracker", "clientmore"}
+    if expected_triggers.issubset(set(triggers)):
+        record_pass("A11Y", f"Architectural Drawer triggers present for all flagship systems: {triggers}")
+    else:
+        record_fail("A11Y", f"Missing architectural drawer triggers in index.html. Found {triggers}, expected at least {expected_triggers}")
+
+    # Check drawer styles integrated in css/style.css
+    has_drawer_css = '.arch-drawer-overlay' in css_content and '.arch-drawer-container' in css_content and '.arch-drawer-trigger' in css_content
+    if has_drawer_css:
+        record_pass("A11Y", "Architectural Drawer styles fully integrated into css/style.css")
+    else:
+        record_fail("A11Y", "Architectural Drawer styles missing from css/style.css")
+
+    # Check drawer controller & keyboard focus trap in js/main.js
+    has_drawer_js = 'openDrawer' in js_content and 'closeDrawer' in js_content and 'Escape' in js_content and 'data-arch-trigger' in js_content
+    if has_drawer_js:
+        record_pass("A11Y", "Architectural Drawer controller, keyboard traps & data models integrated in js/main.js")
+    else:
+        record_fail("A11Y", "Architectural Drawer controller & keyboard traps missing from js/main.js")
+
 # ---------------------------------------------------------------------------
 # 4. Link & Asset Integrity
 # ---------------------------------------------------------------------------
