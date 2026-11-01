@@ -156,7 +156,7 @@ section {
 /* ==========================================================================
    Navigation Header
    ========================================================================== */
-nav {
+#site-nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -178,12 +178,12 @@ nav {
 }
 
 @media (min-width: 768px) {
-  nav {
+  #site-nav {
     padding-inline: 2.5rem;
   }
 }
 
-nav.scrolled {
+#site-nav.scrolled {
   min-height: 58px;
   background: rgba(251, 248, 241, .96);
   border-color: rgba(215, 207, 196, .95);
@@ -210,7 +210,7 @@ nav.scrolled {
   letter-spacing: -.01em;
 }
 
-nav ul {
+#site-nav ul {
   position: relative;
   display: flex;
   align-items: center;
@@ -240,7 +240,7 @@ nav ul {
   background: var(--accent);
 }
 
-nav a:not(.logo) {
+#site-nav a:not(.logo) {
   position: relative;
   color: var(--ink-soft);
   font: 500 .62rem var(--mono);
@@ -250,8 +250,8 @@ nav a:not(.logo) {
   transition: color 150ms var(--ease);
 }
 
-nav a:not(.logo):hover,
-nav a:not(.logo).active {
+#site-nav a:not(.logo):hover,
+#site-nav a:not(.logo).active {
   color: var(--ink);
 }
 
@@ -313,16 +313,22 @@ nav a:not(.logo).active {
 /* Instagram-Style Mobile Bottom Navigation Dock */
 .mobile-dock {
   display: none;
-  position: fixed;
-  bottom: 0;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 0 !important;
   left: 0;
   right: 0;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
   z-index: 95;
   background: rgba(247, 244, 238, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(26, 26, 26, 0.08);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-bottom: 0 !important;
   box-shadow: 0 -4px 20px rgba(36, 25, 20, 0.06);
 }
 
@@ -2233,7 +2239,7 @@ button:focus-visible {
 }
 
 @media (max-width: 800px) {
-  nav {
+  #site-nav {
     min-height: 52px;
     height: 52px;
     padding-inline: 1.25rem;
@@ -2247,7 +2253,7 @@ button:focus-visible {
     display: inline-flex;
   }
 
-  nav ul {
+  #site-nav ul {
     display: none !important;
   }
 

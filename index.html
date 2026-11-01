@@ -70,10 +70,22 @@
         </div>
       </div>
 
-      <div class="hero-ledger hero-fade-up" aria-label="Engineering focus">
-        <span>Backend architecture</span>
-        <span>Data &amp; async workflows</span>
-        <span>Applied AI integration</span>
+      <div class="hero-ledger hero-fade-up" role="tablist" aria-label="Interactive architecture pipeline flows">
+        <button type="button" class="pipeline-tab active magnet-target" role="tab" aria-selected="true" data-flow="backend" aria-controls="architecture-canvas">
+          <span class="tab-indicator-bar" aria-hidden="true"></span>
+          <span class="tab-label">Backend architecture</span>
+          <span class="tab-status-pill" aria-hidden="true"><span class="tab-status-dot"></span> Active</span>
+        </button>
+        <button type="button" class="pipeline-tab magnet-target" role="tab" aria-selected="false" data-flow="async" aria-controls="architecture-canvas">
+          <span class="tab-indicator-bar" aria-hidden="true"></span>
+          <span class="tab-label">Data &amp; async workflows</span>
+          <span class="tab-status-pill" aria-hidden="true"><span class="tab-status-dot"></span> Active</span>
+        </button>
+        <button type="button" class="pipeline-tab magnet-target" role="tab" aria-selected="false" data-flow="ai" aria-controls="architecture-canvas">
+          <span class="tab-indicator-bar" aria-hidden="true"></span>
+          <span class="tab-label">Applied AI integration</span>
+          <span class="tab-status-pill" aria-hidden="true"><span class="tab-status-dot"></span> Active</span>
+        </button>
       </div>
 
       <div class="hero-actions hero-fade-up">
