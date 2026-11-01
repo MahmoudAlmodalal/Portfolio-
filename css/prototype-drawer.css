@@ -65,7 +65,7 @@
   font-family: var(--sans);
   font-size: 0.8rem;
   user-select: none;
-  max-width: 95vw;
+  max-width: min(600px, calc(100% - 32px));
 }
 
 .proto-badge {
@@ -195,7 +195,7 @@ body.arch-drawer-open {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(740px, 100vw);
+  width: min(740px, 100%);
   background: #fbf8f1;
   color: var(--ink);
   display: flex;
@@ -952,10 +952,9 @@ body.arch-drawer-open {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .prototype-switcher {
-    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%) scale(0.92);
+    display: none !important;
   }
 }
 
