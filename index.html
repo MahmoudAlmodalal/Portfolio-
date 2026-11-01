@@ -12,6 +12,7 @@
 <link rel="preload" as="image" href="images/live/2wash.webp" type="image/webp" fetchpriority="high"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prototype-drawer.css">
 </head>
 <body>
 
@@ -161,6 +162,10 @@
         <div class="project-stack"><span class="stack-pill">Django</span><span class="stack-pill">Next.js</span><span class="stack-pill">PostgreSQL</span><span class="stack-pill">PostGIS</span><span class="stack-pill">Redis</span><span class="stack-pill">Celery</span><span class="stack-pill">TypeScript</span></div>
         <div class="project-actions">
           <a href="https://2wash.app/" target="_blank" rel="noopener noreferrer" class="project-link magnet-target">Live demo <span class="project-link-arrow">&#8599;</span></a>
+          <button type="button" class="arch-drawer-trigger magnet-target" data-arch-trigger="2wash" aria-haspopup="dialog" aria-expanded="false" aria-controls="arch-drawer-overlay">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Inspect Architecture
+          </button>
         </div>
       </article>
 
@@ -772,10 +777,37 @@
   </div>
 </div>
 
+<!-- PROTOTYPE: In-Page Architectural Inspection Drawer (Issue #9) -->
+<div id="arch-drawer-overlay" class="arch-drawer-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="arch-drawer-title" aria-describedby="arch-drawer-desc">
+  <div class="arch-drawer-backdrop" data-close="arch-drawer"></div>
+  <div id="arch-drawer-container" class="arch-drawer-container">
+    <!-- Active Variant (A, B, or C) mounts here dynamically -->
+  </div>
+</div>
+
+<!-- Floating Prototype Switcher Bar (Issue #9 Prototype) -->
+<div id="prototype-switcher" class="prototype-switcher" role="region" aria-label="Prototype Variant Switcher">
+  <span class="proto-badge">PROTOTYPE #9</span>
+  <button type="button" id="proto-prev-btn" class="proto-nav-btn" aria-label="Previous variant (Left arrow)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="proto-info">
+    <span class="proto-key" id="proto-key">Variant A</span>
+    <span class="proto-name" id="proto-name">Slide-Over Blueprint Dock</span>
+  </div>
+  <button type="button" id="proto-next-btn" class="proto-nav-btn" aria-label="Next variant (Right arrow)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button type="button" id="proto-toggle-drawer" class="proto-toggle-btn" aria-label="Toggle architectural drawer">
+    Inspect 2Wash
+  </button>
+</div>
+
 <!-- Core Animation Engine (GSAP + ScrollTrigger + animations.js) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="js/animations.js" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/prototype-drawer.js" defer></script>
 </body>
 </html>
