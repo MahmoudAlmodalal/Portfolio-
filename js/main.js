@@ -330,8 +330,8 @@ if (archCanvas && !reducedMotion.matches) {
         // Mobile 3-Tier topology (210px height gives ~70px per tier):
         if (idx === 0) { targetX = width * 0.22; targetY = height * 0.20; }
         else if (idx === 1) { targetX = width * 0.72; targetY = height * 0.20; }
-        else if (idx === 2) { targetX = width * 0.26; targetY = height * 0.50; }
-        else if (idx === 3) { targetX = width * 0.74; targetY = height * 0.50; }
+        else if (idx === 2) { targetX = width * 0.24; targetY = height * 0.48; }
+        else if (idx === 3) { targetX = width * 0.76; targetY = height * 0.48; }
         else if (idx === 4) { targetX = width * 0.18; targetY = height * 0.80; }
         else if (idx === 5) { targetX = width * 0.52; targetY = height * 0.80; }
         else if (idx === 6) { targetX = width * 0.82; targetY = height * 0.80; }
@@ -406,6 +406,17 @@ if (archCanvas && !reducedMotion.matches) {
     ctx.clearRect(0, 0, width, height);
 
     const activeConfig = flowConfigs[currentFlow] || flowConfigs.backend;
+    const isMobile = width < 640;
+
+    // Helper to draw link with curved path on mobile for link [1, 4]
+    function traceLink(a, b) {
+      ctx.moveTo(nodes[a].x, nodes[a].y);
+      if (isMobile && ((a === 1 && b === 4) || (a === 4 && b === 1))) {
+        ctx.quadraticCurveTo(width * 0.58, height * 0.55, nodes[b].x, nodes[b].y);
+      } else {
+        ctx.lineTo(nodes[b].x, nodes[b].y);
+      }
+    }
 
     // 1. Inactive background links
     ctx.setLineDash([]);
@@ -413,8 +424,7 @@ if (archCanvas && !reducedMotion.matches) {
     ctx.strokeStyle = 'rgba(215, 207, 196, 0.35)';
     links.forEach(([a, b]) => {
       ctx.beginPath();
-      ctx.moveTo(nodes[a].x, nodes[a].y);
-      ctx.lineTo(nodes[b].x, nodes[b].y);
+      traceLink(a, b);
       ctx.stroke();
     });
 
@@ -425,8 +435,7 @@ if (archCanvas && !reducedMotion.matches) {
     ctx.strokeStyle = 'rgba(200, 90, 50, 0.75)';
     activeConfig.activeLinks.forEach(([a, b]) => {
       ctx.beginPath();
-      ctx.moveTo(nodes[a].x, nodes[a].y);
-      ctx.lineTo(nodes[b].x, nodes[b].y);
+      traceLink(a, b);
       ctx.stroke();
     });
     ctx.setLineDash([]);
@@ -442,8 +451,22 @@ if (archCanvas && !reducedMotion.matches) {
 
       const nFrom = nodes[p.fromIdx];
       const nTo = nodes[p.toIdx];
-      const px = nFrom.x + (nTo.x - nFrom.x) * p.progress;
-      const py = nFrom.y + (nTo.y - nFrom.y) * p.progress;
+      let px, py;
+      const isCurved14 = isMobile && (
+        (p.fromIdx === 1 && p.toIdx === 4) || (p.fromIdx === 4 && p.toIdx === 1)
+      );
+
+      if (isCurved14) {
+        const cpx = width * 0.58;
+        const cpy = height * 0.55;
+        const t = p.progress;
+        const invT = 1 - t;
+        px = invT * invT * nFrom.x + 2 * invT * t * cpx + t * t * nTo.x;
+        py = invT * invT * nFrom.y + 2 * invT * t * cpy + t * t * nTo.y;
+      } else {
+        px = nFrom.x + (nTo.x - nFrom.x) * p.progress;
+        py = nFrom.y + (nTo.y - nFrom.y) * p.progress;
+      }
 
       ctx.beginPath();
       ctx.arc(px, py, isLinkActive ? 3 : 2, 0, Math.PI * 2);
@@ -481,7 +504,10 @@ if (archCanvas && !reducedMotion.matches) {
       ctx.fillStyle = isActiveNode ? '#1A1A1A' : 'rgba(95, 81, 72, 0.65)';
       ctx.font = `500 ${node.fontSize}px "IBM Plex Mono", monospace`;
       ctx.textAlign = 'center';
-      const labelY = node.y + (node.y > height * 0.5 ? 13 : -10);
+      const isTopRow = node.y <= height * 0.35;
+      const labelY = isTopRow 
+        ? node.y - 19 
+        : (node.y > height * 0.55 ? node.y + 13 : node.y - 10);
       ctx.fillText(node.label, node.x, labelY);
     });
 
