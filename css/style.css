@@ -3173,10 +3173,10 @@ body.lightbox-open {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff8ed;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3219,7 +3219,7 @@ body.lightbox-open {
   color: #fff8ed;
   font: 600 0.72rem var(--mono);
   padding: 0.35rem 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
@@ -3342,10 +3342,10 @@ body.arch-drawer-open {
   background: transparent;
   border: 1px solid var(--line-strong);
   color: var(--ink);
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -3654,9 +3654,13 @@ body.arch-drawer-open {
   background: transparent;
   border: 1px solid #4a382c;
   color: #d7cfc4;
-  padding: 0.25rem 0.6rem;
+  padding: 0.35rem 0.8rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
-  font: 600 0.7rem var(--mono);
+  font: 600 0.72rem var(--mono);
   cursor: pointer;
 }
 

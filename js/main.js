@@ -1804,6 +1804,12 @@ if (mobileDock) {
     overlay.setAttribute('aria-hidden', 'false');
     document.body.classList.add('arch-drawer-open');
 
+    // Update aria-expanded on trigger buttons
+    document.querySelectorAll('[data-arch-trigger]').forEach(btn => {
+      const match = btn.getAttribute('data-arch-trigger') === currentProjectKey;
+      btn.setAttribute('aria-expanded', match ? 'true' : 'false');
+    });
+
     if (protoToggleBtn) protoToggleBtn.textContent = 'Close Drawer';
 
     // Focus first interactive element in drawer
@@ -1820,6 +1826,11 @@ if (mobileDock) {
     overlay.classList.remove('active');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('arch-drawer-open');
+
+    // Reset aria-expanded on trigger buttons
+    document.querySelectorAll('[data-arch-trigger]').forEach(btn => {
+      btn.setAttribute('aria-expanded', 'false');
+    });
 
     const arch = getActiveArch();
     if (protoToggleBtn) protoToggleBtn.textContent = `Inspect ${arch.shortName}`;
@@ -1883,13 +1894,23 @@ if (mobileDock) {
 
   // Keyboard navigation: Escape key & Focus Trap
   document.addEventListener('keydown', (e) => {
-    const isEditing = e.target.matches('input, textarea, [contenteditable="true"]');
-    if (!isEditing) {
+    // Escape closes drawer
+    if (isDrawerOpen && e.key === 'Escape') {
+      e.preventDefault();
+      closeDrawer();
+      return;
+    }
+
+    // Switcher variant cycling: only when prototype switcher or its children are focused, or drawer is open
+    const isSwitcherFocused = document.activeElement && document.activeElement.closest && document.activeElement.closest('#prototype-switcher');
+    if (isSwitcherFocused && !isDrawerOpen) {
       if (e.key === 'ArrowLeft') {
+        e.preventDefault();
         setVariant(currentVariantIndex - 1);
         return;
       }
       if (e.key === 'ArrowRight') {
+        e.preventDefault();
         setVariant(currentVariantIndex + 1);
         return;
       }
@@ -1897,9 +1918,15 @@ if (mobileDock) {
 
     if (!isDrawerOpen) return;
 
-    if (e.key === 'Escape') {
+    // Arrow keys inside open drawer to switch variants
+    if (e.key === 'ArrowLeft' && e.altKey) {
       e.preventDefault();
-      closeDrawer();
+      setVariant(currentVariantIndex - 1);
+      return;
+    }
+    if (e.key === 'ArrowRight' && e.altKey) {
+      e.preventDefault();
+      setVariant(currentVariantIndex + 1);
       return;
     }
 
@@ -1914,12 +1941,12 @@ if (mobileDock) {
       const lastEl = focusables[focusables.length - 1];
 
       if (e.shiftKey) {
-        if (document.activeElement === firstEl) {
+        if (document.activeElement === firstEl || !container.contains(document.activeElement)) {
           e.preventDefault();
           lastEl.focus();
         }
       } else {
-        if (document.activeElement === lastEl) {
+        if (document.activeElement === lastEl || !container.contains(document.activeElement)) {
           e.preventDefault();
           firstEl.focus();
         }
